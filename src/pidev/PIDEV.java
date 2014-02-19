@@ -6,6 +6,8 @@
 
 package pidev;
 
+import pidev.Pesentation.Client;
+
 /**
  *
  * @author minoo
@@ -17,9 +19,7 @@ public class PIDEV {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-    }
-    public  void sindouda(){
-        String x="Sinda";
+        
     }
     
 }
