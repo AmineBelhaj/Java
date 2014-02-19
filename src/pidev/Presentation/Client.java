@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package pidev.Pesentation;
+package pidev.Presentation;
 
 import java.awt.CardLayout;
 import java.awt.Toolkit;
@@ -72,13 +72,13 @@ public class Client extends javax.swing.JFrame {
     private void initComponents() {
 
         panel1 = new javax.swing.JPanel();
-        animation = new pidev.Pesentation.Animation();
-        gastronomie = new pidev.Pesentation.Gastronomie();
-        mariée = new pidev.Pesentation.Mariée();
-        photographe = new pidev.Pesentation.Photographe();
-        réception = new pidev.Pesentation.Réception();
-        marié = new pidev.Pesentation.Marié();
-        luneDeMiel1 = new pidev.Pesentation.LuneDeMiel();
+        animation = new pidev.Presentation.Animation();
+        gastronomie = new pidev.Presentation.Gastronomie();
+        mariée = new pidev.Presentation.Mariée();
+        photographe = new pidev.Presentation.Photographe();
+        réception = new pidev.Presentation.Réception();
+        marié = new pidev.Presentation.Marié();
+        luneDeMiel1 = new pidev.Presentation.LuneDeMiel();
         panel2 = new javax.swing.JPanel();
         lblMariée = new javax.swing.JLabel();
         lblMarié = new javax.swing.JLabel();
@@ -903,8 +903,8 @@ public class Client extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private pidev.Pesentation.Animation animation;
-    private pidev.Pesentation.Gastronomie gastronomie;
+    private pidev.Presentation.Animation animation;
+    private pidev.Presentation.Gastronomie gastronomie;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel lblAccessoire;
     private javax.swing.JLabel lblAgence;
@@ -937,9 +937,9 @@ public class Client extends javax.swing.JFrame {
     private javax.swing.JLabel lblSalleDeFête;
     private javax.swing.JLabel lblTroupeMusicale;
     private javax.swing.JLabel lblVéhicule;
-    private pidev.Pesentation.LuneDeMiel luneDeMiel1;
-    private pidev.Pesentation.Marié marié;
-    private pidev.Pesentation.Mariée mariée;
+    private pidev.Presentation.LuneDeMiel luneDeMiel1;
+    private pidev.Presentation.Marié marié;
+    private pidev.Presentation.Mariée mariée;
     private javax.swing.JPanel panel1;
     private javax.swing.JPanel panel2;
     private javax.swing.JPanel panel2_Animation;
@@ -949,7 +949,7 @@ public class Client extends javax.swing.JFrame {
     private javax.swing.JPanel panel2_Mariée;
     private javax.swing.JPanel panel2_Photographe;
     private javax.swing.JPanel panel2_Réception;
-    private pidev.Pesentation.Photographe photographe;
-    private pidev.Pesentation.Réception réception;
+    private pidev.Presentation.Photographe photographe;
+    private pidev.Presentation.Réception réception;
     // End of variables declaration//GEN-END:variables
 }

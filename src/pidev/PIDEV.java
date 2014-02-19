@@ -6,7 +6,7 @@
 
 package pidev;
 
-import pidev.Pesentation.Client;
+import pidev.Presentation.Client;
 
 /**
  *

@@ -2,18 +2,18 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package pidev.Pesentation;
+package pidev.Presentation;
 
 /**
  *
  * @author lenovo_B
  */
-public class Marié extends javax.swing.JPanel {
+public class Réception extends javax.swing.JPanel {
 
     /**
-     * Creates new form Marié
+     * Creates new form Réception
      */
-    public Marié() {
+    public Réception() {
         initComponents();
     }
 
@@ -29,7 +29,7 @@ public class Marié extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Vladimir Script", 0, 36)); // NOI18N
-        jLabel1.setText("Marié");
+        jLabel1.setText("Réception");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
