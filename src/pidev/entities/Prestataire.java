@@ -11,7 +11,7 @@ package pidev.entities;
  * @author minoo
  */
 public class Prestataire {
-    IdPrestataire
+   /* IdPrestataire
     NomSociete
     Login
     MotDePasse
@@ -22,6 +22,6 @@ public class Prestataire {
     Fax
     AdresseMail
     SiteWeb
-    Photo
+    Photo*/
     
 }

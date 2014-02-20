@@ -55,4 +55,7 @@ public class Admin {
         this.dateDerniereVisite = dateDerniereVisite;
     }
     
+    public Admin(){
+        
+    }
 }

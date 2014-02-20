@@ -7,6 +7,7 @@
 package pidev;
 
 import pidev.Presentation.Client;
+import pidev.Presentation.Connexion;
 
 /**
  *
@@ -18,6 +19,8 @@ public class PIDEV {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        Connexion cn=new Connexion();
+        cn.setVisible(true);
         // TODO code application logic here
         
     }

@@ -7,6 +7,8 @@
 package pidev.Presentation;
 
 import pidev.Presentation.Administrateur.Choix;
+import pidev.dao.AdminDAO;
+import pidev.entities.Admin;
 
 /**
  *
@@ -118,9 +120,17 @@ public class Connexion extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
-        Choix ch=new Choix();
-        ch.setVisible(true);
+        AdminDAO admindao=new AdminDAO();
+        Admin admin=new Admin();
+        admin=admindao.authentification(LoginInput.getText(), MDPInput.getText());
+        if(admin.getIdAdmin()!=0){
+            Choix ch=new Choix();
+            this.setVisible(false);
+            ch.setVisible(true);
+        }
+        System.out.println(admin.getIdAdmin());
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
