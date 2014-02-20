@@ -4,24 +4,12 @@
  * and open the template in the editor.
  */
 
-package pidev.entities;
+package pidev.dao;
 
 /**
  *
  * @author minoo
  */
-public class Prestataire {
-    IdPrestataire
-    NomSociete
-    Login
-    MotDePasse
-    Adresse
-    Presentation
-    Tel
-    GSM
-    Fax
-    AdresseMail
-    SiteWeb
-    Photo
+public class AdminDAO {
     
 }

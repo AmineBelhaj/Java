@@ -74,10 +74,7 @@ public class Client extends javax.swing.JFrame {
         panel1 = new javax.swing.JPanel();
         animation = new pidev.Presentation.Animation();
         gastronomie = new pidev.Presentation.Gastronomie();
-        mariée = new pidev.Presentation.Mariée();
         photographe = new pidev.Presentation.Photographe();
-        réception = new pidev.Presentation.Réception();
-        marié = new pidev.Presentation.Marié();
         luneDeMiel1 = new pidev.Presentation.LuneDeMiel();
         panel2 = new javax.swing.JPanel();
         lblMariée = new javax.swing.JLabel();
@@ -154,21 +151,6 @@ public class Client extends javax.swing.JFrame {
 
         panel1.add(gastronomie, "CardGastronomie");
 
-        mariée.setBackground(new java.awt.Color(0, 153, 255));
-
-        javax.swing.GroupLayout mariéeLayout = new javax.swing.GroupLayout(mariée);
-        mariée.setLayout(mariéeLayout);
-        mariéeLayout.setHorizontalGroup(
-            mariéeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1140, Short.MAX_VALUE)
-        );
-        mariéeLayout.setVerticalGroup(
-            mariéeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 222, Short.MAX_VALUE)
-        );
-
-        panel1.add(mariée, "CardMariée");
-
         photographe.setBackground(new java.awt.Color(255, 204, 255));
 
         javax.swing.GroupLayout photographeLayout = new javax.swing.GroupLayout(photographe);
@@ -183,24 +165,6 @@ public class Client extends javax.swing.JFrame {
         );
 
         panel1.add(photographe, "CardPhotographe");
-
-        réception.setBackground(new java.awt.Color(204, 255, 204));
-
-        javax.swing.GroupLayout réceptionLayout = new javax.swing.GroupLayout(réception);
-        réception.setLayout(réceptionLayout);
-        réceptionLayout.setHorizontalGroup(
-            réceptionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1140, Short.MAX_VALUE)
-        );
-        réceptionLayout.setVerticalGroup(
-            réceptionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 222, Short.MAX_VALUE)
-        );
-
-        panel1.add(réception, "CardRéception");
-
-        marié.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        panel1.add(marié, "CardMarié");
 
         javax.swing.GroupLayout luneDeMiel1Layout = new javax.swing.GroupLayout(luneDeMiel1);
         luneDeMiel1.setLayout(luneDeMiel1Layout);
@@ -733,7 +697,7 @@ public class Client extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(151, 151, 151)
-                .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+                .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -938,8 +902,6 @@ public class Client extends javax.swing.JFrame {
     private javax.swing.JLabel lblTroupeMusicale;
     private javax.swing.JLabel lblVéhicule;
     private pidev.Presentation.LuneDeMiel luneDeMiel1;
-    private pidev.Presentation.Marié marié;
-    private pidev.Presentation.Mariée mariée;
     private javax.swing.JPanel panel1;
     private javax.swing.JPanel panel2;
     private javax.swing.JPanel panel2_Animation;
@@ -950,6 +912,5 @@ public class Client extends javax.swing.JFrame {
     private javax.swing.JPanel panel2_Photographe;
     private javax.swing.JPanel panel2_Réception;
     private pidev.Presentation.Photographe photographe;
-    private pidev.Presentation.Réception réception;
     // End of variables declaration//GEN-END:variables
 }

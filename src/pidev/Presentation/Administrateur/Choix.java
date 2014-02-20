@@ -40,21 +40,27 @@ public class Choix extends javax.swing.JFrame {
         BtValider = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Choix");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Veuillez selectionner votre choix");
 
         buttonGroup1.add(compte);
+        compte.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         compte.setText("Gérer les comptes");
 
         buttonGroup1.add(rapport);
+        rapport.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         rapport.setText("Générer rapport");
 
         buttonGroup1.add(rec);
+        rec.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         rec.setText("Consulter les réclamations");
 
         buttonGroup1.add(stat);
+        stat.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         stat.setText("Gérer les statistiques");
 
         BtRetour.setText("Retour");
@@ -75,10 +81,6 @@ public class Choix extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(85, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(75, 75, 75))
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -86,21 +88,25 @@ public class Choix extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(stat)
                             .addComponent(rec)
-                            .addComponent(rapport)
-                            .addComponent(compte))
+                            .addComponent(compte)
+                            .addComponent(rapport))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(BtRetour)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(BtValider)
-                        .addGap(30, 30, 30))))
+                        .addGap(32, 32, 32))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(192, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(169, 169, 169))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(47, 47, 47)
                 .addComponent(jLabel1)
-                .addGap(32, 32, 32)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
                 .addComponent(compte)
                 .addGap(29, 29, 29)
                 .addComponent(rapport)
@@ -108,7 +114,7 @@ public class Choix extends javax.swing.JFrame {
                 .addComponent(rec)
                 .addGap(32, 32, 32)
                 .addComponent(stat)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addGap(104, 104, 104)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtRetour)
                     .addComponent(BtValider))
@@ -124,6 +130,21 @@ public class Choix extends javax.swing.JFrame {
             GererCompte gc=new GererCompte();
             this.setVisible(false);
             gc.setVisible(true);
+        }
+        if(rapport.isSelected()){
+            GenererRapport gr=new GenererRapport();
+            this.setVisible(false);
+            gr.setVisible(true);
+        }
+        if(stat.isSelected()){
+            Statistique st=new Statistique();
+            this.setVisible(false);
+            st.setVisible(true);
+        }
+        if(rec.isSelected()){
+            Reclamation rec=new Reclamation();
+            this.setVisible(false);
+            rec.setVisible(true);
         }
     }//GEN-LAST:event_BtValiderActionPerformed
 
