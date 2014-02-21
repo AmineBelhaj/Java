@@ -12,7 +12,8 @@ import java.awt.Toolkit;
  * @author lenovo_B
  */
 public class Client extends javax.swing.JFrame {
-
+  
+    
     /**
      * Creates new form Client
      */
