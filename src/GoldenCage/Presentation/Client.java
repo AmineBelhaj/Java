@@ -28,39 +28,15 @@ public class Client extends javax.swing.JFrame {
         panel2_Photographe.setVisible(false);
         panel2_Lune.setVisible(false);
     }
-    public void GoMariée(){
+   
+     public void GoListeProduit(){
         CardLayout card = (CardLayout) panel1.getLayout();
-        card.show(panel1, "CardMariée");
+        card.show(panel1, "CardProduit");
     }
-    
-    public void GoMarié(){
+     
+       public void GoListePrestataire(){
         CardLayout card = (CardLayout) panel1.getLayout();
-        card.show(panel1, "CardMarié");
-    }
-    
-    public void GoAnimation(){
-        CardLayout card = (CardLayout) panel1.getLayout();
-        card.show(panel1, "CardAnimation");
-    }
-    
-    public void GoGastronomie(){
-        CardLayout card = (CardLayout) panel1.getLayout();
-        card.show(panel1, "CardGastronomie");
-    }
-    
-    public void GoPhotographe(){
-        CardLayout card = (CardLayout) panel1.getLayout();
-        card.show(panel1, "CardPhotographe");
-    }
-    
-    public void GoRéception(){
-        CardLayout card = (CardLayout) panel1.getLayout();
-        card.show(panel1, "CardRéception");
-    }
-    
-     public void GoLuneDeMiel(){
-        CardLayout card = (CardLayout) panel1.getLayout();
-        card.show(panel1, "CardLune");
+        card.show(panel1, "CardPrestataire");
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -72,10 +48,9 @@ public class Client extends javax.swing.JFrame {
     private void initComponents() {
 
         panel1 = new javax.swing.JPanel();
-        animation = new GoldenCage.Presentation.Animation();
-        gastronomie = new GoldenCage.Presentation.Gastronomie();
-        photographe = new GoldenCage.Presentation.Photographe();
-        luneDeMiel1 = new GoldenCage.Presentation.LuneDeMiel();
+        PanelAcceuil = new pidev.Presentation.acceuil();
+        PanelPrestataire = new pidev.Presentation.ListePrestataire();
+        PanelProduit = new pidev.Presentation.ListeProduit();
         panel2 = new javax.swing.JPanel();
         lblMariée = new javax.swing.JLabel();
         lblMarié = new javax.swing.JLabel();
@@ -121,63 +96,20 @@ public class Client extends javax.swing.JFrame {
 
         panel1.setLayout(new java.awt.CardLayout());
 
-        animation.setBackground(new java.awt.Color(255, 255, 102));
-
-        javax.swing.GroupLayout animationLayout = new javax.swing.GroupLayout(animation);
-        animation.setLayout(animationLayout);
-        animationLayout.setHorizontalGroup(
-            animationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1140, Short.MAX_VALUE)
+        javax.swing.GroupLayout PanelAcceuilLayout = new javax.swing.GroupLayout(PanelAcceuil);
+        PanelAcceuil.setLayout(PanelAcceuilLayout);
+        PanelAcceuilLayout.setHorizontalGroup(
+            PanelAcceuilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1142, Short.MAX_VALUE)
         );
-        animationLayout.setVerticalGroup(
-            animationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 222, Short.MAX_VALUE)
+        PanelAcceuilLayout.setVerticalGroup(
+            PanelAcceuilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 671, Short.MAX_VALUE)
         );
 
-        panel1.add(animation, "CardAnimation");
-
-        gastronomie.setBackground(new java.awt.Color(204, 0, 204));
-
-        javax.swing.GroupLayout gastronomieLayout = new javax.swing.GroupLayout(gastronomie);
-        gastronomie.setLayout(gastronomieLayout);
-        gastronomieLayout.setHorizontalGroup(
-            gastronomieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1140, Short.MAX_VALUE)
-        );
-        gastronomieLayout.setVerticalGroup(
-            gastronomieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 222, Short.MAX_VALUE)
-        );
-
-        panel1.add(gastronomie, "CardGastronomie");
-
-        photographe.setBackground(new java.awt.Color(255, 204, 255));
-
-        javax.swing.GroupLayout photographeLayout = new javax.swing.GroupLayout(photographe);
-        photographe.setLayout(photographeLayout);
-        photographeLayout.setHorizontalGroup(
-            photographeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1140, Short.MAX_VALUE)
-        );
-        photographeLayout.setVerticalGroup(
-            photographeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 222, Short.MAX_VALUE)
-        );
-
-        panel1.add(photographe, "CardPhotographe");
-
-        javax.swing.GroupLayout luneDeMiel1Layout = new javax.swing.GroupLayout(luneDeMiel1);
-        luneDeMiel1.setLayout(luneDeMiel1Layout);
-        luneDeMiel1Layout.setHorizontalGroup(
-            luneDeMiel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1140, Short.MAX_VALUE)
-        );
-        luneDeMiel1Layout.setVerticalGroup(
-            luneDeMiel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 222, Short.MAX_VALUE)
-        );
-
-        panel1.add(luneDeMiel1, "CardLune");
+        panel1.add(PanelAcceuil, "card4");
+        panel1.add(PanelPrestataire, "CardPrestataire");
+        panel1.add(PanelProduit, "CardProduit");
 
         panel2.setBackground(new java.awt.Color(255, 0, 102));
         panel2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -494,18 +426,68 @@ public class Client extends javax.swing.JFrame {
 
         lblRobeMariée.setFont(new java.awt.Font("Vladimir Script", 0, 24)); // NOI18N
         lblRobeMariée.setText("Robe de Mariée");
+        lblRobeMariée.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblRobeMariéeMouseClicked(evt);
+            }
+        });
+        lblRobeMariée.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                lblRobeMariéeMouseMoved(evt);
+            }
+        });
 
         lblRobeSoirée.setFont(new java.awt.Font("Vladimir Script", 0, 24)); // NOI18N
         lblRobeSoirée.setText("Robe de Soirée");
+        lblRobeSoirée.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblRobeSoiréeMouseClicked(evt);
+            }
+        });
+        lblRobeSoirée.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                lblRobeSoiréeMouseMoved(evt);
+            }
+        });
 
         lblCoiffure.setFont(new java.awt.Font("Vladimir Script", 0, 24)); // NOI18N
         lblCoiffure.setText("Coiffure et Beauté");
+        lblCoiffure.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblCoiffureMouseClicked(evt);
+            }
+        });
+        lblCoiffure.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                lblCoiffureMouseMoved(evt);
+            }
+        });
 
         lblHauteCouture.setFont(new java.awt.Font("Vladimir Script", 0, 24)); // NOI18N
         lblHauteCouture.setText("Haute Couture");
+        lblHauteCouture.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblHauteCoutureMouseClicked(evt);
+            }
+        });
+        lblHauteCouture.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                lblHauteCoutureMouseMoved(evt);
+            }
+        });
 
         lblLangerie.setFont(new java.awt.Font("Vladimir Script", 0, 24)); // NOI18N
         lblLangerie.setText("Langerie");
+        lblLangerie.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblLangerieMouseClicked(evt);
+            }
+        });
+        lblLangerie.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                lblLangerieMouseMoved(evt);
+            }
+        });
 
         javax.swing.GroupLayout panel2_MariéeLayout = new javax.swing.GroupLayout(panel2_Mariée);
         panel2_Mariée.setLayout(panel2_MariéeLayout);
@@ -696,8 +678,8 @@ public class Client extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(151, 151, 151)
-                .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, 671, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -706,32 +688,26 @@ public class Client extends javax.swing.JFrame {
 
     private void lblMariéeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMariéeMouseClicked
         // TODO add your handling code here:
-        GoMariée();
     }//GEN-LAST:event_lblMariéeMouseClicked
 
     private void lblMariéMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMariéMouseClicked
         // TODO add your handling code here:
-         GoMarié();
     }//GEN-LAST:event_lblMariéMouseClicked
 
     private void lblRéceptionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRéceptionMouseClicked
         // TODO add your handling code here:
-        GoRéception();
     }//GEN-LAST:event_lblRéceptionMouseClicked
 
     private void lblAnimationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAnimationMouseClicked
         // TODO add your handling code here:
-        GoAnimation();
     }//GEN-LAST:event_lblAnimationMouseClicked
 
     private void lblGastronomieMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGastronomieMouseClicked
         // TODO add your handling code here:
-        GoGastronomie();
     }//GEN-LAST:event_lblGastronomieMouseClicked
 
     private void lblPhotographeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPhotographeMouseClicked
         // TODO add your handling code here:
-        GoPhotographe();
     }//GEN-LAST:event_lblPhotographeMouseClicked
 
     private void lblMariéeMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMariéeMouseMoved
@@ -781,11 +757,13 @@ public class Client extends javax.swing.JFrame {
 
     private void panel2_MariéeMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel2_MariéeMouseMoved
         // TODO add your handling code here:
+         panel2_Mariée.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
          panel2_Mariée.setVisible(true);
     }//GEN-LAST:event_panel2_MariéeMouseMoved
 
     private void panel2_MariéMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel2_MariéMouseMoved
         // TODO add your handling code here:
+         panel2_Marié.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
          panel2_Marié.setVisible(true);
     }//GEN-LAST:event_panel2_MariéMouseMoved
 
@@ -802,21 +780,25 @@ public class Client extends javax.swing.JFrame {
 
     private void panel2_RéceptionMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel2_RéceptionMouseMoved
         // TODO add your handling code here:
+        panel2_Réception.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         panel2_Réception.setVisible(true);
     }//GEN-LAST:event_panel2_RéceptionMouseMoved
 
     private void panel2_AnimationMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel2_AnimationMouseMoved
         // TODO add your handling code here:
+        panel2_Animation.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         panel2_Animation.setVisible(true);
     }//GEN-LAST:event_panel2_AnimationMouseMoved
 
     private void panel2_GastronomieMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel2_GastronomieMouseMoved
         // TODO add your handling code here:
+        panel2_Gastronomie.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         panel2_Gastronomie.setVisible(true);
     }//GEN-LAST:event_panel2_GastronomieMouseMoved
 
     private void panel2_PhotographeMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel2_PhotographeMouseMoved
         // TODO add your handling code here:
+        panel2_Photographe.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         panel2_Photographe.setVisible(true);
     }//GEN-LAST:event_panel2_PhotographeMouseMoved
 
@@ -828,8 +810,59 @@ public class Client extends javax.swing.JFrame {
 
     private void panel2_LuneMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel2_LuneMouseMoved
         // TODO add your handling code here:
+        panel2_Lune.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         panel2_Lune.setVisible(true);
     }//GEN-LAST:event_panel2_LuneMouseMoved
+
+    private void lblRobeMariéeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRobeMariéeMouseClicked
+        // TODO add your handling code here:
+        GoListePrestataire();
+    }//GEN-LAST:event_lblRobeMariéeMouseClicked
+
+    private void lblRobeMariéeMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRobeMariéeMouseMoved
+        // TODO add your handling code here:
+         lblRobeMariée.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_lblRobeMariéeMouseMoved
+
+    private void lblRobeSoiréeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRobeSoiréeMouseClicked
+        // TODO add your handling code here:
+        GoListePrestataire();
+    }//GEN-LAST:event_lblRobeSoiréeMouseClicked
+
+    private void lblCoiffureMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCoiffureMouseClicked
+        // TODO add your handling code here:
+         GoListePrestataire();
+    }//GEN-LAST:event_lblCoiffureMouseClicked
+
+    private void lblCoiffureMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCoiffureMouseMoved
+        // TODO add your handling code here:
+        lblCoiffure.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_lblCoiffureMouseMoved
+
+    private void lblHauteCoutureMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHauteCoutureMouseClicked
+        // TODO add your handling code here:
+         GoListePrestataire();
+    }//GEN-LAST:event_lblHauteCoutureMouseClicked
+
+    private void lblLangerieMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLangerieMouseClicked
+        // TODO add your handling code here:
+         GoListePrestataire();
+    }//GEN-LAST:event_lblLangerieMouseClicked
+
+    private void lblLangerieMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLangerieMouseMoved
+        // TODO add your handling code here:
+        lblLangerie.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_lblLangerieMouseMoved
+
+    private void lblHauteCoutureMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHauteCoutureMouseMoved
+        // TODO add your handling code here:
+         lblHauteCouture.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_lblHauteCoutureMouseMoved
+
+    private void lblRobeSoiréeMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRobeSoiréeMouseMoved
+        // TODO add your handling code here:
+        lblRobeSoirée.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_lblRobeSoiréeMouseMoved
 
     /**
      * @param args the command line arguments
@@ -867,8 +900,9 @@ public class Client extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private GoldenCage.Presentation.Animation animation;
-    private GoldenCage.Presentation.Gastronomie gastronomie;
+    private pidev.Presentation.acceuil PanelAcceuil;
+    private pidev.Presentation.ListePrestataire PanelPrestataire;
+    private pidev.Presentation.ListeProduit PanelProduit;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel lblAccessoire;
     private javax.swing.JLabel lblAgence;
@@ -901,7 +935,6 @@ public class Client extends javax.swing.JFrame {
     private javax.swing.JLabel lblSalleDeFête;
     private javax.swing.JLabel lblTroupeMusicale;
     private javax.swing.JLabel lblVéhicule;
-    private GoldenCage.Presentation.LuneDeMiel luneDeMiel1;
     private javax.swing.JPanel panel1;
     private javax.swing.JPanel panel2;
     private javax.swing.JPanel panel2_Animation;
@@ -911,6 +944,5 @@ public class Client extends javax.swing.JFrame {
     private javax.swing.JPanel panel2_Mariée;
     private javax.swing.JPanel panel2_Photographe;
     private javax.swing.JPanel panel2_Réception;
-    private GoldenCage.Presentation.Photographe photographe;
     // End of variables declaration//GEN-END:variables
 }
