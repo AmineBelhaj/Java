@@ -6,6 +6,9 @@
 
 package GoldenCage.Presentation.Administrateur;
 
+import GoldenCage.dao.PrestataireDAO;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author minoo
@@ -37,17 +40,7 @@ public class GererCompte extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
+        jTable1.setModel(new AfficherPrestataire());
         jScrollPane1.setViewportView(jTable1);
 
         BtRetour.setText("Retour");
@@ -60,6 +53,11 @@ public class GererCompte extends javax.swing.JFrame {
         BtModif.setText("Modifier");
 
         BtSuprim.setText("Supprimer");
+        BtSuprim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtSuprimActionPerformed(evt);
+            }
+        });
 
         BtAjout.setText("Ajouter");
         BtAjout.addActionListener(new java.awt.event.ActionListener() {
@@ -116,6 +114,25 @@ public class GererCompte extends javax.swing.JFrame {
         this.setVisible(false);
         ac.setVisible(true);
     }//GEN-LAST:event_BtAjoutActionPerformed
+
+    private void BtSuprimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtSuprimActionPerformed
+        // TODO add your handling code here:
+        if(jTable1.getSelectedRow()!=-1){
+            int id=(int)jTable1.getValueAt(jTable1.getSelectedRow(), 0);
+            PrestataireDAO prestatairedao=new PrestataireDAO();
+            System.out.println(id);
+            if(prestatairedao.deletePrestataire(id)){
+                JOptionPane.showMessageDialog(null,"Un probléme est survenu lors de la suppression");
+            }
+            else{
+                JOptionPane.showMessageDialog(null,"La ligne a été supprimé avec succés");
+                jTable1.setModel(new AfficherPrestataire());
+            }
+            
+        }
+        else
+            JOptionPane.showMessageDialog(null,"Veuillez selectionner une ligne");
+    }//GEN-LAST:event_BtSuprimActionPerformed
 
     /**
      * @param args the command line arguments

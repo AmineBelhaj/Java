@@ -9,6 +9,7 @@ package GoldenCage.Presentation;
 import GoldenCage.Presentation.Administrateur.Choix;
 import GoldenCage.dao.AdminDAO;
 import GoldenCage.entities.Admin;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -119,16 +120,25 @@ public class Connexion extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        AdminDAO admindao=new AdminDAO();
-        Admin admin=new Admin();
-        admin=admindao.authentification(LoginInput.getText(), MDPInput.getText());
-        if(admin.getIdAdmin()!=0){
-            Choix ch=new Choix();
-            this.setVisible(false);
-            ch.setVisible(true);
+
+        if(LoginInput.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"Veuillez Saisir votre Login");
         }
-        System.out.println(admin.getIdAdmin());
+        else if(MDPInput.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"Veuillez Saisir votre Mot de passe");
+        }
+        else{
+            AdminDAO admindao=new AdminDAO();
+            Admin admin=new Admin();
+            admin=admindao.authentification(LoginInput.getText(), MDPInput.getText());
+            if(admin.getIdAdmin()!=0){
+                Choix ch=new Choix();
+                this.setVisible(false);
+                ch.setVisible(true);
+            }
+             System.out.println(admin.getIdAdmin());
+        }
+        
         
         
     }//GEN-LAST:event_jButton1ActionPerformed

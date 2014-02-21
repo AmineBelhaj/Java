@@ -6,6 +6,12 @@
 
 package GoldenCage.Presentation.Administrateur;
 
+import GoldenCage.dao.PrestataireDAO;
+import GoldenCage.entities.Prestataire;
+import java.io.File;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author minoo
@@ -17,8 +23,9 @@ public class AjouterCompte extends javax.swing.JFrame {
      */
     public AjouterCompte() {
         initComponents();
+        path="";
     }
-
+    String path;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,7 +37,7 @@ public class AjouterCompte extends javax.swing.JFrame {
 
         jFileChooser1 = new javax.swing.JFileChooser();
         BtRetour = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        BtChargerImage = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -62,7 +69,12 @@ public class AjouterCompte extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Charger Image");
+        BtChargerImage.setText("Charger Image");
+        BtChargerImage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtChargerImageActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Login:");
 
@@ -85,6 +97,11 @@ public class AjouterCompte extends javax.swing.JFrame {
         jLabel10.setText("Présentation");
 
         BtConfirmer.setText("Confirmer");
+        BtConfirmer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtConfirmerActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -110,7 +127,7 @@ public class AjouterCompte extends javax.swing.JFrame {
                             .addComponent(lblNomSoc, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblMdp, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1))))
+                            .addComponent(BtChargerImage))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -140,7 +157,7 @@ public class AjouterCompte extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(37, 37, 37)
-                .addComponent(jButton1)
+                .addComponent(BtChargerImage)
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -201,6 +218,44 @@ public class AjouterCompte extends javax.swing.JFrame {
         gc.setVisible(true);
     }//GEN-LAST:event_BtRetourActionPerformed
 
+    private void BtChargerImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtChargerImageActionPerformed
+        // TODO add your handling code here:
+        JFileChooser chooser = new JFileChooser();
+        chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        chooser.setVisible(true);
+        if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+            File file = chooser.getSelectedFile();
+            path=file.getPath();
+        }
+
+    }//GEN-LAST:event_BtChargerImageActionPerformed
+
+    private void BtConfirmerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtConfirmerActionPerformed
+        Prestataire prestataire=new Prestataire();
+        prestataire.setPhoto(path);
+        prestataire.setLogin(lblLogin.getText());
+        prestataire.setMotDePasse(lblMdp.getText());
+        prestataire.setNomSociete(lblNomSoc.getText());
+        prestataire.setAdresse(lbladr.getText());
+        prestataire.setAdresseMail(lbladrmail.getText());
+        prestataire.setFax(Integer.parseInt(lblfax.getText()));
+        prestataire.setGSM(Integer.parseInt(lblgsm.getText()));
+        prestataire.setPresentation(lblpresent.getText());
+        prestataire.setTel(Integer.parseInt(lbltel.getText()));
+        prestataire.setSiteWeb(lblweb.getText());
+        PrestataireDAO prestatairedao=new PrestataireDAO();
+        if(prestatairedao.ajouterPrestataire(prestataire)){
+            JOptionPane.showMessageDialog(null,"Le compte a été ajouter avec succés");
+            this.setVisible(false);
+            GererCompte gc=new GererCompte();
+            gc.setVisible(true);
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"Probléme d'ajout");
+        }
+        
+    }//GEN-LAST:event_BtConfirmerActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -237,9 +292,9 @@ public class AjouterCompte extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtChargerImage;
     private javax.swing.JButton BtConfirmer;
     private javax.swing.JButton BtRetour;
-    private javax.swing.JButton jButton1;
     private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
