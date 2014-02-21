@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package pidev.util;
+package GoldenCage.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

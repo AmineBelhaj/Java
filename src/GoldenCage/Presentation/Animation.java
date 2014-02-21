@@ -2,18 +2,18 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package pidev.Presentation;
+package GoldenCage.Presentation;
 
 /**
  *
  * @author lenovo_B
  */
-public class Gastronomie extends javax.swing.JPanel {
+public class Animation extends javax.swing.JPanel {
 
     /**
-     * Creates new form Gastronomie
+     * Creates new form Animation
      */
-    public Gastronomie() {
+    public Animation() {
         initComponents();
     }
 
@@ -29,7 +29,7 @@ public class Gastronomie extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Vladimir Script", 0, 36)); // NOI18N
-        jLabel1.setText("Gastronomie");
+        jLabel1.setText("Animation");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

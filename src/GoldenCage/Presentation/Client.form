@@ -53,7 +53,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
       <SubComponents>
-        <Container class="pidev.Presentation.Animation" name="animation">
+        <Container class="GoldenCage.Presentation.Animation" name="animation">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="ff" red="ff" type="rgb"/>
@@ -78,7 +78,7 @@
             </DimensionLayout>
           </Layout>
         </Container>
-        <Container class="pidev.Presentation.Gastronomie" name="gastronomie">
+        <Container class="GoldenCage.Presentation.Gastronomie" name="gastronomie">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="0" red="cc" type="rgb"/>
@@ -103,7 +103,7 @@
             </DimensionLayout>
           </Layout>
         </Container>
-        <Container class="pidev.Presentation.Photographe" name="photographe">
+        <Container class="GoldenCage.Presentation.Photographe" name="photographe">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="cc" red="ff" type="rgb"/>
@@ -128,7 +128,7 @@
             </DimensionLayout>
           </Layout>
         </Container>
-        <Container class="pidev.Presentation.LuneDeMiel" name="luneDeMiel1">
+        <Container class="GoldenCage.Presentation.LuneDeMiel" name="luneDeMiel1">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
               <CardConstraints cardName="CardLune"/>

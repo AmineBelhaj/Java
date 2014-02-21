@@ -4,10 +4,10 @@
  * and open the template in the editor.
  */
 
-package pidev;
+package GoldenCage;
 
-import pidev.Presentation.Client;
-import pidev.Presentation.Connexion;
+import GoldenCage.Presentation.Client;
+import GoldenCage.Presentation.Connexion;
 
 /**
  *

@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 
-package pidev.Presentation.Administrateur;
+package GoldenCage.Presentation.Administrateur;
 
-import pidev.Presentation.Connexion;
+import GoldenCage.Presentation.Connexion;
 
 /**
  *

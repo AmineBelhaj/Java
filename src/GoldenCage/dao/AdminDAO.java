@@ -4,11 +4,11 @@
  * and open the template in the editor.
  */
 
-package pidev.dao;
+package GoldenCage.dao;
 
 import java.sql.*;
-import pidev.entities.Admin;
-import pidev.util.MyConnection;
+import GoldenCage.entities.Admin;
+import GoldenCage.util.MyConnection;
 
 /**
  *

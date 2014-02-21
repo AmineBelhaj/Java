@@ -4,11 +4,11 @@
  * and open the template in the editor.
  */
 
-package pidev.Presentation;
+package GoldenCage.Presentation;
 
-import pidev.Presentation.Administrateur.Choix;
-import pidev.dao.AdminDAO;
-import pidev.entities.Admin;
+import GoldenCage.Presentation.Administrateur.Choix;
+import GoldenCage.dao.AdminDAO;
+import GoldenCage.entities.Admin;
 
 /**
  *

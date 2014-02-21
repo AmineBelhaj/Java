@@ -2,18 +2,18 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package pidev.Presentation;
+package GoldenCage.Presentation;
 
 /**
  *
  * @author lenovo_B
  */
-public class Photographe extends javax.swing.JPanel {
+public class Réception extends javax.swing.JPanel {
 
     /**
-     * Creates new form Photographe
+     * Creates new form Réception
      */
-    public Photographe() {
+    public Réception() {
         initComponents();
     }
 
@@ -29,7 +29,7 @@ public class Photographe extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Vladimir Script", 0, 36)); // NOI18N
-        jLabel1.setText("Photographe");
+        jLabel1.setText("Réception");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package pidev.Presentation;
+package GoldenCage.Presentation;
 
 import java.awt.CardLayout;
 import java.awt.Toolkit;
@@ -72,10 +72,10 @@ public class Client extends javax.swing.JFrame {
     private void initComponents() {
 
         panel1 = new javax.swing.JPanel();
-        animation = new pidev.Presentation.Animation();
-        gastronomie = new pidev.Presentation.Gastronomie();
-        photographe = new pidev.Presentation.Photographe();
-        luneDeMiel1 = new pidev.Presentation.LuneDeMiel();
+        animation = new GoldenCage.Presentation.Animation();
+        gastronomie = new GoldenCage.Presentation.Gastronomie();
+        photographe = new GoldenCage.Presentation.Photographe();
+        luneDeMiel1 = new GoldenCage.Presentation.LuneDeMiel();
         panel2 = new javax.swing.JPanel();
         lblMariée = new javax.swing.JLabel();
         lblMarié = new javax.swing.JLabel();
@@ -867,8 +867,8 @@ public class Client extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private pidev.Presentation.Animation animation;
-    private pidev.Presentation.Gastronomie gastronomie;
+    private GoldenCage.Presentation.Animation animation;
+    private GoldenCage.Presentation.Gastronomie gastronomie;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel lblAccessoire;
     private javax.swing.JLabel lblAgence;
@@ -901,7 +901,7 @@ public class Client extends javax.swing.JFrame {
     private javax.swing.JLabel lblSalleDeFête;
     private javax.swing.JLabel lblTroupeMusicale;
     private javax.swing.JLabel lblVéhicule;
-    private pidev.Presentation.LuneDeMiel luneDeMiel1;
+    private GoldenCage.Presentation.LuneDeMiel luneDeMiel1;
     private javax.swing.JPanel panel1;
     private javax.swing.JPanel panel2;
     private javax.swing.JPanel panel2_Animation;
@@ -911,6 +911,6 @@ public class Client extends javax.swing.JFrame {
     private javax.swing.JPanel panel2_Mariée;
     private javax.swing.JPanel panel2_Photographe;
     private javax.swing.JPanel panel2_Réception;
-    private pidev.Presentation.Photographe photographe;
+    private GoldenCage.Presentation.Photographe photographe;
     // End of variables declaration//GEN-END:variables
 }

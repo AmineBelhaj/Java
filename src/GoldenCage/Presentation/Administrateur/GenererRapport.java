@@ -4,18 +4,18 @@
  * and open the template in the editor.
  */
 
-package pidev.Presentation.Administrateur;
+package GoldenCage.Presentation.Administrateur;
 
 /**
  *
  * @author minoo
  */
-public class GererCompte extends javax.swing.JFrame {
+public class GenererRapport extends javax.swing.JFrame {
 
     /**
-     * Creates new form GererCompte
+     * Creates new form GenererRapport
      */
-    public GererCompte() {
+    public GenererRapport() {
         initComponents();
     }
 
@@ -28,27 +28,15 @@ public class GererCompte extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        lblfichier = new javax.swing.JTextField();
         BtRetour = new javax.swing.JButton();
-        BtModif = new javax.swing.JButton();
-        BtSuprim = new javax.swing.JButton();
-        BtAjout = new javax.swing.JButton();
+        BtConfirmer = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setText("Veuillez nommer le fichier");
 
         BtRetour.setText("Retour");
         BtRetour.addActionListener(new java.awt.event.ActionListener() {
@@ -57,16 +45,7 @@ public class GererCompte extends javax.swing.JFrame {
             }
         });
 
-        BtModif.setText("Modifier");
-
-        BtSuprim.setText("Supprimer");
-
-        BtAjout.setText("Ajouter");
-        BtAjout.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtAjoutActionPerformed(evt);
-            }
-        });
+        BtConfirmer.setText("Confirmer");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -76,28 +55,28 @@ public class GererCompte extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(lblfichier, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(185, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(BtRetour)
-                        .addGap(127, 127, 127)
-                        .addComponent(BtModif)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
-                        .addComponent(BtSuprim)
-                        .addGap(107, 107, 107)
-                        .addComponent(BtAjout))
-                    .addComponent(jScrollPane1))
-                .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BtConfirmer)
+                        .addGap(18, 18, 18))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addGap(49, 49, 49)
+                .addComponent(lblfichier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtRetour)
-                    .addComponent(BtModif)
-                    .addComponent(BtSuprim)
-                    .addComponent(BtAjout))
-                .addGap(22, 22, 22))
+                    .addComponent(BtConfirmer))
+                .addContainerGap())
         );
 
         pack();
@@ -109,13 +88,6 @@ public class GererCompte extends javax.swing.JFrame {
         this.setVisible(false);
         ch.setVisible(true);
     }//GEN-LAST:event_BtRetourActionPerformed
-
-    private void BtAjoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtAjoutActionPerformed
-        // TODO add your handling code here:
-       AjouterCompte ac=new AjouterCompte();
-        this.setVisible(false);
-        ac.setVisible(true);
-    }//GEN-LAST:event_BtAjoutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -134,30 +106,28 @@ public class GererCompte extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GererCompte.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GenererRapport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GererCompte.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GenererRapport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GererCompte.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GenererRapport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GererCompte.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GenererRapport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GererCompte().setVisible(true);
+                new GenererRapport().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtAjout;
-    private javax.swing.JButton BtModif;
+    private javax.swing.JButton BtConfirmer;
     private javax.swing.JButton BtRetour;
-    private javax.swing.JButton BtSuprim;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField lblfichier;
     // End of variables declaration//GEN-END:variables
 }
