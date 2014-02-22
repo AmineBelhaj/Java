@@ -86,6 +86,28 @@ public class PrestataireDAO {
             return false;
             }
      }
-    
+    public boolean modifierPrestataire(Prestataire prest){
+        String requete = "update prestataire set NomSociete=?, Login=?, MotDePasse=?, Adresse=?, Presentation=?, Tel=?, GSM=?, Fax=?, AdresseMail=?, SiteWeb=?, Photo=? where IdPrestataire=?";
+        try {
+            PreparedStatement ps = MyConnection.getInstance().prepareStatement(requete);
+            ps.setString(1, prest.getNomSociete());
+            ps.setString(2, prest.getLogin());
+            ps.setString(3, prest.getMotDePasse());
+            ps.setString(4, prest.getAdresse());
+            ps.setString(5, prest.getPresentation());
+            ps.setInt(6, prest.getTel());
+            ps.setInt(7, prest.getGSM());
+            ps.setInt(8, prest.getFax());
+            ps.setString(9, prest.getAdresseMail());
+            ps.setString(10, prest.getSiteWeb());
+            ps.setString(11, prest.getPhoto());
+            ps.setInt(12,prest.getIdPrestataire());
+            ps.executeUpdate();
+            return true;
+        } catch (SQLException ex) {
+            System.out.println("erreur lors de la mise à jour "+ex.getMessage());
+            return false;
+        }
+    }
     
 }
