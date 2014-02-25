@@ -50,7 +50,7 @@ public class Client extends javax.swing.JFrame {
 
         panel1 = new javax.swing.JPanel();
         PanelAcceuil = new pidev.Presentation.acceuil();
-        PanelPrestataire = new pidev.Presentation.ListePrestataire();
+        PanelPrestataire = new GoldenCage.Presentation.ListePrestataire();
         PanelProduit = new pidev.Presentation.ListeProduit();
         panel2 = new javax.swing.JPanel();
         lblMariée = new javax.swing.JLabel();
@@ -94,6 +94,8 @@ public class Client extends javax.swing.JFrame {
         lblPhotogr = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(100, 100));
+        setPreferredSize(new java.awt.Dimension(1000, 500));
 
         panel1.setLayout(new java.awt.CardLayout());
 
@@ -109,6 +111,9 @@ public class Client extends javax.swing.JFrame {
         );
 
         panel1.add(PanelAcceuil, "card4");
+
+        PanelPrestataire.setMaximumSize(new java.awt.Dimension(500, 100));
+        PanelPrestataire.setPreferredSize(new java.awt.Dimension(500, 50));
         panel1.add(PanelPrestataire, "CardPrestataire");
         panel1.add(PanelProduit, "CardProduit");
 
@@ -902,7 +907,7 @@ public class Client extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private pidev.Presentation.acceuil PanelAcceuil;
-    private pidev.Presentation.ListePrestataire PanelPrestataire;
+    private GoldenCage.Presentation.ListePrestataire PanelPrestataire;
     private pidev.Presentation.ListeProduit PanelProduit;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel lblAccessoire;

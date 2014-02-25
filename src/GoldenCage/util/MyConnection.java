@@ -22,7 +22,7 @@ public class MyConnection {
    private static Connection con;
 
 
-   private MyConnection(){
+   public MyConnection(){
 
    }
 
