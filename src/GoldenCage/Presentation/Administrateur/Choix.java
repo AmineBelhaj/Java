@@ -50,6 +50,11 @@ public class Choix extends javax.swing.JFrame {
         buttonGroup1.add(compte);
         compte.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         compte.setText("Gérer les comptes");
+        compte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                compteActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(rapport);
         rapport.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -108,9 +113,9 @@ public class Choix extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
                 .addComponent(compte)
-                .addGap(29, 29, 29)
+                .addGap(28, 28, 28)
                 .addComponent(rapport)
-                .addGap(35, 35, 35)
+                .addGap(36, 36, 36)
                 .addComponent(rec)
                 .addGap(32, 32, 32)
                 .addComponent(stat)
@@ -155,6 +160,10 @@ public class Choix extends javax.swing.JFrame {
         cn.setVisible(true);
         
     }//GEN-LAST:event_BtRetourActionPerformed
+
+    private void compteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_compteActionPerformed
 
     /**
      * @param args the command line arguments
