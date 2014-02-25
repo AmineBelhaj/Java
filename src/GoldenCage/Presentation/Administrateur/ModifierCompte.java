@@ -20,16 +20,33 @@ import javax.swing.JOptionPane;
  *
  * @author minoo
  */
-public class AjouterCompte extends javax.swing.JFrame {
+public class ModifierCompte extends javax.swing.JFrame {
 
     String path;
     Prestataire prestataire;
     /**
      * Creates new form AjouterCompte
      */
-    public AjouterCompte() {
+    public ModifierCompte(){
         initComponents();
         path="";
+    }
+    public ModifierCompte(Prestataire prest) {
+        initComponents();
+        path="";
+        lblLogin.setText(prest.getLogin());
+        lblMdp.setText(prest.getMotDePasse());
+        lblNomSoc.setText(prest.getNomSociete());
+        lbladr.setText(prest.getAdresse());
+        lbladrmail.setText(prest.getAdresseMail());
+        lblfax.setText(Integer.toString(prest.getFax()));
+        lblgsm.setText(Integer.toString(prest.getGSM()));
+        lblpresent.setText(prest.getPresentation());
+        lbltel.setText(Integer.toString(prest.getTel()));
+        lblweb.setText(prest.getSiteWeb());
+        prestataire=new Prestataire();
+        prestataire.setIdPrestataire(prest.getIdPrestataire());
+        
     }
     
     /**
@@ -277,7 +294,7 @@ public class AjouterCompte extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Adresse obligatoire");
         }
         else{
-            prestataire=new Prestataire();
+            
             prestataire.setPhoto(path);
             prestataire.setLogin(lblLogin.getText());
             prestataire.setMotDePasse(lblMdp.getText());
@@ -299,8 +316,8 @@ public class AjouterCompte extends javax.swing.JFrame {
                                   prestataire.setTel(monentier);
                                   prestataire.setSiteWeb(lblweb.getText());
                                   PrestataireDAO prestatairedao=new PrestataireDAO();
-                                  if(prestatairedao.ajouterPrestataire(prestataire)){
-                                        JOptionPane.showMessageDialog(null,"Le compte a été ajouter avec succés");
+                                  if(prestatairedao.modifierPrestataire(prestataire)){
+                                        JOptionPane.showMessageDialog(null,"Le compte a été modifier avec succés");
                                         this.setVisible(false);
                                         GererCompte gc=new GererCompte();
                                         gc.setVisible(true);
@@ -346,20 +363,20 @@ public class AjouterCompte extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AjouterCompte.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModifierCompte.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AjouterCompte.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModifierCompte.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AjouterCompte.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModifierCompte.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AjouterCompte.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModifierCompte.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AjouterCompte().setVisible(true);
+                new ModifierCompte().setVisible(true);
             }
         });
     }

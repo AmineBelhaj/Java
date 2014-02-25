@@ -7,6 +7,7 @@
 package GoldenCage.Presentation.Administrateur;
 
 import GoldenCage.dao.PrestataireDAO;
+import GoldenCage.entities.Prestataire;
 import javax.swing.JOptionPane;
 
 /**
@@ -51,6 +52,11 @@ public class GererCompte extends javax.swing.JFrame {
         });
 
         BtModif.setText("Modifier");
+        BtModif.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtModifActionPerformed(evt);
+            }
+        });
 
         BtSuprim.setText("Supprimer");
         BtSuprim.addActionListener(new java.awt.event.ActionListener() {
@@ -121,7 +127,7 @@ public class GererCompte extends javax.swing.JFrame {
             int id=(int)jTable1.getValueAt(jTable1.getSelectedRow(), 0);
             PrestataireDAO prestatairedao=new PrestataireDAO();
             System.out.println(id);
-            if(prestatairedao.deletePrestataire(id)){
+            if(prestatairedao.deletePrestataire(id)==false){
                 JOptionPane.showMessageDialog(null,"Un probléme est survenu lors de la suppression");
             }
             else{
@@ -133,6 +139,30 @@ public class GererCompte extends javax.swing.JFrame {
         else
             JOptionPane.showMessageDialog(null,"Veuillez selectionner une ligne");
     }//GEN-LAST:event_BtSuprimActionPerformed
+
+    private void BtModifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtModifActionPerformed
+        // TODO add your handling code here:
+         if(jTable1.getSelectedRow()!=-1){
+             Prestataire prest=new Prestataire();
+             prest.setIdPrestataire((int)jTable1.getValueAt(jTable1.getSelectedRow(), 0));
+             prest.setAdresse((String)jTable1.getValueAt(jTable1.getSelectedRow(), 4));
+             prest.setAdresseMail((String)jTable1.getValueAt(jTable1.getSelectedRow(), 9));
+             prest.setFax((int)jTable1.getValueAt(jTable1.getSelectedRow(), 8));
+             prest.setGSM((int)jTable1.getValueAt(jTable1.getSelectedRow(), 7));
+             prest.setLogin((String)jTable1.getValueAt(jTable1.getSelectedRow(), 2));
+             prest.setMotDePasse((String)jTable1.getValueAt(jTable1.getSelectedRow(), 3));
+             prest.setNomSociete((String)jTable1.getValueAt(jTable1.getSelectedRow(), 1));
+             prest.setPhoto((String)jTable1.getValueAt(jTable1.getSelectedRow(), 11));
+             prest.setPresentation((String)jTable1.getValueAt(jTable1.getSelectedRow(), 5));
+             prest.setSiteWeb((String)jTable1.getValueAt(jTable1.getSelectedRow(), 10));
+             prest.setTel((int)jTable1.getValueAt(jTable1.getSelectedRow(), 6));
+             ModifierCompte md=new ModifierCompte(prest);
+             this.setVisible(false);
+             md.setVisible(true);
+         }
+         else
+            JOptionPane.showMessageDialog(null,"Veuillez selectionner une ligne");
+    }//GEN-LAST:event_BtModifActionPerformed
 
     /**
      * @param args the command line arguments
