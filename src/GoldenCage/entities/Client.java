@@ -17,7 +17,7 @@ public class Client {
     private String NumTel;
     private String AdressMail;
     private int idPanier;
-
+    private boolean bannir;
     public Client() {
     }
 
@@ -84,8 +84,16 @@ public class Client {
     public void setIdPanier(int idPanier) {
         this.idPanier = idPanier;
     }
+    public void setBannir(boolean bannir){
+        this.bannir=bannir;
+    }
+    public boolean isBannir() {
+        return bannir;
+    }
 
-    public Client(int idClient, String login, String motDePasse, String Nom, String Prenom, String NumTel, String AressMail, int idPanier) {
+    
+    
+    public Client(int idClient, String login, String motDePasse, String Nom, String Prenom, String NumTel, String AressMail, int idPanier,boolean bannir) {
         this.idClient = idClient;
         this.login = login;
         this.motDePasse = motDePasse;
@@ -94,8 +102,15 @@ public class Client {
         this.NumTel = NumTel;
         this.AdressMail = AressMail;
         this.idPanier = idPanier;
+        this.bannir=bannir;
     }
-    
+    public boolean equals(Object obj) {
+        Client c=(Client)obj;
+        if(c.getIdClient()==this.getIdClient())
+            return true;
+        else 
+            return false;
+    }
     
     
 }

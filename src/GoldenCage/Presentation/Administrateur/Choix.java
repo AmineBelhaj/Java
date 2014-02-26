@@ -38,6 +38,7 @@ public class Choix extends javax.swing.JFrame {
         stat = new javax.swing.JRadioButton();
         BtRetour = new javax.swing.JButton();
         BtValider = new javax.swing.JButton();
+        jRadioButton1 = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Choix");
@@ -49,7 +50,7 @@ public class Choix extends javax.swing.JFrame {
 
         buttonGroup1.add(compte);
         compte.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        compte.setText("Gérer les comptes");
+        compte.setText("Gérer les Préstataires");
         compte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 compteActionPerformed(evt);
@@ -82,13 +83,23 @@ public class Choix extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(jRadioButton1);
+        jRadioButton1.setText("Gérer Client");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(192, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(169, 169, 169))
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jRadioButton1)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(stat)
@@ -101,10 +112,6 @@ public class Choix extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(BtValider)
                         .addGap(32, 32, 32))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(192, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(169, 169, 169))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,7 +126,9 @@ public class Choix extends javax.swing.JFrame {
                 .addComponent(rec)
                 .addGap(32, 32, 32)
                 .addComponent(stat)
-                .addGap(104, 104, 104)
+                .addGap(30, 30, 30)
+                .addComponent(jRadioButton1)
+                .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtRetour)
                     .addComponent(BtValider))
@@ -206,6 +215,7 @@ public class Choix extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JRadioButton compte;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton rapport;
     private javax.swing.JRadioButton rec;
     private javax.swing.JRadioButton stat;

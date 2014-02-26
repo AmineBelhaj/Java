@@ -43,22 +43,17 @@ public class Reclamation extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Commentaire", "Client", "Préstataire", "Date"
-            }
-        ));
+        jTable1.setModel(new AfficherReclamation("Date"));
         jScrollPane1.setViewportView(jTable1);
 
         jLabel1.setText("Trier selon:");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Date", "Préstaire", "Client" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,6 +93,19 @@ public class Reclamation extends javax.swing.JFrame {
         this.setVisible(false);
         ch.setVisible(true);
     }//GEN-LAST:event_BtRetourActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+        if(jComboBox1.getSelectedIndex()==0){
+            jTable1.setModel(new AfficherReclamation("Date"));
+        }
+        if(jComboBox1.getSelectedIndex()==1){
+            jTable1.setModel(new AfficherReclamation("Prestataire"));
+        }
+        if(jComboBox1.getSelectedIndex()==2){
+            jTable1.setModel(new AfficherReclamation("Client"));
+        }
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments

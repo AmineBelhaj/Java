@@ -6,8 +6,11 @@
 
 package GoldenCage.Presentation.Administrateur;
 
+import GoldenCage.dao.CritereDate;
 import GoldenCage.dao.PrestataireDAO;
 import GoldenCage.entities.Prestataire;
+import java.util.Collection;
+import java.util.Collections;
 import javax.swing.table.AbstractTableModel;
 import java.util.List;
 /**
@@ -22,6 +25,8 @@ public class AfficherPrestataire extends AbstractTableModel{
      public AfficherPrestataire(){
          PrestataireDAO prestataireDAO=new PrestataireDAO();
          prestataires=prestataireDAO.DisplayAllPrestataire();
+        
+
      }
      
      @Override

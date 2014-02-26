@@ -25,7 +25,7 @@ public class PrestataireDAO {
            Statement statement = MyConnection.getInstance()
                    .createStatement();
             ResultSet resultat = statement.executeQuery(requete);
-            PrestataireDAO prestataireDAO=new PrestataireDAO();
+            
             while(resultat.next()){
                 Prestataire prestataire=new Prestataire();
                 prestataire.setIdPrestataire(resultat.getInt(1));
@@ -109,5 +109,20 @@ public class PrestataireDAO {
             return false;
         }
     }
-    
+    public String getNomSociét(int idprest){
+         String requete = "select NomSociete from prestataire where IdPrestataire=?";
+         String soc="";
+         try {
+            PreparedStatement ps = MyConnection.getInstance().prepareStatement(requete);
+            ps.setInt(1,idprest);
+            ResultSet resultat = ps.executeQuery();
+             while(resultat.next()){
+                 soc=resultat.getString(1);
+             }
+          return soc;
+        } catch (SQLException ex) {
+            System.out.println("erreur lors de la mise à jour "+ex.getMessage());
+            return soc;
+       }
+     }
 }

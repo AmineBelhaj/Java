@@ -137,5 +137,12 @@ public class Prestataire {
    public Prestataire(){
        
    }
-    
+   @Override
+    public boolean equals(Object obj) {
+        Prestataire p=(Prestataire)obj;
+        if(p.getIdPrestataire()==this.getIdPrestataire())
+            return true;
+        else 
+            return false;
+    }
 }

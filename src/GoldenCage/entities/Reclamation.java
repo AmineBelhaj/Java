@@ -79,6 +79,14 @@ public class Reclamation {
         this.DateRec = DateRec;
     }
     
-    
+    @Override
+    public boolean equals(Object obj){
+        Reclamation r=(Reclamation)obj;
+        if((this.idRec==r.idRec)&&(this.DateRec==r.DateRec)){
+            return true;
+        }
+        else
+            return false;
+    }
     
 }
