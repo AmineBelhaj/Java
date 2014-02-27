@@ -125,4 +125,65 @@ public class PrestataireDAO {
             return soc;
        }
      }
+    public Prestataire AuthentificationWithLoginMDP(String login,String mdp){
+        String requete = "select * from prestataire where Login=? and MotDePasse=?";
+         Prestataire prestataire=new Prestataire();
+        try {
+            PreparedStatement ps = MyConnection.getInstance().prepareStatement(requete);
+            ps.setString(1,login);
+            ps.setString(2, mdp);
+             ResultSet resultat = ps.executeQuery();
+              while (resultat.next())
+              {
+                 prestataire.setIdPrestataire(resultat.getInt(1));
+                prestataire.setNomSociete(resultat.getString(2));
+                prestataire.setLogin(resultat.getString(3));
+                prestataire.setMotDePasse(resultat.getString(4));
+                prestataire.setAdresse(resultat.getString(5));
+                prestataire.setPresentation(resultat.getString(6));
+                prestataire.setTel(resultat.getInt(7));
+                prestataire.setGSM(resultat.getInt(8));
+                prestataire.setFax(resultat.getInt(9));
+                prestataire.setAdresseMail(resultat.getString(10));
+                prestataire.setSiteWeb(resultat.getString(11));
+                prestataire.setPhoto(resultat.getString(12));
+                  
+                
+               }
+              return prestataire;
+            } catch (SQLException ex) {
+            System.out.println("erreur lors de la mise à jour "+ex.getMessage());
+            return null;
+       }
+    }
+    public Prestataire AuthentificationWithMail(String mail){
+        String requete = "select * from prestataire where AdressMail=?";
+        Prestataire prestataire=new Prestataire();
+        try {
+            PreparedStatement ps = MyConnection.getInstance().prepareStatement(requete);
+            ps.setString(1,mail);
+             ResultSet resultat = ps.executeQuery();
+              while (resultat.next())
+              {
+                 prestataire.setIdPrestataire(resultat.getInt(1));
+                prestataire.setNomSociete(resultat.getString(2));
+                prestataire.setLogin(resultat.getString(3));
+                prestataire.setMotDePasse(resultat.getString(4));
+                prestataire.setAdresse(resultat.getString(5));
+                prestataire.setPresentation(resultat.getString(6));
+                prestataire.setTel(resultat.getInt(7));
+                prestataire.setGSM(resultat.getInt(8));
+                prestataire.setFax(resultat.getInt(9));
+                prestataire.setAdresseMail(resultat.getString(10));
+                prestataire.setSiteWeb(resultat.getString(11));
+                prestataire.setPhoto(resultat.getString(12));
+                  
+                
+               }
+              return prestataire;
+            } catch (SQLException ex) {
+            System.out.println("erreur lors de la mise à jour "+ex.getMessage());
+            return null;
+       }
+    }
 }

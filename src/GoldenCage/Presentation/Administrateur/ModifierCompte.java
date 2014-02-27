@@ -8,12 +8,9 @@ package GoldenCage.Presentation.Administrateur;
 
 import GoldenCage.dao.PrestataireDAO;
 import GoldenCage.entities.Prestataire;
-import de.humatic.dsj.DSEnvironment;
-import java.awt.Image;
 import java.io.File;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;

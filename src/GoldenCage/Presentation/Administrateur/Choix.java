@@ -38,7 +38,7 @@ public class Choix extends javax.swing.JFrame {
         stat = new javax.swing.JRadioButton();
         BtRetour = new javax.swing.JButton();
         BtValider = new javax.swing.JButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        cl = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Choix");
@@ -83,8 +83,8 @@ public class Choix extends javax.swing.JFrame {
             }
         });
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setText("Gérer Client");
+        buttonGroup1.add(cl);
+        cl.setText("Gérer Client");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,7 +98,7 @@ public class Choix extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jRadioButton1)
+                        .addComponent(cl)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,7 +127,7 @@ public class Choix extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addComponent(stat)
                 .addGap(30, 30, 30)
-                .addComponent(jRadioButton1)
+                .addComponent(cl)
                 .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtRetour)
@@ -159,6 +159,11 @@ public class Choix extends javax.swing.JFrame {
             Reclamation rec=new Reclamation();
             this.setVisible(false);
             rec.setVisible(true);
+        }
+        if(cl.isSelected()){
+            GereClient gc=new GereClient();
+            this.setVisible(false);
+            gc.setVisible(true);
         }
     }//GEN-LAST:event_BtValiderActionPerformed
 
@@ -213,9 +218,9 @@ public class Choix extends javax.swing.JFrame {
     private javax.swing.JButton BtRetour;
     private javax.swing.JButton BtValider;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JRadioButton cl;
     private javax.swing.JRadioButton compte;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton rapport;
     private javax.swing.JRadioButton rec;
     private javax.swing.JRadioButton stat;
