@@ -13,7 +13,6 @@ import GoldenCage.dao.CriterePrestataire;
 import GoldenCage.dao.PrestataireDAO;
 import GoldenCage.dao.ReclamationDAO;
 import GoldenCage.entities.Reclamation;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
@@ -24,7 +23,7 @@ import javax.swing.table.AbstractTableModel;
  */
 public class AfficherReclamation extends AbstractTableModel{
     List<Reclamation>reclamations;
-    String [] columnTab={"IdReclamation","Client","NomSociété","Text","Note","Date"};
+    String [] columnTab={"Client","NomSociété","Text","Note","Date"};
     public AfficherReclamation(String critere){
       
         ReclamationDAO reclamationDAO=new ReclamationDAO();
@@ -51,12 +50,12 @@ public class AfficherReclamation extends AbstractTableModel{
         PrestataireDAO prestataireDAO=new PrestataireDAO();
         ClientDAO clientDAO=new ClientDAO();
         switch (columnIndex){
-            case 0 :return reclamations.get(rowIndex).getIdRec();
-            case 1:return clientDAO.getLogin(reclamations.get(rowIndex).getIdClient());
-            case 2:return prestataireDAO.getNomSociét(reclamations.get(rowIndex).getIdPrestataire());
-            case 3:return reclamations.get(rowIndex).getTextRec();
-            case 4:return reclamations.get(rowIndex).getNoteRec();
-            case 5:return reclamations.get(rowIndex).getDateRec();
+            
+            case 0:return clientDAO.getLogin(reclamations.get(rowIndex).getIdClient());
+            case 1:return prestataireDAO.getNomSociét(reclamations.get(rowIndex).getIdPrestataire());
+            case 2:return reclamations.get(rowIndex).getTextRec();
+            case 3:return reclamations.get(rowIndex).getNoteRec();
+            case 4:return reclamations.get(rowIndex).getDateRec();
             default:return null;
                 
         }

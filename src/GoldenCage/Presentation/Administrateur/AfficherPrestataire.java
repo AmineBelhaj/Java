@@ -20,7 +20,7 @@ import java.util.List;
 public class AfficherPrestataire extends AbstractTableModel{
 
      List<Prestataire>prestataires;
-     String [] columnTab={"IdPrestataire","NomSociete","Login","MotDePasse","Adresse","Presentation","Tel","GSM","Fax","AdresseMail","SiteWeb","Photo"};
+     String [] columnTab={"NomSociete","Login","MotDePasse","Adresse","Presentation","Tel","GSM","Fax","AdresseMail","SiteWeb","Photo"};
    
      public AfficherPrestataire(){
          PrestataireDAO prestataireDAO=new PrestataireDAO();
@@ -43,18 +43,18 @@ public class AfficherPrestataire extends AbstractTableModel{
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         switch (columnIndex){
-            case 0 :return prestataires.get(rowIndex).getIdPrestataire();
-            case 1 :return prestataires.get(rowIndex).getNomSociete();
-            case 2 :return prestataires.get(rowIndex).getLogin();
-            case 3 :return prestataires.get(rowIndex).getMotDePasse();
-            case 4 :return prestataires.get(rowIndex).getAdresse();
-            case 5 :return prestataires.get(rowIndex).getPresentation();
-            case 6 :return prestataires.get(rowIndex).getTel();
-            case 7 :return prestataires.get(rowIndex).getGSM();
-            case 8 :return prestataires.get(rowIndex).getFax();
-            case 9 :return prestataires.get(rowIndex).getAdresseMail();
-            case 10 :return prestataires.get(rowIndex).getSiteWeb();
-            case 11 :return prestataires.get(rowIndex).getPhoto() ;
+            
+            case 0 :return prestataires.get(rowIndex).getNomSociete();
+            case 1 :return prestataires.get(rowIndex).getLogin();
+            case 2 :return prestataires.get(rowIndex).getMotDePasse();
+            case 3 :return prestataires.get(rowIndex).getAdresse();
+            case 4 :return prestataires.get(rowIndex).getPresentation();
+            case 5 :return prestataires.get(rowIndex).getTel();
+            case 6 :return prestataires.get(rowIndex).getGSM();
+            case 7 :return prestataires.get(rowIndex).getFax();
+            case 8 :return prestataires.get(rowIndex).getAdresseMail();
+            case 9 :return prestataires.get(rowIndex).getSiteWeb();
+            case 10 :return prestataires.get(rowIndex).getPhoto() ;
             
             default:return null;
         }

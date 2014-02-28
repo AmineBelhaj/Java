@@ -34,7 +34,7 @@ public class ClientDAO {
                 client.setPrenom(resultat.getString(5));
                 client.setNumTel(resultat.getString(6));
                 client.setAdressMail(resultat.getString(7));
-                client.setIdPanier(resultat.getInt(8));
+                
             }
             return client;
         
@@ -60,7 +60,7 @@ public class ClientDAO {
                 client.setPrenom(resultat.getString(5));
                 client.setNumTel(resultat.getString(6));
                 client.setAdressMail(resultat.getString(7));
-                client.setIdPanier(resultat.getInt(8));
+                
             }
             return client;
         

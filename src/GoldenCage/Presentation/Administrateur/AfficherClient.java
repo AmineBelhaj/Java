@@ -20,7 +20,7 @@ public class AfficherClient extends AbstractTableModel{
     String [] columnTab;
 
     public AfficherClient() {
-        this.columnTab = new String[]{"IdClient", "Login", "MotDePasse", "Nom", "Prenom", "Numéro Tel", "AdressMail","Banni"};
+        this.columnTab = new String[]{ "Login", "MotDePasse", "Nom", "Prenom", "Numéro Tel", "AdressMail","Banni"};
         ClientDAO clientDAO=new ClientDAO();
         clients=clientDAO.DisplayAllPrestataire();
     }
@@ -38,18 +38,21 @@ public class AfficherClient extends AbstractTableModel{
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         switch (columnIndex){
-            case 0 :return clients.get(rowIndex).getIdClient();
-            case 1 :return clients.get(rowIndex).getLogin();
-            case 2 :return clients.get(rowIndex).getMotDePasse();
-            case 3 :return clients.get(rowIndex).getNom();
-            case 4 :return clients.get(rowIndex).getPrenom();
-            case 5 :return clients.get(rowIndex).getNumTel();
-            case 6 :return clients.get(rowIndex).getAdressMail();
-            case 7: if(clients.get(rowIndex).isBannir())
+            case 0 :return clients.get(rowIndex).getLogin();
+            case 1 :return clients.get(rowIndex).getMotDePasse();
+            case 2 :return clients.get(rowIndex).getNom();
+            case 3 :return clients.get(rowIndex).getPrenom();
+            case 4 :return clients.get(rowIndex).getNumTel();
+            case 5 :return clients.get(rowIndex).getAdressMail();
+            case 6: if(clients.get(rowIndex).isBannir())
                     return "Oui";
                     else
                     return "Non";
             default:return null;
         }
+    }
+    @Override
+    public String getColumnName(int column) {
+        return columnTab[column];
     }
 }

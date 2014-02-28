@@ -32,13 +32,12 @@ public class Choix extends javax.swing.JFrame {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
-        compte = new javax.swing.JRadioButton();
-        rapport = new javax.swing.JRadioButton();
-        rec = new javax.swing.JRadioButton();
-        stat = new javax.swing.JRadioButton();
         BtRetour = new javax.swing.JButton();
-        BtValider = new javax.swing.JButton();
-        cl = new javax.swing.JRadioButton();
+        Jprest = new javax.swing.JButton();
+        Jrapport = new javax.swing.JButton();
+        Jreclamation = new javax.swing.JButton();
+        Jstatistique = new javax.swing.JButton();
+        Jclient = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Choix");
@@ -48,27 +47,6 @@ public class Choix extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Veuillez selectionner votre choix");
 
-        buttonGroup1.add(compte);
-        compte.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        compte.setText("Gérer les Préstataires");
-        compte.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                compteActionPerformed(evt);
-            }
-        });
-
-        buttonGroup1.add(rapport);
-        rapport.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        rapport.setText("Générer rapport");
-
-        buttonGroup1.add(rec);
-        rec.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        rec.setText("Consulter les réclamations");
-
-        buttonGroup1.add(stat);
-        stat.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        stat.setText("Gérer les statistiques");
-
         BtRetour.setText("Retour");
         BtRetour.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,15 +54,40 @@ public class Choix extends javax.swing.JFrame {
             }
         });
 
-        BtValider.setText("Valider");
-        BtValider.addActionListener(new java.awt.event.ActionListener() {
+        Jprest.setText("Gérer les préstataires");
+        Jprest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtValiderActionPerformed(evt);
+                JprestActionPerformed(evt);
             }
         });
 
-        buttonGroup1.add(cl);
-        cl.setText("Gérer Client");
+        Jrapport.setText("Générer Rapport");
+        Jrapport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JrapportActionPerformed(evt);
+            }
+        });
+
+        Jreclamation.setText("Consulter les réclamations");
+        Jreclamation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JreclamationActionPerformed(evt);
+            }
+        });
+
+        Jstatistique.setText("Générer les statistiques");
+        Jstatistique.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JstatistiqueActionPerformed(evt);
+            }
+        });
+
+        Jclient.setText("Gérer les clients");
+        Jclient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JclientActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,74 +101,41 @@ public class Choix extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(cl)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(stat)
-                            .addComponent(rec)
-                            .addComponent(compte)
-                            .addComponent(rapport))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(BtRetour)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BtValider)
-                        .addGap(32, 32, 32))))
+                        .addGap(32, 617, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(271, 271, 271)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(Jreclamation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Jclient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Jstatistique, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Jrapport, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Jprest, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(254, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
-                .addComponent(compte)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
+                .addComponent(Jprest)
                 .addGap(28, 28, 28)
-                .addComponent(rapport)
+                .addComponent(Jrapport)
                 .addGap(36, 36, 36)
-                .addComponent(rec)
+                .addComponent(Jreclamation)
                 .addGap(32, 32, 32)
-                .addComponent(stat)
-                .addGap(30, 30, 30)
-                .addComponent(cl)
+                .addComponent(Jstatistique)
+                .addGap(29, 29, 29)
+                .addComponent(Jclient)
                 .addGap(51, 51, 51)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtRetour)
-                    .addComponent(BtValider))
+                .addComponent(BtRetour)
                 .addContainerGap())
         );
 
-        pack();
+        setSize(new java.awt.Dimension(716, 538));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void BtValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtValiderActionPerformed
-        // TODO add your handling code here:
-        if(compte.isSelected()){
-            GererCompte gc=new GererCompte();
-            this.setVisible(false);
-            gc.setVisible(true);
-        }
-        if(rapport.isSelected()){
-            GenererRapport gr=new GenererRapport();
-            this.setVisible(false);
-            gr.setVisible(true);
-        }
-        if(stat.isSelected()){
-            Statistique st=new Statistique();
-            this.setVisible(false);
-            st.setVisible(true);
-        }
-        if(rec.isSelected()){
-            Reclamation rec=new Reclamation();
-            this.setVisible(false);
-            rec.setVisible(true);
-        }
-        if(cl.isSelected()){
-            GereClient gc=new GereClient();
-            this.setVisible(false);
-            gc.setVisible(true);
-        }
-    }//GEN-LAST:event_BtValiderActionPerformed
 
     private void BtRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtRetourActionPerformed
         // TODO add your handling code here:
@@ -175,9 +145,38 @@ public class Choix extends javax.swing.JFrame {
         
     }//GEN-LAST:event_BtRetourActionPerformed
 
-    private void compteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compteActionPerformed
+    private void JprestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JprestActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_compteActionPerformed
+        GererCompte gc=new GererCompte();
+            this.setVisible(false);
+            gc.setVisible(true);
+    }//GEN-LAST:event_JprestActionPerformed
+
+    private void JrapportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JrapportActionPerformed
+        GenererRapport gr=new GenererRapport();
+            this.setVisible(false);
+            gr.setVisible(true);
+    }//GEN-LAST:event_JrapportActionPerformed
+
+    private void JreclamationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JreclamationActionPerformed
+        // TODO add your handling code here:
+         Reclamation rec=new Reclamation();
+            this.setVisible(false);
+            rec.setVisible(true);
+    }//GEN-LAST:event_JreclamationActionPerformed
+
+    private void JstatistiqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JstatistiqueActionPerformed
+        Statistique st=new Statistique();
+            this.setVisible(false);
+            st.setVisible(true);
+    }//GEN-LAST:event_JstatistiqueActionPerformed
+
+    private void JclientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JclientActionPerformed
+        // TODO add your handling code here:
+        GereClient gc=new GereClient();
+            this.setVisible(false);
+            gc.setVisible(true);
+    }//GEN-LAST:event_JclientActionPerformed
 
     /**
      * @param args the command line arguments
@@ -216,13 +215,12 @@ public class Choix extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtRetour;
-    private javax.swing.JButton BtValider;
+    private javax.swing.JButton Jclient;
+    private javax.swing.JButton Jprest;
+    private javax.swing.JButton Jrapport;
+    private javax.swing.JButton Jreclamation;
+    private javax.swing.JButton Jstatistique;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JRadioButton cl;
-    private javax.swing.JRadioButton compte;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JRadioButton rapport;
-    private javax.swing.JRadioButton rec;
-    private javax.swing.JRadioButton stat;
     // End of variables declaration//GEN-END:variables
 }

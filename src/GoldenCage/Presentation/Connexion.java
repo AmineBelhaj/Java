@@ -16,7 +16,6 @@ import GoldenCage.entities.Admin;
 import GoldenCage.entities.Prestataire;
 import com.restfb.types.User;
 import javax.swing.JOptionPane;
-import sun.swing.AccumulativeRunnable;
 
 /**
  *
@@ -168,9 +167,16 @@ public class Connexion extends javax.swing.JFrame {
                     GoldenCage.entities.Client client=new GoldenCage.entities.Client();
                     client=clientDAO.authentification(LoginInput.getText(), MDPInput.getText());
                     if(client.getIdClient()!=0){
-                        Client cl=new Client();
-                        this.setVisible(false);
-                        cl.setVisible(true);
+                        if(client.isBannir()){
+                             Client cl=new Client();
+                            this.setVisible(false);
+                            cl.setVisible(true);
+                        }
+                        else{
+                            JOptionPane.showMessageDialog(null,"Votre compte est banni");
+                        }
+           
+                       
                     }
                     else{
                         JOptionPane.showMessageDialog(null,"Login ou Mot de passe incorrecte");
@@ -192,19 +198,27 @@ public class Connexion extends javax.swing.JFrame {
         PrestataireDAO prestataireDAO=new PrestataireDAO();
         Prestataire prestataire=new Prestataire();
         prestataire=prestataireDAO.AuthentificationWithMail(user.getEmail());
-        if(prestataire.getIdPrestataire()!=0){
+        if(prestataire!=null){
             Acceuil acceuil=new Acceuil();
             this.setVisible(false);
             acceuil.setVisible(true);
         }
         else{
             ClientDAO clientDAO=new ClientDAO();
-            GoldenCage.entities.Client client=new GoldenCage.entities.Client();
+            GoldenCage.entities.Client client;
             client=clientDAO.AuthentificationWithFacebook(user.getEmail());
-            if(client.getIdClient()!=0){
-              Client cl=new Client();
-              this.setVisible(false);
-              cl.setVisible(true);
+            if(client!=null){
+                if(client.isBannir()==false){
+                    Client cl=new Client();
+                    this.setVisible(false);
+                    cl.setVisible(true);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null,"Votre compte est banni");
+                }
+            }
+            else{
+              JOptionPane.showMessageDialog(null,"Login ou Mot de passe incorrecte");
             }
         }
     }//GEN-LAST:event_JconnectFacebookActionPerformed

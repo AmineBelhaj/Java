@@ -16,7 +16,6 @@ public class Client {
     private String Prenom;
     private String NumTel;
     private String AdressMail;
-    private int idPanier;
     private boolean bannir;
     public Client() {
     }
@@ -49,9 +48,7 @@ public class Client {
         return AdressMail;
     }
 
-    public int getIdPanier() {
-        return idPanier;
-    }
+   
 
     public void setIdClient(int idClient) {
         this.idClient = idClient;
@@ -81,9 +78,7 @@ public class Client {
         this.AdressMail = AressMail;
     }
 
-    public void setIdPanier(int idPanier) {
-        this.idPanier = idPanier;
-    }
+   
     public void setBannir(boolean bannir){
         this.bannir=bannir;
     }
@@ -93,7 +88,7 @@ public class Client {
 
     
     
-    public Client(int idClient, String login, String motDePasse, String Nom, String Prenom, String NumTel, String AressMail, int idPanier,boolean bannir) {
+    public Client(int idClient, String login, String motDePasse, String Nom, String Prenom, String NumTel, String AressMail,boolean bannir) {
         this.idClient = idClient;
         this.login = login;
         this.motDePasse = motDePasse;
@@ -101,7 +96,7 @@ public class Client {
         this.Prenom = Prenom;
         this.NumTel = NumTel;
         this.AdressMail = AressMail;
-        this.idPanier = idPanier;
+        
         this.bannir=bannir;
     }
     public boolean equals(Object obj) {

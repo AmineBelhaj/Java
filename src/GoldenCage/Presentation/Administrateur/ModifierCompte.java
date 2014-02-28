@@ -8,9 +8,14 @@ package GoldenCage.Presentation.Administrateur;
 
 import GoldenCage.dao.PrestataireDAO;
 import GoldenCage.entities.Prestataire;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.imageio.ImageIO;
+import javax.imageio.stream.FileCacheImageInputStream;
+import javax.imageio.stream.ImageInputStream;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
@@ -47,6 +52,9 @@ public class ModifierCompte extends javax.swing.JFrame {
         prestataire=new Prestataire();
         prestataire.setIdPrestataire(prest.getIdPrestataire());
        
+        
+      
+    
         
     }
     

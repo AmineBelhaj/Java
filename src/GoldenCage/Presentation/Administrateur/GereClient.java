@@ -34,6 +34,7 @@ public class GereClient extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         Jsupprim = new javax.swing.JButton();
+        Jretour = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,17 +48,27 @@ public class GereClient extends javax.swing.JFrame {
             }
         });
 
+        Jretour.setText("Retour");
+        Jretour.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JretourActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 617, Short.MAX_VALUE)
-                        .addComponent(Jsupprim))
-                    .addComponent(jScrollPane1))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(Jretour)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Jsupprim)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -66,11 +77,14 @@ public class GereClient extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 437, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(Jsupprim)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Jsupprim)
+                    .addComponent(Jretour))
                 .addContainerGap())
         );
 
-        pack();
+        setSize(new java.awt.Dimension(716, 538));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void JsupprimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JsupprimActionPerformed
@@ -90,6 +104,13 @@ public class GereClient extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Veuillez selectionner une ligne");
         }
     }//GEN-LAST:event_JsupprimActionPerformed
+
+    private void JretourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JretourActionPerformed
+        // TODO add your handling code here:
+        Choix ch=new Choix();
+        ch.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_JretourActionPerformed
 
     /**
      * @param args the command line arguments
@@ -127,6 +148,7 @@ public class GereClient extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Jretour;
     private javax.swing.JButton Jsupprim;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
