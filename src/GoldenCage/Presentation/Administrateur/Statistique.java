@@ -43,6 +43,11 @@ public class Statistique extends javax.swing.JFrame {
         });
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Par Date", "Par Semaine", "Par Mois" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -84,6 +89,19 @@ public class Statistique extends javax.swing.JFrame {
         this.setVisible(false);
         ch.setVisible(true);
     }//GEN-LAST:event_btRetourActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+        if(jComboBox1.getSelectedIndex()==0){
+            jCalendar1.setVisible(true);
+        }
+        if(jComboBox1.getSelectedIndex()==1){
+            jCalendar1.setVisible(false);
+        }
+        if(jComboBox1.getSelectedIndex()==2){
+            jCalendar1.setVisible(false);
+        }
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments

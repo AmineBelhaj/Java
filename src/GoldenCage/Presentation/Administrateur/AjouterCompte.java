@@ -284,18 +284,30 @@ public class AjouterCompte extends javax.swing.JFrame {
             prestataire.setNomSociete(lblNomSoc.getText());
             prestataire.setAdresse(lbladr.getText());
             prestataire.setAdresseMail(lbladrmail.getText());
-            if(!lblfax.getText().equals(""))
+            int monentier;
+            if(!lblfax.getText().equals("")){
              try {
-                int monentier = Integer.parseInt(lblfax.getText());
+                monentier = Integer.parseInt(lblfax.getText());
                  prestataire.setFax(monentier);
-                 if(!lblgsm.getText().equals("")){
-                     try{
-                         monentier=Integer.parseInt(lblgsm.getText());
-                         prestataire.setGSM(monentier);
-                         prestataire.setPresentation(lblpresent.getText());
-                         if(!lbltel.getText().equals("")){
-                             try{
-                                 monentier=Integer.parseInt(lbltel.getText());
+             } catch (NumberFormatException nfe) {
+                  JOptionPane.showMessageDialog(null,"Fax incorecte");
+                 //fax
+              }
+            }
+             if(!lblgsm.getText().equals("")){
+                  try{
+                    monentier=Integer.parseInt(lblgsm.getText());
+                    prestataire.setGSM(monentier);
+                    prestataire.setPresentation(lblpresent.getText());
+                     }
+                   catch(NumberFormatException nfe){
+                      JOptionPane.showMessageDialog(null,"GSM incorecte");
+                         //gsm incorecte
+                   }
+                 }
+               if(!lbltel.getText().equals("")){
+                      try{
+                           monentier=Integer.parseInt(lbltel.getText());
                                   prestataire.setTel(monentier);
                                   prestataire.setSiteWeb(lblweb.getText());
                                   PrestataireDAO prestatairedao=new PrestataireDAO();
@@ -304,7 +316,7 @@ public class AjouterCompte extends javax.swing.JFrame {
                                         this.setVisible(false);
                                         GererCompte gc=new GererCompte();
                                         gc.setVisible(true);
-                                  }
+                       }
                                   else{
                                     JOptionPane.showMessageDialog(null,"Probléme d'ajout");
                                    }
@@ -314,16 +326,9 @@ public class AjouterCompte extends javax.swing.JFrame {
                                  //tel incorrecte
                              }
                          }
-                     }
-                     catch(NumberFormatException nfe){
-                         JOptionPane.showMessageDialog(null,"GSM incorecte");
-                         //gsm incorecte
-                     }
-                 }
-              } catch (NumberFormatException nfe) {
-                  JOptionPane.showMessageDialog(null,"Fax incorecte");
-                 //fax
-              }
+                    
+                 
+              
             
         }
         

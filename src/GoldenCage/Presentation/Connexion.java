@@ -7,8 +7,14 @@
 package GoldenCage.Presentation;
 
 import GoldenCage.Presentation.Administrateur.Choix;
+import GoldenCage.Prestataire.Acceuil;
+import GoldenCage.Presentation.FaceBookConnect.GraphReaderExample;
 import GoldenCage.dao.AdminDAO;
+import GoldenCage.dao.ClientDAO;
+import GoldenCage.dao.PrestataireDAO;
 import GoldenCage.entities.Admin;
+import GoldenCage.entities.Prestataire;
+import com.restfb.types.User;
 import javax.swing.JOptionPane;
 
 /**
@@ -37,9 +43,10 @@ public class Connexion extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         LoginInput = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        Jconnect = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         MDPInput = new javax.swing.JPasswordField();
+        JconnectFacebook = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,10 +57,10 @@ public class Connexion extends javax.swing.JFrame {
 
         jLabel3.setText("Mot De Passe:");
 
-        jButton1.setText("Valider");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Jconnect.setText("Valider");
+        Jconnect.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                JconnectActionPerformed(evt);
             }
         });
 
@@ -61,6 +68,13 @@ public class Connexion extends javax.swing.JFrame {
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
+            }
+        });
+
+        JconnectFacebook.setText("Connect via Facebook");
+        JconnectFacebook.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JconnectFacebookActionPerformed(evt);
             }
         });
 
@@ -86,8 +100,10 @@ public class Connexion extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jButton2)
+                .addGap(41, 41, 41)
+                .addComponent(JconnectFacebook)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(Jconnect)
                 .addGap(26, 26, 26))
         );
         layout.setVerticalGroup(
@@ -105,8 +121,9 @@ public class Connexion extends javax.swing.JFrame {
                     .addComponent(MDPInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(Jconnect)
+                    .addComponent(jButton2)
+                    .addComponent(JconnectFacebook))
                 .addGap(30, 30, 30))
         );
 
@@ -119,7 +136,7 @@ public class Connexion extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void JconnectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JconnectActionPerformed
 
         if(LoginInput.getText().equals("")){
             JOptionPane.showMessageDialog(null,"Veuillez Saisir votre Login");
@@ -136,12 +153,75 @@ public class Connexion extends javax.swing.JFrame {
                 this.setVisible(false);
                 ch.setVisible(true);
             }
+            else{
+               PrestataireDAO prestataireDAO=new PrestataireDAO();
+                Prestataire prestataire=new Prestataire();
+                prestataire=prestataireDAO.AuthentificationWithLoginMDP(LoginInput.getText(), MDPInput.getText());
+                if(prestataire.getIdPrestataire()!=0){
+                    Acceuil acceuil=new Acceuil();
+                    this.setVisible(false);
+                    acceuil.setVisible(true);
+                }
+                else{
+                    ClientDAO clientDAO=new ClientDAO();
+                    GoldenCage.entities.Client client=new GoldenCage.entities.Client();
+                    client=clientDAO.authentification(LoginInput.getText(), MDPInput.getText());
+                    if(client.getIdClient()!=0){
+                        if(client.isBannir()){
+                             Client cl=new Client();
+                            this.setVisible(false);
+                            cl.setVisible(true);
+                        }
+                        else{
+                            JOptionPane.showMessageDialog(null,"Votre compte est banni");
+                        }
+           
+                       
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null,"Login ou Mot de passe incorrecte");
+                    }
+                }
+            }
              System.out.println(admin.getIdAdmin());
         }
         
         
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_JconnectActionPerformed
+
+    private void JconnectFacebookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JconnectFacebookActionPerformed
+        // TODO add your handling code here:
+        GraphReaderExample gre=new GraphReaderExample("CAAE9RWLux8IBADraHN4Uate1lrjbZC9WoQZAwbtOOZBwGL6J55G9cJCvIccVMEeF6iRO9bxjzk41MlIU0rd0Li8DbW56vblhnhskeAoIEi8NrQSqv6ial2qj7cF3uIRZCSdJCraHe37ZBewYJnxXWY6NCMVRgDc1Qw7P6v4z23TYxNJXqZCMCq");
+        User user= gre.fetchObject();
+        user.getEmail();
+        PrestataireDAO prestataireDAO=new PrestataireDAO();
+        Prestataire prestataire=new Prestataire();
+        prestataire=prestataireDAO.AuthentificationWithMail(user.getEmail());
+        if(prestataire!=null){
+            Acceuil acceuil=new Acceuil();
+            this.setVisible(false);
+            acceuil.setVisible(true);
+        }
+        else{
+            ClientDAO clientDAO=new ClientDAO();
+            GoldenCage.entities.Client client;
+            client=clientDAO.AuthentificationWithFacebook(user.getEmail());
+            if(client!=null){
+                if(client.isBannir()==false){
+                    Client cl=new Client();
+                    this.setVisible(false);
+                    cl.setVisible(true);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null,"Votre compte est banni");
+                }
+            }
+            else{
+              JOptionPane.showMessageDialog(null,"Login ou Mot de passe incorrecte");
+            }
+        }
+    }//GEN-LAST:event_JconnectFacebookActionPerformed
 
     /**
      * @param args the command line arguments
@@ -179,9 +259,10 @@ public class Connexion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Jconnect;
+    private javax.swing.JButton JconnectFacebook;
     private javax.swing.JTextField LoginInput;
     private javax.swing.JPasswordField MDPInput;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -5,7 +5,23 @@
  */
 
 package GoldenCage.Presentation.Administrateur;
-
+import GoldenCage.dao.GenererPDF;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
 /**
  *
  * @author minoo
@@ -28,10 +44,13 @@ public class GenererRapport extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         lblfichier = new javax.swing.JTextField();
         BtRetour = new javax.swing.JButton();
         BtConfirmer = new javax.swing.JButton();
+        JradioClient = new javax.swing.JRadioButton();
+        JradioPrest = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,6 +65,17 @@ public class GenererRapport extends javax.swing.JFrame {
         });
 
         BtConfirmer.setText("Confirmer");
+        BtConfirmer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtConfirmerActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(JradioClient);
+        JradioClient.setText("Client");
+
+        buttonGroup1.add(JradioPrest);
+        JradioPrest.setText("Préstataire");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -64,6 +94,12 @@ public class GenererRapport extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(BtConfirmer)
                         .addGap(18, 18, 18))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(JradioClient)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(JradioPrest)
+                .addGap(93, 93, 93))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -72,7 +108,11 @@ public class GenererRapport extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(49, 49, 49)
                 .addComponent(lblfichier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
+                .addGap(68, 68, 68)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JradioClient)
+                    .addComponent(JradioPrest))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtRetour)
                     .addComponent(BtConfirmer))
@@ -88,6 +128,38 @@ public class GenererRapport extends javax.swing.JFrame {
         this.setVisible(false);
         ch.setVisible(true);
     }//GEN-LAST:event_BtRetourActionPerformed
+    
+        
+    private void BtConfirmerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtConfirmerActionPerformed
+       if(!lblfichier.getText().equals("")){
+           GenererPDF gpdf=new GenererPDF();
+           if(JradioClient.isSelected()){
+           
+                if(gpdf.Client(lblfichier.getText())){
+                     JOptionPane.showMessageDialog(null,"Le rapport a été crée");
+                }
+                else{
+                     JOptionPane.showMessageDialog(null,"Probléme lors de la création du rapport");
+                }
+           }
+           else if(JradioPrest.isSelected()){
+               if(gpdf.Prestataire(lblfichier.getText())){
+                     JOptionPane.showMessageDialog(null,"Le rapport a été crée");
+                }
+                else{
+                     JOptionPane.showMessageDialog(null,"Probléme lors de la création du rapport");
+                }
+           }
+           else{
+               JOptionPane.showMessageDialog(null,"Veuillez selectionner un choix");
+           }
+       }
+       else{
+           JOptionPane.showMessageDialog(null,"Veuillez saisir un nom de fichier");
+       }
+       
+       
+    }//GEN-LAST:event_BtConfirmerActionPerformed
 
     /**
      * @param args the command line arguments
@@ -127,6 +199,9 @@ public class GenererRapport extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtConfirmer;
     private javax.swing.JButton BtRetour;
+    private javax.swing.JRadioButton JradioClient;
+    private javax.swing.JRadioButton JradioPrest;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField lblfichier;
     // End of variables declaration//GEN-END:variables
