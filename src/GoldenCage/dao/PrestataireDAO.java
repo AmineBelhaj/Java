@@ -17,7 +17,11 @@ import java.util.List;
  * @author minoo
  */
 public class PrestataireDAO {
-   
+   private int idPres;
+
+    public int getIdPres() {
+        return idPres;
+    }
     public List<Prestataire> DisplayAllPrestataire(){
         List<Prestataire>listPrestataire=new ArrayList<>();
         String requete = "select * from prestataire";
@@ -63,6 +67,35 @@ public class PrestataireDAO {
             return false;
         }
     }
+     
+     public Prestataire Rechercher (String nomPres){
+         String requete = "Select * from prestataire where NomSociete='"+nomPres+"'";
+        try {
+            PreparedStatement ps = MyConnection.getInstance().prepareStatement(requete);
+            //ps.setString(1, nomPres);
+            // ps.executeUpdate();
+            ResultSet resultat = ps.executeQuery(requete);
+            Prestataire prestataire=new Prestataire();
+            while(resultat.next()){
+                prestataire.setIdPrestataire(resultat.getInt(1));
+                prestataire.setNomSociete(resultat.getString(2));
+                prestataire.setLogin(resultat.getString(3));
+                prestataire.setMotDePasse(resultat.getString(4));
+                prestataire.setAdresse(resultat.getString(5));
+                prestataire.setPresentation(resultat.getString(6));
+                prestataire.setTel(resultat.getInt(7));
+                prestataire.setGSM(resultat.getInt(8));
+                prestataire.setFax(resultat.getInt(9));
+                prestataire.setAdresseMail(resultat.getString(10));
+                prestataire.setSiteWeb(resultat.getString(11));
+                prestataire.setPhoto(resultat.getString(12));
+            }
+            return prestataire;
+        } catch (SQLException ex) {
+           //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+     }
      
      public boolean ajouterPrestataire(Prestataire prest){
          String requete = "insert into prestataire (NomSociete,Login,MotDePasse,Adresse,Presentation,Tel,GSM,Fax,AdresseMail,SiteWeb,Photo) values (?,?,?,?,?,?,?,?,?,?,?)";

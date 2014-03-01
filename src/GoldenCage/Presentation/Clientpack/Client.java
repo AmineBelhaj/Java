@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package GoldenCage.Presentation;
+package GoldenCage.Presentation.Clientpack;
 
 import java.awt.CardLayout;
 import java.awt.Toolkit;
@@ -39,6 +39,14 @@ public class Client extends javax.swing.JFrame {
         CardLayout card = (CardLayout) panel1.getLayout();
         card.show(panel1, "CardPrestataire");
     }
+       
+        public void GoInfo(){
+        panel1.removeAll();
+        CardLayout card = (CardLayout) panel1.getLayout();
+        card.show(panel1, "CardInfo");
+    }
+       
+     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,9 +57,7 @@ public class Client extends javax.swing.JFrame {
     private void initComponents() {
 
         panel1 = new javax.swing.JPanel();
-        PanelAcceuil = new pidev.Presentation.acceuil();
-        PanelPrestataire = new GoldenCage.Presentation.ListePrestataire();
-        PanelProduit = new pidev.Presentation.ListeProduit();
+        PanelPrestataire = new GoldenCage.Presentation.Clientpack.ListePrestataire();
         panel2 = new javax.swing.JPanel();
         lblMariée = new javax.swing.JLabel();
         lblMarié = new javax.swing.JLabel();
@@ -94,28 +100,9 @@ public class Client extends javax.swing.JFrame {
         lblPhotogr = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(100, 100));
-        setPreferredSize(new java.awt.Dimension(1000, 500));
 
         panel1.setLayout(new java.awt.CardLayout());
-
-        javax.swing.GroupLayout PanelAcceuilLayout = new javax.swing.GroupLayout(PanelAcceuil);
-        PanelAcceuil.setLayout(PanelAcceuilLayout);
-        PanelAcceuilLayout.setHorizontalGroup(
-            PanelAcceuilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1142, Short.MAX_VALUE)
-        );
-        PanelAcceuilLayout.setVerticalGroup(
-            PanelAcceuilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 671, Short.MAX_VALUE)
-        );
-
-        panel1.add(PanelAcceuil, "card4");
-
-        PanelPrestataire.setMaximumSize(new java.awt.Dimension(500, 100));
-        PanelPrestataire.setPreferredSize(new java.awt.Dimension(500, 50));
         panel1.add(PanelPrestataire, "CardPrestataire");
-        panel1.add(PanelProduit, "CardProduit");
 
         panel2.setBackground(new java.awt.Color(255, 0, 102));
         panel2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -127,11 +114,11 @@ public class Client extends javax.swing.JFrame {
         lblMariée.setFont(new java.awt.Font("Vladimir Script", 1, 26)); // NOI18N
         lblMariée.setText("Mariée");
         lblMariée.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblMariéeMouseExited(evt);
-            }
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblMariéeMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblMariéeMouseExited(evt);
             }
         });
         lblMariée.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -143,11 +130,11 @@ public class Client extends javax.swing.JFrame {
         lblMarié.setFont(new java.awt.Font("Vladimir Script", 1, 26)); // NOI18N
         lblMarié.setText("Marié");
         lblMarié.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblMariéMouseExited(evt);
-            }
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblMariéMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblMariéMouseExited(evt);
             }
         });
         lblMarié.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -604,7 +591,7 @@ public class Client extends javax.swing.JFrame {
                 .addComponent(lblPhotographe)
                 .addGap(31, 31, 31)
                 .addComponent(lblLune)
-                .addContainerGap(306, Short.MAX_VALUE))
+                .addContainerGap())
             .addComponent(panel2_Photographe, javax.swing.GroupLayout.DEFAULT_SIZE, 1140, Short.MAX_VALUE)
             .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(panel2_Marié, javax.swing.GroupLayout.DEFAULT_SIZE, 1140, Short.MAX_VALUE))
@@ -670,23 +657,20 @@ public class Client extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(panel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, 0))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(panel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(5, 5, 5)
                 .addComponent(panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, 671, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -906,9 +890,7 @@ public class Client extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private pidev.Presentation.acceuil PanelAcceuil;
-    private GoldenCage.Presentation.ListePrestataire PanelPrestataire;
-    private pidev.Presentation.ListeProduit PanelProduit;
+    private GoldenCage.Presentation.Clientpack.ListePrestataire PanelPrestataire;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel lblAccessoire;
     private javax.swing.JLabel lblAgence;

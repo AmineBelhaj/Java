@@ -134,6 +134,9 @@ public class Prestataire {
         this.SiteWeb = SiteWeb;
         this.Photo = Photo;
     }
+
+    
+    
    public Prestataire(){
        
    }

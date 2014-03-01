@@ -6,7 +6,7 @@
 
 package GoldenCage;
 
-import GoldenCage.Presentation.Client;
+import GoldenCage.Presentation.Clientpack.Client;
 import GoldenCage.Presentation.Connexion;
 
 /**
