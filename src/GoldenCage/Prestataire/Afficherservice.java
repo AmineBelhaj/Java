@@ -43,7 +43,7 @@ public class Afficherservice extends AbstractTableModel{
             case 2 :return produits.get(rowIndex).getPhotoProduit();
             case 3 :return produits.get(rowIndex).getDescriptionProduit();
             case 4 :return produits.get(rowIndex).getCoutProduit();
-            case 5 :return produits.get(rowIndex).getCoutsolde();
+            case 5 :return produits.get(rowIndex).getCoutSolde();
        
             
             default:return null;

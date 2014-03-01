@@ -7,6 +7,7 @@
 package GoldenCage.Presentation;
 
 import GoldenCage.Presentation.Administrateur.Choix;
+import GoldenCage.Presentation.Clientpack.Client;
 import GoldenCage.Prestataire.Acceuil;
 import GoldenCage.Presentation.FaceBookConnect.GraphReaderExample;
 import GoldenCage.dao.AdminDAO;
