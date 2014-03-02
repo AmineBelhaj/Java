@@ -7,6 +7,7 @@
 package GoldenCage.Presentation.Administrateur;
 
 import GoldenCage.dao.ClientDAO;
+import GoldenCage.entities.Client;
 import javax.swing.JOptionPane;
 
 /**
@@ -90,9 +91,10 @@ public class GereClient extends javax.swing.JFrame {
     private void JsupprimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JsupprimActionPerformed
         // TODO add your handling code here:
         if(jTable1.getSelectedRow()!=-1){
-            int id=(int)jTable1.getValueAt(jTable1.getSelectedRow(), 0);
             ClientDAO clientDAO=new ClientDAO();
-            if(clientDAO.bannirClient(id)==false){
+            Client client;
+            client=clientDAO.AuthentificationWithFacebook((String)jTable1.getValueAt(jTable1.getSelectedRow(), 5));
+            if(clientDAO.bannirClient(client.getIdClient())==false){
                 JOptionPane.showMessageDialog(null,"Un probléme est survenu lors de la suppression");
             }
             else{
