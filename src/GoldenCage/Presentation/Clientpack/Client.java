@@ -4,7 +4,9 @@
  */
 package GoldenCage.Presentation.Clientpack;
 
+import com.lowagie.text.Font;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Toolkit;
 
 /**
@@ -101,7 +103,15 @@ public class Client extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        panel1.setBackground(new java.awt.Color(255, 255, 255));
+        panel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                panel1MouseMoved(evt);
+            }
+        });
         panel1.setLayout(new java.awt.CardLayout());
+
+        PanelPrestataire.setBackground(new java.awt.Color(255, 255, 255));
         panel1.add(PanelPrestataire, "CardPrestataire");
 
         panel2.setBackground(new java.awt.Color(255, 0, 102));
@@ -111,7 +121,7 @@ public class Client extends javax.swing.JFrame {
             }
         });
 
-        lblMariée.setFont(new java.awt.Font("Vladimir Script", 1, 26)); // NOI18N
+        lblMariée.setFont(new java.awt.Font("Monotype Corsiva", 1, 26)); // NOI18N
         lblMariée.setText("Mariée");
         lblMariée.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -127,7 +137,7 @@ public class Client extends javax.swing.JFrame {
             }
         });
 
-        lblMarié.setFont(new java.awt.Font("Vladimir Script", 1, 26)); // NOI18N
+        lblMarié.setFont(new java.awt.Font("Monotype Corsiva", 1, 26)); // NOI18N
         lblMarié.setText("Marié");
         lblMarié.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -143,7 +153,7 @@ public class Client extends javax.swing.JFrame {
             }
         });
 
-        lblRéception.setFont(new java.awt.Font("Vladimir Script", 1, 26)); // NOI18N
+        lblRéception.setFont(new java.awt.Font("Monotype Corsiva", 1, 26)); // NOI18N
         lblRéception.setText("Réception");
         lblRéception.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -156,7 +166,7 @@ public class Client extends javax.swing.JFrame {
             }
         });
 
-        lblAnimation.setFont(new java.awt.Font("Vladimir Script", 1, 26)); // NOI18N
+        lblAnimation.setFont(new java.awt.Font("Monotype Corsiva", 1, 26)); // NOI18N
         lblAnimation.setText("Animation");
         lblAnimation.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -169,7 +179,7 @@ public class Client extends javax.swing.JFrame {
             }
         });
 
-        lblGastronomie.setFont(new java.awt.Font("Vladimir Script", 1, 26)); // NOI18N
+        lblGastronomie.setFont(new java.awt.Font("Monotype Corsiva", 1, 26)); // NOI18N
         lblGastronomie.setText("Gastronomie");
         lblGastronomie.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -182,7 +192,7 @@ public class Client extends javax.swing.JFrame {
             }
         });
 
-        lblPhotographe.setFont(new java.awt.Font("Vladimir Script", 1, 26)); // NOI18N
+        lblPhotographe.setFont(new java.awt.Font("Monotype Corsiva", 1, 26)); // NOI18N
         lblPhotographe.setText("Photographe");
         lblPhotographe.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -195,7 +205,7 @@ public class Client extends javax.swing.JFrame {
             }
         });
 
-        lblLune.setFont(new java.awt.Font("Vladimir Script", 1, 26)); // NOI18N
+        lblLune.setFont(new java.awt.Font("Monotype Corsiva", 1, 26)); // NOI18N
         lblLune.setText("Lune de Miel");
         lblLune.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
@@ -204,20 +214,19 @@ public class Client extends javax.swing.JFrame {
         });
 
         panel2_Marié.setBackground(new java.awt.Color(247, 156, 192));
-        panel2_Marié.setPreferredSize(new java.awt.Dimension(900, 135));
         panel2_Marié.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 panel2_MariéMouseMoved(evt);
             }
         });
 
-        lblCostume.setFont(new java.awt.Font("Vladimir Script", 0, 24)); // NOI18N
+        lblCostume.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
         lblCostume.setText("Costume de Mariage");
 
-        lblBeauté.setFont(new java.awt.Font("Vladimir Script", 0, 24)); // NOI18N
+        lblBeauté.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
         lblBeauté.setText("Soins Beauté");
 
-        lblAccessoire.setFont(new java.awt.Font("Vladimir Script", 0, 24)); // NOI18N
+        lblAccessoire.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
         lblAccessoire.setText("Accessoire Marié");
 
         javax.swing.GroupLayout panel2_MariéLayout = new javax.swing.GroupLayout(panel2_Marié);
@@ -230,7 +239,7 @@ public class Client extends javax.swing.JFrame {
                     .addComponent(lblAccessoire)
                     .addComponent(lblBeauté)
                     .addComponent(lblCostume))
-                .addContainerGap(957, Short.MAX_VALUE))
+                .addContainerGap(1115, Short.MAX_VALUE))
         );
         panel2_MariéLayout.setVerticalGroup(
             panel2_MariéLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -245,32 +254,31 @@ public class Client extends javax.swing.JFrame {
         );
 
         panel2_Réception.setBackground(new java.awt.Color(247, 156, 192));
-        panel2_Réception.setPreferredSize(new java.awt.Dimension(900, 135));
         panel2_Réception.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 panel2_RéceptionMouseMoved(evt);
             }
         });
 
-        lblSalleDeFête.setFont(new java.awt.Font("Vladimir Script", 0, 24)); // NOI18N
+        lblSalleDeFête.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
         lblSalleDeFête.setText("Salle de Fête");
 
-        lblFleuriste.setFont(new java.awt.Font("Vladimir Script", 0, 24)); // NOI18N
+        lblFleuriste.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
         lblFleuriste.setText("Fleuriste");
 
-        lblDécorateur.setFont(new java.awt.Font("Vladimir Script", 0, 24)); // NOI18N
+        lblDécorateur.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
         lblDécorateur.setText("Décorateur");
 
-        jLabel14.setFont(new java.awt.Font("Vladimir Script", 0, 24)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
         jLabel14.setText("Invitations");
 
-        lblOraganisateurs.setFont(new java.awt.Font("Vladimir Script", 0, 24)); // NOI18N
+        lblOraganisateurs.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
         lblOraganisateurs.setText("Oraganisateurs");
 
-        lblVéhicule.setFont(new java.awt.Font("Vladimir Script", 0, 24)); // NOI18N
+        lblVéhicule.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
         lblVéhicule.setText("Véhicule de Prestige");
 
-        lblCortègeEnfants.setFont(new java.awt.Font("Vladimir Script", 0, 24)); // NOI18N
+        lblCortègeEnfants.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
         lblCortègeEnfants.setText("Cortège enfants");
 
         javax.swing.GroupLayout panel2_RéceptionLayout = new javax.swing.GroupLayout(panel2_Réception);
@@ -291,7 +299,7 @@ public class Client extends javax.swing.JFrame {
                         .addGap(107, 107, 107)
                         .addComponent(lblCortègeEnfants))
                     .addComponent(jLabel14))
-                .addContainerGap(593, Short.MAX_VALUE))
+                .addContainerGap(751, Short.MAX_VALUE))
         );
         panel2_RéceptionLayout.setVerticalGroup(
             panel2_RéceptionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -313,20 +321,19 @@ public class Client extends javax.swing.JFrame {
         );
 
         panel2_Gastronomie.setBackground(new java.awt.Color(247, 156, 192));
-        panel2_Gastronomie.setPreferredSize(new java.awt.Dimension(900, 135));
         panel2_Gastronomie.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 panel2_GastronomieMouseMoved(evt);
             }
         });
 
-        lblDragéesChocolats.setFont(new java.awt.Font("Vladimir Script", 0, 24)); // NOI18N
+        lblDragéesChocolats.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
         lblDragéesChocolats.setText("Dragées et Chocolats");
 
-        lblPâtisserie.setFont(new java.awt.Font("Vladimir Script", 0, 24)); // NOI18N
+        lblPâtisserie.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
         lblPâtisserie.setText("Pâtisserie");
 
-        lblJus.setFont(new java.awt.Font("Vladimir Script", 0, 24)); // NOI18N
+        lblJus.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
         lblJus.setText("Jus");
 
         javax.swing.GroupLayout panel2_GastronomieLayout = new javax.swing.GroupLayout(panel2_Gastronomie);
@@ -339,7 +346,7 @@ public class Client extends javax.swing.JFrame {
                     .addComponent(lblPâtisserie)
                     .addComponent(lblDragéesChocolats)
                     .addComponent(lblJus))
-                .addContainerGap(948, Short.MAX_VALUE))
+                .addContainerGap(1106, Short.MAX_VALUE))
         );
         panel2_GastronomieLayout.setVerticalGroup(
             panel2_GastronomieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -354,26 +361,25 @@ public class Client extends javax.swing.JFrame {
         );
 
         panel2_Animation.setBackground(new java.awt.Color(247, 156, 192));
-        panel2_Animation.setPreferredSize(new java.awt.Dimension(900, 135));
         panel2_Animation.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 panel2_AnimationMouseMoved(evt);
             }
         });
 
-        lblDJ.setFont(new java.awt.Font("Vladimir Script", 0, 24)); // NOI18N
+        lblDJ.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
         lblDJ.setText("DJ");
 
-        lblHadhra.setFont(new java.awt.Font("Vladimir Script", 0, 24)); // NOI18N
+        lblHadhra.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
         lblHadhra.setText("Hadhra");
 
-        lblChanteurs.setFont(new java.awt.Font("Vladimir Script", 0, 24)); // NOI18N
+        lblChanteurs.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
         lblChanteurs.setText("Chanteurs");
 
-        lblDenseuse.setFont(new java.awt.Font("Vladimir Script", 0, 24)); // NOI18N
+        lblDenseuse.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
         lblDenseuse.setText("Denseuse Orientale");
 
-        lblTroupeMusicale.setFont(new java.awt.Font("Vladimir Script", 0, 24)); // NOI18N
+        lblTroupeMusicale.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
         lblTroupeMusicale.setText("Troupe Musicale");
 
         javax.swing.GroupLayout panel2_AnimationLayout = new javax.swing.GroupLayout(panel2_Animation);
@@ -390,7 +396,7 @@ public class Client extends javax.swing.JFrame {
                 .addGroup(panel2_AnimationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblDenseuse)
                     .addComponent(lblDJ))
-                .addContainerGap(757, Short.MAX_VALUE))
+                .addContainerGap(915, Short.MAX_VALUE))
         );
         panel2_AnimationLayout.setVerticalGroup(
             panel2_AnimationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -410,14 +416,13 @@ public class Client extends javax.swing.JFrame {
 
         panel2_Mariée.setBackground(new java.awt.Color(247, 156, 192));
         panel2_Mariée.setMaximumSize(new java.awt.Dimension(400, 300));
-        panel2_Mariée.setPreferredSize(new java.awt.Dimension(900, 135));
         panel2_Mariée.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 panel2_MariéeMouseMoved(evt);
             }
         });
 
-        lblRobeMariée.setFont(new java.awt.Font("Vladimir Script", 0, 24)); // NOI18N
+        lblRobeMariée.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
         lblRobeMariée.setText("Robe de Mariée");
         lblRobeMariée.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -430,7 +435,7 @@ public class Client extends javax.swing.JFrame {
             }
         });
 
-        lblRobeSoirée.setFont(new java.awt.Font("Vladimir Script", 0, 24)); // NOI18N
+        lblRobeSoirée.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
         lblRobeSoirée.setText("Robe de Soirée");
         lblRobeSoirée.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -443,7 +448,7 @@ public class Client extends javax.swing.JFrame {
             }
         });
 
-        lblCoiffure.setFont(new java.awt.Font("Vladimir Script", 0, 24)); // NOI18N
+        lblCoiffure.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
         lblCoiffure.setText("Coiffure et Beauté");
         lblCoiffure.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -456,7 +461,7 @@ public class Client extends javax.swing.JFrame {
             }
         });
 
-        lblHauteCouture.setFont(new java.awt.Font("Vladimir Script", 0, 24)); // NOI18N
+        lblHauteCouture.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
         lblHauteCouture.setText("Haute Couture");
         lblHauteCouture.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -469,7 +474,7 @@ public class Client extends javax.swing.JFrame {
             }
         });
 
-        lblLangerie.setFont(new java.awt.Font("Vladimir Script", 0, 24)); // NOI18N
+        lblLangerie.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
         lblLangerie.setText("Langerie");
         lblLangerie.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -498,7 +503,7 @@ public class Client extends javax.swing.JFrame {
                         .addGroup(panel2_MariéeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblLangerie)
                             .addComponent(lblHauteCouture))))
-                .addContainerGap(794, Short.MAX_VALUE))
+                .addContainerGap(952, Short.MAX_VALUE))
         );
         panel2_MariéeLayout.setVerticalGroup(
             panel2_MariéeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -517,14 +522,13 @@ public class Client extends javax.swing.JFrame {
         );
 
         panel2_Lune.setBackground(new java.awt.Color(247, 156, 192));
-        panel2_Lune.setPreferredSize(new java.awt.Dimension(900, 135));
         panel2_Lune.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 panel2_LuneMouseMoved(evt);
             }
         });
 
-        lblAgence.setFont(new java.awt.Font("Vladimir Script", 0, 24)); // NOI18N
+        lblAgence.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
         lblAgence.setText("Agence de Voyage");
 
         javax.swing.GroupLayout panel2_LuneLayout = new javax.swing.GroupLayout(panel2_Lune);
@@ -534,7 +538,7 @@ public class Client extends javax.swing.JFrame {
             .addGroup(panel2_LuneLayout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(lblAgence)
-                .addContainerGap(723, Short.MAX_VALUE))
+                .addContainerGap(1121, Short.MAX_VALUE))
         );
         panel2_LuneLayout.setVerticalGroup(
             panel2_LuneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -545,14 +549,13 @@ public class Client extends javax.swing.JFrame {
         );
 
         panel2_Photographe.setBackground(new java.awt.Color(247, 156, 192));
-        panel2_Photographe.setPreferredSize(new java.awt.Dimension(900, 135));
         panel2_Photographe.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 panel2_PhotographeMouseMoved(evt);
             }
         });
 
-        lblPhotogr.setFont(new java.awt.Font("Vladimir Script", 0, 24)); // NOI18N
+        lblPhotogr.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
         lblPhotogr.setText("Photographe");
 
         javax.swing.GroupLayout panel2_PhotographeLayout = new javax.swing.GroupLayout(panel2_Photographe);
@@ -569,7 +572,7 @@ public class Client extends javax.swing.JFrame {
             .addGroup(panel2_PhotographeLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(lblPhotogr)
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout panel2Layout = new javax.swing.GroupLayout(panel2);
@@ -591,20 +594,20 @@ public class Client extends javax.swing.JFrame {
                 .addComponent(lblPhotographe)
                 .addGap(31, 31, 31)
                 .addComponent(lblLune)
-                .addContainerGap())
-            .addComponent(panel2_Photographe, javax.swing.GroupLayout.DEFAULT_SIZE, 1140, Short.MAX_VALUE)
+                .addContainerGap(436, Short.MAX_VALUE))
+            .addComponent(panel2_Photographe, javax.swing.GroupLayout.DEFAULT_SIZE, 1298, Short.MAX_VALUE)
             .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(panel2_Marié, javax.swing.GroupLayout.DEFAULT_SIZE, 1140, Short.MAX_VALUE))
+                .addComponent(panel2_Marié, javax.swing.GroupLayout.DEFAULT_SIZE, 1298, Short.MAX_VALUE))
             .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(panel2_Réception, javax.swing.GroupLayout.DEFAULT_SIZE, 1140, Short.MAX_VALUE))
+                .addComponent(panel2_Réception, javax.swing.GroupLayout.DEFAULT_SIZE, 1298, Short.MAX_VALUE))
             .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(panel2_Gastronomie, javax.swing.GroupLayout.DEFAULT_SIZE, 1140, Short.MAX_VALUE))
+                .addComponent(panel2_Gastronomie, javax.swing.GroupLayout.DEFAULT_SIZE, 1298, Short.MAX_VALUE))
             .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(panel2_Animation, javax.swing.GroupLayout.DEFAULT_SIZE, 1140, Short.MAX_VALUE))
+                .addComponent(panel2_Animation, javax.swing.GroupLayout.DEFAULT_SIZE, 1298, Short.MAX_VALUE))
             .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(panel2_Lune, javax.swing.GroupLayout.DEFAULT_SIZE, 1140, Short.MAX_VALUE))
+                .addComponent(panel2_Lune, javax.swing.GroupLayout.DEFAULT_SIZE, 1298, Short.MAX_VALUE))
             .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(panel2_Mariée, javax.swing.GroupLayout.DEFAULT_SIZE, 1140, Short.MAX_VALUE))
+                .addComponent(panel2_Mariée, javax.swing.GroupLayout.DEFAULT_SIZE, 1298, Short.MAX_VALUE))
         );
         panel2Layout.setVerticalGroup(
             panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -660,17 +663,17 @@ public class Client extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(panel2, javax.swing.GroupLayout.DEFAULT_SIZE, 1298, Short.MAX_VALUE)
+                    .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addComponent(panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0)
+                .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -807,6 +810,11 @@ public class Client extends javax.swing.JFrame {
     private void lblRobeMariéeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRobeMariéeMouseClicked
         // TODO add your handling code here:
         GoListePrestataire();
+        lblRobeMariée.setForeground(new Color(153, 0, 153));
+        lblRobeSoirée.setForeground(Color.BLACK);
+        lblCoiffure.setForeground(Color.BLACK);
+       lblHauteCouture.setForeground(Color.BLACK);
+       lblLangerie.setForeground(Color.BLACK);
     }//GEN-LAST:event_lblRobeMariéeMouseClicked
 
     private void lblRobeMariéeMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRobeMariéeMouseMoved
@@ -817,11 +825,21 @@ public class Client extends javax.swing.JFrame {
     private void lblRobeSoiréeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRobeSoiréeMouseClicked
         // TODO add your handling code here:
         GoListePrestataire();
+        lblRobeSoirée.setForeground(new Color(153, 0, 153));
+        lblRobeMariée.setForeground(Color.BLACK);
+        lblCoiffure.setForeground(Color.BLACK);
+          lblHauteCouture.setForeground(Color.BLACK);
+          lblLangerie.setForeground(Color.BLACK);
     }//GEN-LAST:event_lblRobeSoiréeMouseClicked
 
     private void lblCoiffureMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCoiffureMouseClicked
         // TODO add your handling code here:
          GoListePrestataire();
+         lblRobeMariée.setForeground(Color.BLACK);
+         lblRobeSoirée.setForeground(Color.BLACK);
+         lblHauteCouture.setForeground(Color.BLACK);
+         lblCoiffure.setForeground(new Color(153, 0, 153));
+         lblLangerie.setForeground(Color.BLACK);
     }//GEN-LAST:event_lblCoiffureMouseClicked
 
     private void lblCoiffureMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCoiffureMouseMoved
@@ -832,11 +850,21 @@ public class Client extends javax.swing.JFrame {
     private void lblHauteCoutureMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHauteCoutureMouseClicked
         // TODO add your handling code here:
          GoListePrestataire();
+         lblRobeMariée.setForeground(Color.BLACK);
+         lblRobeSoirée.setForeground(Color.BLACK);
+         lblCoiffure.setForeground(Color.BLACK);
+          lblLangerie.setForeground(Color.BLACK);
+         lblHauteCouture.setForeground(new Color(153, 0, 153));
     }//GEN-LAST:event_lblHauteCoutureMouseClicked
 
     private void lblLangerieMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLangerieMouseClicked
         // TODO add your handling code here:
          GoListePrestataire();
+         lblRobeMariée.setForeground(Color.BLACK);
+         lblRobeSoirée.setForeground(Color.BLACK);
+         lblCoiffure.setForeground(Color.BLACK);
+         lblHauteCouture.setForeground(Color.BLACK);
+         lblLangerie.setForeground(new Color(153, 0, 153));
     }//GEN-LAST:event_lblLangerieMouseClicked
 
     private void lblLangerieMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLangerieMouseMoved
@@ -853,6 +881,17 @@ public class Client extends javax.swing.JFrame {
         // TODO add your handling code here:
         lblRobeSoirée.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
     }//GEN-LAST:event_lblRobeSoiréeMouseMoved
+
+    private void panel1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel1MouseMoved
+        // TODO add your handling code here:
+       /* panel2_Mariée.setVisible(false);
+        panel2_Marié.setVisible(false);
+        panel2_Réception.setVisible(false);
+        panel2_Animation.setVisible(false);
+        panel2_Gastronomie.setVisible(false);
+        panel2_Photographe.setVisible(false);
+        panel2_Lune.setVisible(false);*/
+    }//GEN-LAST:event_panel1MouseMoved
 
     /**
      * @param args the command line arguments

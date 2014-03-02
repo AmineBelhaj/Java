@@ -24,7 +24,7 @@ public class AfficherPrestatairePourClient extends AbstractTableModel{
         return idPres;
     }
      List<Prestataire>prestataires;
-     String [] columnTab={"NomSociete","Adresse","Presentation","Tel","GSM","Fax","AdresseMail","SiteWeb"};
+     String [] columnTab={"NomSociete","Adresse","Tel","GSM","Fax","AdresseMail","SiteWeb"};
    
      public AfficherPrestatairePourClient(){
          PrestataireDAO prestataireDAO=new PrestataireDAO();
@@ -48,12 +48,11 @@ public class AfficherPrestatairePourClient extends AbstractTableModel{
         switch (columnIndex){
             case 0 :return prestataires.get(rowIndex).getNomSociete();
             case 1 :return prestataires.get(rowIndex).getAdresse();
-            case 2 :return prestataires.get(rowIndex).getPresentation() ;
-            case 3 :return prestataires.get(rowIndex).getTel();
-            case 4 :return prestataires.get(rowIndex).getGSM();
-            case 5 :return prestataires.get(rowIndex).getFax() ;
-            case 6 :return prestataires.get(rowIndex).getAdresseMail();
-            case 7 :return prestataires.get(rowIndex).getSiteWeb();
+            case 2 :return prestataires.get(rowIndex).getTel();
+            case 3 :return prestataires.get(rowIndex).getGSM();
+            case 4 :return prestataires.get(rowIndex).getFax() ;
+            case 5 :return prestataires.get(rowIndex).getAdresseMail();
+            case 6 :return prestataires.get(rowIndex).getSiteWeb();
             default:return null;
         }
     }

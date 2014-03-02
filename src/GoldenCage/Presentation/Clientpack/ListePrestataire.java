@@ -8,6 +8,8 @@ import GoldenCage.dao.PrestataireDAO;
 import GoldenCage.entities.Prestataire;
 import GoldenCage.util.MyConnection;
 import java.awt.Color;
+import java.io.BufferedInputStream;
+import java.sql.Blob;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -38,6 +40,7 @@ public class ListePrestataire extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.CardLayout());
 
         jTable1.setFont(new java.awt.Font("Tahoma", 0, 12));
@@ -55,32 +58,7 @@ public class ListePrestataire extends javax.swing.JPanel {
         add(jScrollPane1, "card2");
     }// </editor-fold>//GEN-END:initComponents
 
-     public Prestataire Rechercher (String nomPres){
-         String requete = "Select * from prestataire where NomSociete=?";
-        try {
-            PreparedStatement ps = MyConnection.getInstance().prepareStatement(requete);
-           ResultSet resultat = ps.executeQuery(requete);
-            Prestataire prestataire=new Prestataire();
-            while(resultat.next()){
-                prestataire.setIdPrestataire(resultat.getInt(1));
-                prestataire.setNomSociete(resultat.getString(2));
-                prestataire.setLogin(resultat.getString(3));
-                prestataire.setMotDePasse(resultat.getString(4));
-                prestataire.setAdresse(resultat.getString(5));
-                prestataire.setPresentation(resultat.getString(6));
-                prestataire.setTel(resultat.getInt(7));
-                prestataire.setGSM(resultat.getInt(8));
-                prestataire.setFax(resultat.getInt(9));
-                prestataire.setAdresseMail(resultat.getString(10));
-                prestataire.setSiteWeb(resultat.getString(11));
-                prestataire.setPhoto(resultat.getString(12));
-            }
-            return prestataire;
-        } catch (SQLException ex) {
-           //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
-        }
-     }
+    
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
             if (evt.getClickCount() == 2) {
@@ -97,7 +75,8 @@ public class ListePrestataire extends javax.swing.JPanel {
              info.getLblFax().setText(prest.getFax()+"");
              info.getLblMail().setText(prest.getAdresseMail());
              info.getLblTel().setText(prest.getTel()+"");
-             
+             //Affichage de l'image
+             info.getLblPhoto().setIcon(p.icon);
              info.setVisible(true);
              this.setVisible(false);
          }

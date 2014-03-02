@@ -8,9 +8,11 @@ package GoldenCage.dao;
 
 import GoldenCage.entities.Prestataire;
 import GoldenCage.util.MyConnection;
+import java.io.BufferedInputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -18,6 +20,7 @@ import java.util.List;
  */
 public class PrestataireDAO {
    private int idPres;
+   public ImageIcon icon;
 
     public int getIdPres() {
         return idPres;
@@ -43,7 +46,8 @@ public class PrestataireDAO {
                 prestataire.setFax(resultat.getInt(9));
                 prestataire.setAdresseMail(resultat.getString(10));
                 prestataire.setSiteWeb(resultat.getString(11));
-                prestataire.setPhoto(resultat.getString(12));
+                Blob blob = resultat.getBlob(12);
+                prestataire.setPhoto(new BufferedInputStream(blob.getBinaryStream()));
                 listPrestataire.add(prestataire);
             }
             return listPrestataire;
@@ -88,7 +92,9 @@ public class PrestataireDAO {
                 prestataire.setFax(resultat.getInt(9));
                 prestataire.setAdresseMail(resultat.getString(10));
                 prestataire.setSiteWeb(resultat.getString(11));
-                prestataire.setPhoto(resultat.getString(12));
+                //Récuperation de l'image
+                Blob blob = resultat.getBlob(12);
+                icon = new ImageIcon(blob.getBytes(1, (int)blob.length()));
             }
             return prestataire;
         } catch (SQLException ex) {
@@ -111,7 +117,7 @@ public class PrestataireDAO {
             ps.setInt(8, prest.getFax());
             ps.setString(9, prest.getAdresseMail());
             ps.setString(10, prest.getSiteWeb());
-            ps.setString(11, prest.getPhoto());
+            ps.setBlob(11, prest.getPhoto());
             ps.executeUpdate();
             return true;
           }catch (SQLException ex) {
@@ -133,7 +139,7 @@ public class PrestataireDAO {
             ps.setInt(8, prest.getFax());
             ps.setString(9, prest.getAdresseMail());
             ps.setString(10, prest.getSiteWeb());
-            ps.setString(11, prest.getPhoto());
+            ps.setBlob(11, prest.getPhoto());
             ps.setInt(12,prest.getIdPrestataire());
             ps.executeUpdate();
             return true;
@@ -179,9 +185,8 @@ public class PrestataireDAO {
                 prestataire.setFax(resultat.getInt(9));
                 prestataire.setAdresseMail(resultat.getString(10));
                 prestataire.setSiteWeb(resultat.getString(11));
-                prestataire.setPhoto(resultat.getString(12));
-                  
-                
+                Blob blob = resultat.getBlob(12);
+                prestataire.setPhoto(new BufferedInputStream(blob.getBinaryStream()));
                }
               return prestataire;
             } catch (SQLException ex) {
@@ -209,9 +214,9 @@ public class PrestataireDAO {
                 prestataire.setFax(resultat.getInt(9));
                 prestataire.setAdresseMail(resultat.getString(10));
                 prestataire.setSiteWeb(resultat.getString(11));
-                prestataire.setPhoto(resultat.getString(12));
-                  
-                
+                Blob blob = resultat.getBlob(12);
+                icon = new ImageIcon(blob.getBytes(1, (int)blob.length()));
+                //prestataire.setPhoto(new BufferedInputStream(blob.getBinaryStream()));
                }
               return prestataire;
             } catch (SQLException ex) {

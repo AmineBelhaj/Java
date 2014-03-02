@@ -6,6 +6,10 @@
 
 package GoldenCage.entities;
 
+import java.io.BufferedInputStream;
+import java.io.InputStream;
+import java.sql.Blob;
+
 /**
  *
  * @author minoo
@@ -22,7 +26,7 @@ public class Prestataire {
    int Fax;
    String AdresseMail;
    String SiteWeb;
-   String Photo;
+   InputStream Photo;
 
     public int getIdPrestataire() {
         return IdPrestataire;
@@ -68,7 +72,7 @@ public class Prestataire {
         return SiteWeb;
     }
 
-    public String getPhoto() {
+    public InputStream getPhoto() {
         return Photo;
     }
 
@@ -116,11 +120,8 @@ public class Prestataire {
         this.SiteWeb = SiteWeb;
     }
 
-    public void setPhoto(String Photo) {
-        this.Photo = Photo;
-    }
 
-    public Prestataire(int IdPrestataire, String NomSociete, String Login, String MotDePasse, String Adresse, String Presentation, int Tel, int GSM, int Fax, String AdresseMail, String SiteWeb, String Photo) {
+    public Prestataire(int IdPrestataire, String NomSociete, String Login, String MotDePasse, String Adresse, String Presentation, int Tel, int GSM, int Fax, String AdresseMail, String SiteWeb, InputStream Photo) {
         this.IdPrestataire = IdPrestataire;
         this.NomSociete = NomSociete;
         this.Login = Login;
@@ -148,4 +149,9 @@ public class Prestataire {
         else 
             return false;
     }
+
+   public void setPhoto(InputStream image) {
+        this.Photo =  image;
+    }
+
 }
