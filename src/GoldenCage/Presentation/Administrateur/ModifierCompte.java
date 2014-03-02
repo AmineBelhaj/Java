@@ -10,7 +10,16 @@ import GoldenCage.dao.PrestataireDAO;
 import GoldenCage.entities.Prestataire;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Blob;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
@@ -29,6 +38,8 @@ public class ModifierCompte extends javax.swing.JFrame {
 
     String path;
     Prestataire prestataire;
+    boolean ChangeImage;
+     public ImageIcon icon;
     /**
      * Creates new form AjouterCompte
      */
@@ -36,7 +47,9 @@ public class ModifierCompte extends javax.swing.JFrame {
         initComponents();
         path="";
     }
-    public ModifierCompte(Prestataire prest) {
+    public ModifierCompte(Prestataire prest)  {
+        prestataire=prest;
+        ChangeImage=false;
         initComponents();
         path="";
         lblLogin.setText(prest.getLogin());
@@ -49,13 +62,19 @@ public class ModifierCompte extends javax.swing.JFrame {
         lblpresent.setText(prest.getPresentation());
         lbltel.setText(Integer.toString(prest.getTel()));
         lblweb.setText(prest.getSiteWeb());
-        prestataire=new Prestataire();
-        prestataire.setIdPrestataire(prest.getIdPrestataire());
-       
+        InputStream is = prest.getPhoto();
         
-      
-    
-        
+        Image image;
+        if(is!=null){
+            try {
+                image = ImageIO.read(is);
+                 Image scaledImage=image.getScaledInstance(PanelImage.getWidth(),PanelImage.getHeight(),Image.SCALE_SMOOTH); 
+                jLabel11.setIcon(new ImageIcon(scaledImage));
+            } catch (IOException ex) {
+                Logger.getLogger(ModifierCompte.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+   
     }
     
     /**
@@ -92,6 +111,7 @@ public class ModifierCompte extends javax.swing.JFrame {
         lblweb = new javax.swing.JTextField();
         BtConfirmer = new javax.swing.JButton();
         PanelImage = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -140,11 +160,17 @@ public class ModifierCompte extends javax.swing.JFrame {
         PanelImage.setLayout(PanelImageLayout);
         PanelImageLayout.setHorizontalGroup(
             PanelImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(PanelImageLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel11)
+                .addContainerGap(90, Short.MAX_VALUE))
         );
         PanelImageLayout.setVerticalGroup(
             PanelImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelImageLayout.createSequentialGroup()
+                .addContainerGap(44, Short.MAX_VALUE)
+                .addComponent(jLabel11)
+                .addGap(42, 42, 42))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -164,7 +190,7 @@ public class ModifierCompte extends javax.swing.JFrame {
                             .addComponent(jLabel5)
                             .addComponent(jLabel6)
                             .addComponent(PanelImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(47, 47, 47)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbltel, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbladrmail, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -173,7 +199,7 @@ public class ModifierCompte extends javax.swing.JFrame {
                             .addComponent(lblMdp, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(BtChargerImage))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -274,87 +300,110 @@ public class ModifierCompte extends javax.swing.JFrame {
         if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             File file = chooser.getSelectedFile();
             path=file.getPath();
-            JLabel lab = new JLabel(new ImageIcon(path));
-            PanelImage.add(lab);
             pack();
         }
+        ChangeImage=true;
+        
 
     }//GEN-LAST:event_BtChargerImageActionPerformed
 
+        private int verifierInt(String obj){
+        if(obj.length()==8){
+            try{
+                int monentier = Integer.parseInt(obj);
+                return monentier;
+            }catch(NumberFormatException nfe){
+                return -1;
+            }
+        }
+        else{
+            return -1;
+        }  
+    }
+    
+    private FileInputStream verifierphoto(){
+         File file = new File(path);
+        try {
+            FileInputStream stream = new FileInputStream(file);
+            return stream;
+        } catch (FileNotFoundException ex) {
+            return null;
+        }
+    }
     private void BtConfirmerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtConfirmerActionPerformed
         //Control de saisie
         String masque = "^[a-zA-Z]+[a-zA-Z0-9\\._-]*[a-zA-Z0-9]@[a-zA-Z]+"
                         + "[a-zA-Z0-9\\._-]*[a-zA-Z0-9]+\\.[a-zA-Z]{2,4}$";
         Pattern pattern = Pattern.compile(masque);
         Matcher controler = pattern.matcher(lbladrmail.getText());
-        if(lblLogin.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Login obligatoire");
+        PrestataireDAO prestataireDAO=new PrestataireDAO();
+        if(!prestataire.getLogin().equals(lblLogin.getText())){
+            if(prestataireDAO.VerifierBD("Login",lblLogin.getText())){
+                JOptionPane.showMessageDialog(null,"Login incorrect ou déja utilisé");
+            }
         }
-        else if(lblMdp.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Mot de passe obligatoire");
+        else if(!prestataire.getMotDePasse().equals(lblMdp.getText())) {
+            if((lblMdp.getText().equals(""))||(lblMdp.getText().length()<6))
+                JOptionPane.showMessageDialog(null,"Mot de passe contenant au moin six caractére");
         }
-        else if(lblNomSoc.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Nom de société obligatoire");
+        else if(!prestataire.getNomSociete().equals(lblNomSoc.getText())){
+            if(prestataireDAO.VerifierBD("NomSociete",lblNomSoc.getText()))
+                JOptionPane.showMessageDialog(null,"Nom de société incorrect ou déja utilisé");
         }
-        else if(!controler.matches()){
-            JOptionPane.showMessageDialog(null,"Adresse mail obligatoire");
+        else if((!controler.matches())&&(!prestataire.getAdresseMail().equals(lbladrmail.getText()))){
+            if(prestataireDAO.VerifierBD("AdresseMail", lbladrmail.getText()))
+                JOptionPane.showMessageDialog(null,"Adresse mail obligatoire");
         }
         else if (lbladr.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Adresse obligatoire");
+           JOptionPane.showMessageDialog(null,"Adresse obligatoire");
         }
         else{
             
-            prestataire.setPhoto(path);
             prestataire.setLogin(lblLogin.getText());
             prestataire.setMotDePasse(lblMdp.getText());
             prestataire.setNomSociete(lblNomSoc.getText());
             prestataire.setAdresse(lbladr.getText());
             prestataire.setAdresseMail(lbladrmail.getText());
-            if(!lblfax.getText().equals(""))
-             try {
-                int monentier = Integer.parseInt(lblfax.getText());
-                 prestataire.setFax(monentier);
-                 if(!lblgsm.getText().equals("")){
-                     try{
-                         monentier=Integer.parseInt(lblgsm.getText());
-                         prestataire.setGSM(monentier);
-                         prestataire.setPresentation(lblpresent.getText());
-                         if(!lbltel.getText().equals("")){
-                             try{
-                                 monentier=Integer.parseInt(lbltel.getText());
-                                  prestataire.setTel(monentier);
-                                  prestataire.setSiteWeb(lblweb.getText());
-                                  PrestataireDAO prestatairedao=new PrestataireDAO();
-                                  if(prestatairedao.modifierPrestataire(prestataire)){
-                                        JOptionPane.showMessageDialog(null,"Le compte a été modifier avec succés");
-                                        this.setVisible(false);
-                                        GererCompte gc=new GererCompte();
-                                        gc.setVisible(true);
-                                  }
-                                  else{
-                                    JOptionPane.showMessageDialog(null,"Probléme d'ajout");
-                                   }
-                             }
-                             catch(NumberFormatException nfe){
-                                 JOptionPane.showMessageDialog(null,"Numero de tel incorecte");
-                                 //tel incorrecte
-                             }
-                         }
-                     }
-                     catch(NumberFormatException nfe){
-                         JOptionPane.showMessageDialog(null,"GSM incorecte");
-                         //gsm incorecte
-                     }
-                 }
-              } catch (NumberFormatException nfe) {
-                  JOptionPane.showMessageDialog(null,"Fax incorecte");
-                 //fax
-              }
             
-        }
-        
+            if(verifierInt(lblfax.getText())!=-1)
+                prestataire.setFax(verifierInt(lblfax.getText()));
+            else{
+                         
+            }
+            if(verifierInt(lblgsm.getText())!=-1)
+                prestataire.setGSM(verifierInt(lblgsm.getText()));
+            prestataire.setPresentation(lblpresent.getText());
+            if(verifierInt(lbltel.getText())!=-1)
+                prestataire.setTel(verifierInt(lbltel.getText()));       
+             prestataire.setSiteWeb(lblweb.getText());
+             PrestataireDAO prestatairedao=new PrestataireDAO();
+             if((ChangeImage)&&(verifierphoto()!=null)){
+                    prestataire.setPhoto(verifierphoto());
+                    File file = new File(path);
+                if(prestatairedao.modifierPrestataire(prestataire,file)){
+                     JOptionPane.showMessageDialog(null,"Le compte a été modifier avec succés");
+                     this.setVisible(false);
+                        GererCompte gc=new GererCompte();
+                         gc.setVisible(true);    
+                }
+                else
+                    JOptionPane.showMessageDialog(null,"Probléme d'ajout");
+                                   
+                 
+             }
+             else{
+                 if(prestatairedao.modifierPrestataire(prestataire)){
+                     JOptionPane.showMessageDialog(null,"Le compte a été modifier Avec succés");
+                     this.setVisible(false);
+                        GererCompte gc=new GererCompte();
+                         gc.setVisible(true);    
+                }
+                 else
+                    JOptionPane.showMessageDialog(null,"Probléme de modification");
+             }
+                
     }//GEN-LAST:event_BtConfirmerActionPerformed
-
+    }
     /**
      * @param args the command line arguments
      */
@@ -398,6 +447,7 @@ public class ModifierCompte extends javax.swing.JFrame {
     private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

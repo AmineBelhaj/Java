@@ -9,6 +9,7 @@ package GoldenCage.dao;
 import GoldenCage.entities.Prestataire;
 import GoldenCage.util.MyConnection;
 import java.io.BufferedInputStream;
+import java.io.File;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +48,8 @@ public class PrestataireDAO {
                 prestataire.setAdresseMail(resultat.getString(10));
                 prestataire.setSiteWeb(resultat.getString(11));
                 Blob blob = resultat.getBlob(12);
-                prestataire.setPhoto(new BufferedInputStream(blob.getBinaryStream()));
+                if(blob!=null)
+                     prestataire.setPhoto(new BufferedInputStream(blob.getBinaryStream()));
                 listPrestataire.add(prestataire);
             }
             return listPrestataire;
@@ -103,7 +105,7 @@ public class PrestataireDAO {
         }
      }
      
-     public boolean ajouterPrestataire(Prestataire prest){
+     public boolean ajouterPrestataire(Prestataire prest,File f){
          String requete = "insert into prestataire (NomSociete,Login,MotDePasse,Adresse,Presentation,Tel,GSM,Fax,AdresseMail,SiteWeb,Photo) values (?,?,?,?,?,?,?,?,?,?,?)";
           try { 
             PreparedStatement ps = MyConnection.getInstance().prepareStatement(requete);
@@ -117,7 +119,8 @@ public class PrestataireDAO {
             ps.setInt(8, prest.getFax());
             ps.setString(9, prest.getAdresseMail());
             ps.setString(10, prest.getSiteWeb());
-            ps.setBlob(11, prest.getPhoto());
+              ps.setBinaryStream(11, prest.getPhoto(), (int)f.length());
+           
             ps.executeUpdate();
             return true;
           }catch (SQLException ex) {
@@ -125,7 +128,34 @@ public class PrestataireDAO {
             return false;
             }
      }
-    public boolean modifierPrestataire(Prestataire prest){
+     public boolean modifierPrestataire(Prestataire prest){
+        String requete = "update prestataire set NomSociete=?, Login=?, MotDePasse=?, Adresse=?, Presentation=?, Tel=?, GSM=?, Fax=?, AdresseMail=?, SiteWeb=? where IdPrestataire=?";
+        try {
+            PreparedStatement ps = MyConnection.getInstance().prepareStatement(requete);
+            ps.setString(1, prest.getNomSociete());
+            ps.setString(2, prest.getLogin());
+            ps.setString(3, prest.getMotDePasse());
+            ps.setString(4, prest.getAdresse());
+            ps.setString(5, prest.getPresentation());
+            ps.setInt(6, prest.getTel());
+            ps.setInt(7, prest.getGSM());
+            ps.setInt(8, prest.getFax());
+            ps.setString(9, prest.getAdresseMail());
+            ps.setString(10, prest.getSiteWeb());
+             
+           // ps.setBlob(11, prest.getPhoto());
+            ps.setInt(11,prest.getIdPrestataire());
+           
+            ps.executeUpdate();
+            return true;
+        } catch (SQLException ex) {
+            System.out.println("erreur lors de la mise à jour "+ex.getMessage());
+            return false;
+        }
+    }
+     
+     
+    public boolean modifierPrestataire(Prestataire prest,File f){
         String requete = "update prestataire set NomSociete=?, Login=?, MotDePasse=?, Adresse=?, Presentation=?, Tel=?, GSM=?, Fax=?, AdresseMail=?, SiteWeb=?, Photo=? where IdPrestataire=?";
         try {
             PreparedStatement ps = MyConnection.getInstance().prepareStatement(requete);
@@ -139,8 +169,10 @@ public class PrestataireDAO {
             ps.setInt(8, prest.getFax());
             ps.setString(9, prest.getAdresseMail());
             ps.setString(10, prest.getSiteWeb());
-            ps.setBlob(11, prest.getPhoto());
+             ps.setBinaryStream(11, prest.getPhoto(), (int)f.length());
+           // ps.setBlob(11, prest.getPhoto());
             ps.setInt(12,prest.getIdPrestataire());
+           
             ps.executeUpdate();
             return true;
         } catch (SQLException ex) {
@@ -195,11 +227,11 @@ public class PrestataireDAO {
        }
     }
     public Prestataire AuthentificationWithMail(String mail){
-        String requete = "select * from prestataire where AdressMail=?";
+        String requete = "select * from prestataire where AdresseMail='"+mail+"'";
         Prestataire prestataire=new Prestataire();
         try {
             PreparedStatement ps = MyConnection.getInstance().prepareStatement(requete);
-            ps.setString(1,mail);
+            
              ResultSet resultat = ps.executeQuery();
               while (resultat.next())
               {
@@ -215,13 +247,34 @@ public class PrestataireDAO {
                 prestataire.setAdresseMail(resultat.getString(10));
                 prestataire.setSiteWeb(resultat.getString(11));
                 Blob blob = resultat.getBlob(12);
-                icon = new ImageIcon(blob.getBytes(1, (int)blob.length()));
-                //prestataire.setPhoto(new BufferedInputStream(blob.getBinaryStream()));
+                if(blob!=null){
+                    icon = new ImageIcon(blob.getBytes(1, (int)blob.length()));
+                    prestataire.setPhoto(new BufferedInputStream(blob.getBinaryStream()));
+                }
                }
               return prestataire;
             } catch (SQLException ex) {
             System.out.println("erreur lors de la mise à jour "+ex.getMessage());
             return null;
        }
+    }
+    public boolean VerifierBD(String nameob,String ob){
+        String requete = "Select * from prestataire where "+nameob+"='"+ob+"'";
+        boolean verif=false;
+        if(!ob.equals(""))
+            try {
+                PreparedStatement ps = MyConnection.getInstance().prepareStatement(requete);          
+                ResultSet resultat = ps.executeQuery(requete);
+                Prestataire prestataire=new Prestataire();
+                while(resultat.next()){
+                    verif=true;
+                }
+                return verif;
+                } catch (SQLException ex) {
+                return false;
+        }
+        else{
+            return true;
+        }
     }
 }

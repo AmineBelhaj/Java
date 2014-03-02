@@ -215,11 +215,23 @@ public class Connexion extends javax.swing.JFrame {
                     cl.setVisible(true);
                 }
                 else{
-                    JOptionPane.showMessageDialog(null,"Votre compte est banni");
+                     JOptionPane.showMessageDialog(null,"Votre compte est banni");
                 }
             }
             else{
-              JOptionPane.showMessageDialog(null,"Login ou Mot de passe incorrecte");
+             
+              client=new GoldenCage.entities.Client();
+                    client.setAdressMail(user.getEmail());
+                    client.setBannir(false);
+                    client.setLogin(user.getUsername());
+                    client.setMotDePasse(user.getEmail());
+                    client.setNom(user.getName());
+                    client.setPrenom(user.getFirstName());
+                    clientDAO.ajouterClient(client);
+                    JOptionPane.showMessageDialog(null,"Votre compte a été crée");
+                    Client cl=new Client();
+                    this.setVisible(true);
+                    cl.setVisible(true);
             }
         }
     }//GEN-LAST:event_JconnectFacebookActionPerformed

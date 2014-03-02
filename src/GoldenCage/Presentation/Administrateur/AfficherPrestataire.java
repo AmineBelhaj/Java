@@ -6,11 +6,8 @@
 
 package GoldenCage.Presentation.Administrateur;
 
-import GoldenCage.dao.CritereDate;
 import GoldenCage.dao.PrestataireDAO;
 import GoldenCage.entities.Prestataire;
-import java.util.Collection;
-import java.util.Collections;
 import javax.swing.table.AbstractTableModel;
 import java.util.List;
 /**
@@ -20,7 +17,7 @@ import java.util.List;
 public class AfficherPrestataire extends AbstractTableModel{
 
      List<Prestataire>prestataires;
-     String [] columnTab={"NomSociete","Login","MotDePasse","Adresse","Presentation","Tel","GSM","Fax","AdresseMail","SiteWeb","Photo"};
+     String [] columnTab={"NomSociete","Login","MotDePasse","Adresse","Presentation","Tel","GSM","Fax","AdresseMail","SiteWeb"};
    
      public AfficherPrestataire(){
          PrestataireDAO prestataireDAO=new PrestataireDAO();
@@ -54,7 +51,6 @@ public class AfficherPrestataire extends AbstractTableModel{
             case 7 :return prestataires.get(rowIndex).getFax();
             case 8 :return prestataires.get(rowIndex).getAdresseMail();
             case 9 :return prestataires.get(rowIndex).getSiteWeb();
-            case 10 :return prestataires.get(rowIndex).getPhoto() ;
             
             default:return null;
         }

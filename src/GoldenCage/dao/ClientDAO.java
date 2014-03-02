@@ -47,7 +47,7 @@ public class ClientDAO {
    
     public Client AuthentificationWithFacebook(String mail){
        Client client=new Client();
-        String requete = "select * from client where AdressMail="+mail;
+        String requete = "select * from client where AdressMail='"+mail+"'";
         try {
            PreparedStatement ps = MyConnection.getInstance().prepareStatement(requete);
             ResultSet resultat = ps.executeQuery();
@@ -129,4 +129,23 @@ public class ClientDAO {
             return false;
         }
     }
+    public boolean ajouterClient(Client cli){
+         String requete = "insert into client (Login,MotDePasse,Nom,Prenom,NumTel,AdressMail,bannir) values (?,?,?,?,?,?,?)";
+          try { 
+            PreparedStatement ps = MyConnection.getInstance().prepareStatement(requete);
+            ps.setString(1, cli.getLogin());
+            ps.setString(2, cli.getMotDePasse());
+            ps.setString(3, cli.getNom());
+            ps.setString(4, cli.getPrenom());
+            ps.setString(5, cli.getNumTel());
+            ps.setString(6, cli.getAdressMail());
+            ps.setBoolean(7, cli.isBannir());
+           
+            ps.executeUpdate();
+            return true;
+          }catch (SQLException ex) {
+            System.out.println("erreur lors de l'insertion "+ex.getMessage());
+            return false;
+            }
+     }
 }
