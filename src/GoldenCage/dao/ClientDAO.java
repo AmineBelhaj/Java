@@ -27,13 +27,13 @@ public class ClientDAO {
             ResultSet resultat = ps.executeQuery();
         while (resultat.next())
             { 
-                client.setIdClient(resultat.getInt(1));
-                client.setLogin(resultat.getString(2));
-                client.setMotDePasse(resultat.getString(3));
-                client.setNom(resultat.getString(4));
-                client.setPrenom(resultat.getString(5));
-                client.setNumTel(resultat.getString(6));
-                client.setAdressMail(resultat.getString(7));
+                client.setIdClient(resultat.getInt(3));
+                client.setLogin(resultat.getString(4));
+                client.setMotDePasse(resultat.getString(5));
+                client.setNom(resultat.getString(6));
+                client.setPrenom(resultat.getString(8));
+                client.setNumTel(resultat.getString(7));
+                client.setAdressMail(resultat.getString(1));
                 
             }
             return client;
@@ -53,13 +53,13 @@ public class ClientDAO {
             ResultSet resultat = ps.executeQuery();
         while (resultat.next())
             { 
-                client.setIdClient(resultat.getInt(1));
-                client.setLogin(resultat.getString(2));
-                client.setMotDePasse(resultat.getString(3));
-                client.setNom(resultat.getString(4));
-                client.setPrenom(resultat.getString(5));
-                client.setNumTel(resultat.getString(6));
-                client.setAdressMail(resultat.getString(7));
+                client.setIdClient(resultat.getInt(3));
+                client.setLogin(resultat.getString(4));
+                client.setMotDePasse(resultat.getString(5));
+                client.setNom(resultat.getString(6));
+                client.setPrenom(resultat.getString(8));
+                client.setNumTel(resultat.getString(7));
+                client.setAdressMail(resultat.getString(1));
                 
             }
             return client;
@@ -95,14 +95,14 @@ public class ClientDAO {
             ResultSet resultat = statement.executeQuery(requete);
             while(resultat.next()){
                 Client client=new Client();
-                client.setIdClient(resultat.getInt(1));
-                client.setLogin(resultat.getString(2));
-                client.setMotDePasse(resultat.getString(3));
-                client.setNom(resultat.getString(4));
-                client.setPrenom(resultat.getString(5));
-                client.setNumTel(resultat.getString(6));
-                client.setAdressMail(resultat.getString(7));
-                String ban=resultat.getString(8);
+                 client.setIdClient(resultat.getInt(3));
+                client.setLogin(resultat.getString(4));
+                client.setMotDePasse(resultat.getString(5));
+                client.setNom(resultat.getString(6));
+                client.setPrenom(resultat.getString(8));
+                client.setNumTel(resultat.getString(7));
+                client.setAdressMail(resultat.getString(1));
+                String ban=resultat.getString(2);
                 if(ban.equals("0"))
                     client.setBannir(false);
                 else

@@ -28,7 +28,6 @@ public class AfficherPrestataire extends AbstractTableModel{
      
      @Override
     public int getRowCount() {
-        System.out.println(prestataires.size());
         return prestataires.size();
     }
 
