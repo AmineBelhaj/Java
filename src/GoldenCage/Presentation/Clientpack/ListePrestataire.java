@@ -67,7 +67,7 @@ public class ListePrestataire extends javax.swing.JPanel {
              Prestataire prest ;
              InfoPrestataire info = new InfoPrestataire();
              prest=p.Rechercher(nomPres);
-             
+             info.setNom(prest.getNomSociete());
              info.getLblNom().setText(prest.getNomSociete());
              info.getLblAdresse().setText(prest.getAdresse());
              info.getLblDescription().setLineWrap(true);

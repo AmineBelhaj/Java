@@ -4,6 +4,16 @@
  */
 package GoldenCage.Presentation.Clientpack;
 
+import GoldenCage.dao.PrestataireDAO;
+import GoldenCage.entities.Prestataire;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.GridLayout;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
@@ -18,15 +28,31 @@ public class InfoPrestataire extends javax.swing.JFrame {
     /**
      * Creates new form InfoPrestataire
      */
+    JLabel lbl[][] = new JLabel[5][5];
+
+    String nom;
+
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
     public InfoPrestataire() {
+        
         initComponents();
+        jPanel2.setVisible(false);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
+    
 
     public JLabel getLblNom() {
         return lblNom;
     }
 
+   
     public JLabel getLblAdresse() {
         return lblAdresse;
     }
@@ -55,7 +81,6 @@ public class InfoPrestataire extends javax.swing.JFrame {
         return jScrollPane1;
     }
 
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -80,6 +105,13 @@ public class InfoPrestataire extends javax.swing.JFrame {
         lblMail = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         lblDescription = new javax.swing.JTextArea();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        lblCommentaire = new javax.swing.JTextArea();
+        btCommenter = new javax.swing.JButton();
+        lblRedigerCommentaire = new javax.swing.JLabel();
+        lblConsulterProduit = new javax.swing.JLabel();
+        lblAttribuerNote = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 153, 153));
@@ -111,35 +143,126 @@ public class InfoPrestataire extends javax.swing.JFrame {
         lblDescription.setMaximumSize(new java.awt.Dimension(60, 20));
         jScrollPane1.setViewportView(lblDescription);
 
+        jPanel2.setBackground(new java.awt.Color(255, 0, 204));
+
+        lblCommentaire.setColumns(20);
+        lblCommentaire.setRows(5);
+        jScrollPane3.setViewportView(lblCommentaire);
+
+        btCommenter.setText("Commenter");
+        btCommenter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCommenterActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 806, Short.MAX_VALUE)
+                        .addComponent(btCommenter, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addComponent(btCommenter)
+                .addContainerGap())
+        );
+
+        lblRedigerCommentaire.setFont(new java.awt.Font("Monotype Corsiva", 0, 18)); // NOI18N
+        lblRedigerCommentaire.setText("Rédiger Commentaire");
+        lblRedigerCommentaire.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblRedigerCommentaireMouseExited(evt);
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblRedigerCommentaireMouseClicked(evt);
+            }
+        });
+        lblRedigerCommentaire.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                lblRedigerCommentaireMouseMoved(evt);
+            }
+        });
+
+        lblConsulterProduit.setFont(new java.awt.Font("Monotype Corsiva", 0, 18)); // NOI18N
+        lblConsulterProduit.setText("Consulter le produits");
+        lblConsulterProduit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblConsulterProduitMouseExited(evt);
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblConsulterProduitMouseClicked(evt);
+            }
+        });
+        lblConsulterProduit.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                lblConsulterProduitMouseMoved(evt);
+            }
+        });
+
+        lblAttribuerNote.setFont(new java.awt.Font("Monotype Corsiva", 0, 18)); // NOI18N
+        lblAttribuerNote.setText("Attribuer une note");
+        lblAttribuerNote.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblAttribuerNoteMouseExited(evt);
+            }
+        });
+        lblAttribuerNote.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                lblAttribuerNoteMouseMoved(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(113, 113, 113)
+                        .addComponent(lblNom, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(358, 358, 358)
+                        .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(19, 19, 19)
-                        .addComponent(lblPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addGap(18, 18, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblTel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblFax, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblMail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
-                            .addComponent(lblAdresse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(70, 70, 70)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6))
+                                .addGap(50, 50, 50)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lblTel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblFax, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblMail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane1)
+                                    .addComponent(lblAdresse, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(lblNom, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1)))
-                .addGap(162, 162, 162))
+                        .addGap(32, 32, 32)
+                        .addComponent(lblRedigerCommentaire)
+                        .addGap(34, 34, 34)
+                        .addComponent(lblConsulterProduit)
+                        .addGap(34, 34, 34)
+                        .addComponent(lblAttribuerNote)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,8 +293,14 @@ public class InfoPrestataire extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(lblPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(98, Short.MAX_VALUE))
+                    .addComponent(lblPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblRedigerCommentaire, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblConsulterProduit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblAttribuerNote, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -180,19 +309,69 @@ public class InfoPrestataire extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btCommenterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCommenterActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btCommenterActionPerformed
+
+    private void lblRedigerCommentaireMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRedigerCommentaireMouseClicked
+        // TODO add your handling code here:
+        jPanel2.setVisible(true);
+    }//GEN-LAST:event_lblRedigerCommentaireMouseClicked
+
+    private void lblRedigerCommentaireMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRedigerCommentaireMouseMoved
+        // TODO add your handling code here:
+	lblRedigerCommentaire.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblRedigerCommentaire.setForeground(new Color(153, 0, 153));
+    }//GEN-LAST:event_lblRedigerCommentaireMouseMoved
+
+    private void lblRedigerCommentaireMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRedigerCommentaireMouseExited
+        // TODO add your handling code here:
+        lblRedigerCommentaire.setText("Rédiger Commentaire");
+        lblRedigerCommentaire.setForeground(Color.BLACK);
+    }//GEN-LAST:event_lblRedigerCommentaireMouseExited
+
+    private void lblConsulterProduitMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblConsulterProduitMouseMoved
+        // TODO add your handling code here:
+	lblConsulterProduit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblConsulterProduit.setForeground(new Color(153, 0, 153));
+    }//GEN-LAST:event_lblConsulterProduitMouseMoved
+
+    private void lblConsulterProduitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblConsulterProduitMouseExited
+        // TODO add your handling code here:
+        lblConsulterProduit.setText("Consulter les produits");
+        lblConsulterProduit.setForeground(Color.BLACK);
+    }//GEN-LAST:event_lblConsulterProduitMouseExited
+
+    private void lblAttribuerNoteMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAttribuerNoteMouseMoved
+        // TODO add your handling code here:
+	lblAttribuerNote.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblAttribuerNote.setForeground(new Color(153, 0, 153));
+    }//GEN-LAST:event_lblAttribuerNoteMouseMoved
+
+    private void lblAttribuerNoteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAttribuerNoteMouseExited
+        // TODO add your handling code here:
+        lblAttribuerNote.setText("Attribuer une note");
+        lblAttribuerNote.setForeground(Color.BLACK);
+    }//GEN-LAST:event_lblAttribuerNoteMouseExited
+
+    private void lblConsulterProduitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblConsulterProduitMouseClicked
+        // TODO add your handling code here:
+        ImageProd listeProduit = new ImageProd(lblNom.getText());
+        listeProduit.setVisible(true);
+    }//GEN-LAST:event_lblConsulterProduitMouseClicked
 
     /**
      * @param args the command line arguments
@@ -229,6 +408,7 @@ public class InfoPrestataire extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btCommenter;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -236,13 +416,20 @@ public class InfoPrestataire extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblAdresse;
+    private javax.swing.JLabel lblAttribuerNote;
+    private javax.swing.JTextArea lblCommentaire;
+    private javax.swing.JLabel lblConsulterProduit;
     private javax.swing.JTextArea lblDescription;
     private javax.swing.JLabel lblFax;
     private javax.swing.JLabel lblMail;
     private javax.swing.JLabel lblNom;
     private javax.swing.JLabel lblPhoto;
+    private javax.swing.JLabel lblRedigerCommentaire;
     private javax.swing.JLabel lblTel;
     // End of variables declaration//GEN-END:variables
+
 }

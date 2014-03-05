@@ -20,7 +20,7 @@ public class AfficherProduits extends AbstractTableModel{
    
      public AfficherProduits(){
          ProduitDAO produitDAO=new ProduitDAO();
-         produits=(List<Produit>) produitDAO.Rechercher(idPres);
+         //produits=(List<Produit>) produitDAO.Rechercher(idPres);
          System.out.println(idPres);
      }
    

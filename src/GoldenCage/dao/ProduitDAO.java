@@ -15,6 +15,7 @@ import GoldenCage.util.MyConnection;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ImageIcon;
 
 
 /**
@@ -23,25 +24,29 @@ import java.util.List;
  */
 public class ProduitDAO {
     
-    public Produit Rechercher (int IdPrestataire){
-         String requete = "Select * from sousrubrique,prestatairesousrubrique  where sousrubrique.IdSR=prestatairesousrubrique.IdSR and IdPrestataire=?";
+    public List<Produit> Rechercher (String nomPrest){
+         String requete = "Select IdProduit,NomProduit,p1.Photo,CoutProduit,CoutSolde,DescriptionProduit,p1.IdPrestataire,IdCategorie from produit p1 ,Prestataire p2 where p1.IdPrestataire=p2.IdPrestataire and NomSociete='"+nomPrest+"' ;";
         try {
-            PreparedStatement ps = MyConnection.getInstance().prepareStatement(requete);
-            ps.setInt(1, IdPrestataire);
-            ps.executeUpdate();
-            ResultSet resultat = ps.executeQuery(requete);
-            Produit produit=new Produit();
+            Statement statement = MyConnection.getInstance()
+                   .createStatement();
+            ResultSet resultat = statement.executeQuery(requete);
+//            
+            List<Produit>listProduit=new ArrayList<>();
+            ImageIcon icon;
             while(resultat.next()){
+                Produit produit=new Produit();
                 produit.setIdProduit(resultat.getInt(1));
-                produit.setIdSR(resultat.getInt(2));
-                produit.setIdCategorie(resultat.getInt(3));
-                produit.setNomProduit(resultat.getString(4));
-                produit.setPhotoProduit(resultat.getString(5));
+                produit.setIdCategorie(resultat.getInt(8));
+                produit.setNomProduit(resultat.getString(2));
+                Blob blob = resultat.getBlob(3);
+                icon = new ImageIcon(blob.getBytes(1, (int)blob.length()));
+                produit.setPhotoProduit(icon);
                 produit.setDescriptionProduit(resultat.getString(6));
-                produit.setCoutProduit(resultat.getInt(7));
-                produit.setCoutSolde(resultat.getInt(8));
+                produit.setCoutProduit(resultat.getInt(4));
+                produit.setCoutSolde(resultat.getInt(5));
+                listProduit.add(produit);
             }
-            return produit;
+            return listProduit;
         } catch (SQLException ex) {
            //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
             return null;
@@ -52,6 +57,7 @@ public class ProduitDAO {
     public List<Produit> DisplayAllProduit(){
         List<Produit>listProduit=new ArrayList<>();
         String requete = "select * from produit";
+        ImageIcon icon;
         try {
            Statement statement = MyConnection.getInstance()
                    .createStatement();
@@ -61,7 +67,9 @@ public class ProduitDAO {
                 Produit produit=new Produit();
              
                 produit.setNomProduit(resultat.getString(1));
-                produit.setPhotoProduit(resultat.getString(2));
+                Blob blob = resultat.getBlob(3);
+                icon = new ImageIcon(blob.getBytes(1, (int)blob.length()));
+                produit.setPhotoProduit(icon);
                 produit.setDescriptionProduit(resultat.getString(3));
                 produit.setCoutProduit(resultat.getFloat(4));
                 //produit.setCoutsolde(resultat.getFloat(6));
@@ -95,7 +103,7 @@ public class ProduitDAO {
           try { 
             PreparedStatement ps = MyConnection.getInstance().prepareStatement(requete);
             ps.setString(1, prod.getNomProduit());
-            ps.setString(2, prod.getPhotoProduit());
+           // ps.setString(2, prod.getPhotoProduit());
             ps.setString(3, prod.getDescriptionProduit());
             ps.setDouble(4, prod.getCoutProduit());
             
@@ -112,7 +120,7 @@ public class ProduitDAO {
         try {
             PreparedStatement ps = MyConnection.getInstance().prepareStatement(requete);
             ps.setString(1, prod.getNomProduit());
-            ps.setString(2, prod.getPhotoProduit());
+            //ps.setString(2, prod.getPhotoProduit());
             ps.setString(3, prod.getDescriptionProduit());
             ps.setDouble(4, prod.getCoutProduit());
             ps.setDouble(5, prod.getCoutSolde());

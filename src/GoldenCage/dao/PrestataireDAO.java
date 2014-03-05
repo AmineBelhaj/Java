@@ -35,19 +35,20 @@ public class PrestataireDAO {
             
             while(resultat.next()){
                 Prestataire prestataire=new Prestataire();
-                prestataire.setIdPrestataire(resultat.getInt(1));
-                prestataire.setNomSociete(resultat.getString(2));
-                prestataire.setLogin(resultat.getString(3));
-                prestataire.setMotDePasse(resultat.getString(4));
-                prestataire.setAdresse(resultat.getString(5));
-                prestataire.setPresentation(resultat.getString(6));
-                prestataire.setTel(resultat.getInt(7));
-                prestataire.setGSM(resultat.getInt(8));
-                prestataire.setFax(resultat.getInt(9));
-                prestataire.setAdresseMail(resultat.getString(10));
+                prestataire.setIdPrestataire(resultat.getInt(5));
+                prestataire.setNomSociete(resultat.getString(8));
+                prestataire.setLogin(resultat.getString(6));
+                prestataire.setMotDePasse(resultat.getString(7));
+                prestataire.setAdresse(resultat.getString(1));
+                prestataire.setPresentation(resultat.getString(10));
+                prestataire.setTel(resultat.getInt(12));
+                prestataire.setGSM(resultat.getInt(4));
+                prestataire.setFax(resultat.getInt(3));
+                prestataire.setAdresseMail(resultat.getString(2));
                 prestataire.setSiteWeb(resultat.getString(11));
-                Blob blob = resultat.getBlob(12);
-                prestataire.setPhoto(new BufferedInputStream(blob.getBinaryStream()));
+                Blob blob = resultat.getBlob(9);
+                icon = new ImageIcon(blob.getBytes(1, (int)blob.length()));
+                prestataire.setPhoto(icon);
                 listPrestataire.add(prestataire);
             }
             return listPrestataire;
@@ -81,20 +82,21 @@ public class PrestataireDAO {
             ResultSet resultat = ps.executeQuery(requete);
             Prestataire prestataire=new Prestataire();
             while(resultat.next()){
-                prestataire.setIdPrestataire(resultat.getInt(1));
-                prestataire.setNomSociete(resultat.getString(2));
-                prestataire.setLogin(resultat.getString(3));
-                prestataire.setMotDePasse(resultat.getString(4));
-                prestataire.setAdresse(resultat.getString(5));
-                prestataire.setPresentation(resultat.getString(6));
-                prestataire.setTel(resultat.getInt(7));
-                prestataire.setGSM(resultat.getInt(8));
-                prestataire.setFax(resultat.getInt(9));
-                prestataire.setAdresseMail(resultat.getString(10));
+                prestataire.setIdPrestataire(resultat.getInt(5));
+                prestataire.setNomSociete(resultat.getString(8));
+                prestataire.setLogin(resultat.getString(6));
+                prestataire.setMotDePasse(resultat.getString(7));
+                prestataire.setAdresse(resultat.getString(1));
+                prestataire.setPresentation(resultat.getString(10));
+                prestataire.setTel(resultat.getInt(12));
+                prestataire.setGSM(resultat.getInt(4));
+                prestataire.setFax(resultat.getInt(3));
+                prestataire.setAdresseMail(resultat.getString(2));
                 prestataire.setSiteWeb(resultat.getString(11));
                 //Récuperation de l'image
-                Blob blob = resultat.getBlob(12);
+                Blob blob = resultat.getBlob(9);
                 icon = new ImageIcon(blob.getBytes(1, (int)blob.length()));
+                prestataire.setPhoto(icon);
             }
             return prestataire;
         } catch (SQLException ex) {
@@ -117,7 +119,7 @@ public class PrestataireDAO {
             ps.setInt(8, prest.getFax());
             ps.setString(9, prest.getAdresseMail());
             ps.setString(10, prest.getSiteWeb());
-            ps.setBlob(11, prest.getPhoto());
+            //ps.setBlob(11, prest.getPhoto());
             ps.executeUpdate();
             return true;
           }catch (SQLException ex) {
@@ -139,7 +141,7 @@ public class PrestataireDAO {
             ps.setInt(8, prest.getFax());
             ps.setString(9, prest.getAdresseMail());
             ps.setString(10, prest.getSiteWeb());
-            ps.setBlob(11, prest.getPhoto());
+            //ps.setBlob(11, prest.getPhoto());
             ps.setInt(12,prest.getIdPrestataire());
             ps.executeUpdate();
             return true;
@@ -186,7 +188,7 @@ public class PrestataireDAO {
                 prestataire.setAdresseMail(resultat.getString(10));
                 prestataire.setSiteWeb(resultat.getString(11));
                 Blob blob = resultat.getBlob(12);
-                prestataire.setPhoto(new BufferedInputStream(blob.getBinaryStream()));
+                //prestataire.setPhoto(new BufferedInputStream(blob.getBinaryStream()));
                }
               return prestataire;
             } catch (SQLException ex) {

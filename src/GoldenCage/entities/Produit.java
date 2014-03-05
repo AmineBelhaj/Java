@@ -4,6 +4,8 @@
  */
 package GoldenCage.entities;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author lenovo_B
@@ -13,7 +15,7 @@ public class Produit {
     private int IdSR;
     private int IdCategorie;
     private String NomProduit;
-    private String PhotoProduit;
+    private ImageIcon PhotoProduit;
     private String DescriptionProduit;
     private double CoutProduit;
     private double CoutSolde;
@@ -34,7 +36,7 @@ public class Produit {
         return NomProduit;
     }
 
-    public String getPhotoProduit() {
+    public ImageIcon getPhotoProduit() {
         return PhotoProduit;
     }
 
@@ -66,7 +68,7 @@ public class Produit {
         this.NomProduit = NomProduit;
     }
 
-    public void setPhotoProduit(String PhotoProduit) {
+    public void setPhotoProduit(ImageIcon PhotoProduit) {
         this.PhotoProduit = PhotoProduit;
     }
 
@@ -82,7 +84,7 @@ public class Produit {
         this.CoutSolde = CoutSolde;
     }
 
-    public Produit(int IdProduit, int IdSR, int IdCategorie, String NomProduit, String PhotoProduit, String DescriptionProduit, double CoutProduit, double CoutSolde) {
+    public Produit(int IdProduit, int IdSR, int IdCategorie, String NomProduit, ImageIcon PhotoProduit, String DescriptionProduit, double CoutProduit, double CoutSolde) {
         this.IdProduit = IdProduit;
         this.IdSR = IdSR;
         this.IdCategorie = IdCategorie;
@@ -96,4 +98,6 @@ public class Produit {
     public Produit() {
         
     }
+
+    
 }
