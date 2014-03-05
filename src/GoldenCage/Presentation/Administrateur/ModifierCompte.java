@@ -7,27 +7,23 @@
 package GoldenCage.Presentation.Administrateur;
 
 import GoldenCage.dao.PrestataireDAO;
+import GoldenCage.dao.RubriqueDAO;
 import GoldenCage.entities.Prestataire;
+import GoldenCage.entities.Rubrique;
 import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.Blob;
-import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
-import javax.imageio.stream.FileCacheImageInputStream;
-import javax.imageio.stream.ImageInputStream;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
@@ -48,6 +44,7 @@ public class ModifierCompte extends javax.swing.JFrame {
         path="";
     }
     public ModifierCompte(Prestataire prest)  {
+        
         prestataire=prest;
         ChangeImage=false;
         initComponents();
@@ -73,6 +70,13 @@ public class ModifierCompte extends javax.swing.JFrame {
             } catch (IOException ex) {
                 Logger.getLogger(ModifierCompte.class.getName()).log(Level.SEVERE, null, ex);
             }
+        }
+        RubriqueDAO rubriqueDAO=new RubriqueDAO();
+        List<Rubrique>rubriques= rubriqueDAO.DisplayAllRubriques();
+        for(int i=0;i<rubriques.size();i++){
+            jComboBox1.addItem(rubriques.get(i).getNomRubrique());
+            if(rubriques.get(i).getIdRubrique()==prest.getIdRubrique())
+                jComboBox1.setSelectedIndex(i);
         }
    
     }
@@ -112,6 +116,8 @@ public class ModifierCompte extends javax.swing.JFrame {
         BtConfirmer = new javax.swing.JButton();
         PanelImage = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -173,6 +179,8 @@ public class ModifierCompte extends javax.swing.JFrame {
                 .addGap(42, 42, 42))
         );
 
+        jLabel12.setText("Rubrique");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -201,28 +209,33 @@ public class ModifierCompte extends javax.swing.JFrame {
                             .addComponent(BtChargerImage))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(60, 60, 60)
-                                .addComponent(BtConfirmer))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(lblgsm, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblfax, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
-                                    .addComponent(lblweb))
-                                .addGap(5, 5, 5)))
-                        .addGap(93, 93, 93))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10)
-                            .addComponent(lblpresent, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())))
+                        .addGap(107, 107, 107)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel12)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel7)
+                                .addComponent(jLabel8)
+                                .addComponent(jLabel9))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGap(60, 60, 60)
+                                    .addComponent(BtConfirmer))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(18, 18, 18)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(lblgsm, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblfax, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+                                        .addComponent(lblweb))
+                                    .addGap(5, 5, 5)))
+                            .addGap(93, 93, 93))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel10)
+                                .addComponent(lblpresent, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addContainerGap()))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -275,7 +288,11 @@ public class ModifierCompte extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addComponent(lblpresent, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(94, 94, 94)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtRetour)
                     .addComponent(BtConfirmer))
@@ -376,6 +393,9 @@ public class ModifierCompte extends javax.swing.JFrame {
             if(verifierInt(lbltel.getText())!=-1)
                 prestataire.setTel(verifierInt(lbltel.getText()));       
              prestataire.setSiteWeb(lblweb.getText());
+             RubriqueDAO rubriqueDAO=new RubriqueDAO();
+             int id=rubriqueDAO.getIdFromNom(jComboBox1.getSelectedItem().toString());
+             prestataire.setIdRubrique(id);
              PrestataireDAO prestatairedao=new PrestataireDAO();
              if((ChangeImage)&&(verifierphoto()!=null)){
                     prestataire.setPhoto(verifierphoto());
@@ -444,10 +464,12 @@ public class ModifierCompte extends javax.swing.JFrame {
     private javax.swing.JButton BtConfirmer;
     private javax.swing.JButton BtRetour;
     private javax.swing.JPanel PanelImage;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

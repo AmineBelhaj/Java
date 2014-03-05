@@ -50,6 +50,7 @@ public class PrestataireDAO {
                 Blob blob = resultat.getBlob(9);
                 if(blob!=null)
                      prestataire.setPhoto(new BufferedInputStream(blob.getBinaryStream()));
+                prestataire.setIdRubrique(resultat.getInt(13));
                 listPrestataire.add(prestataire);
             }
             return listPrestataire;
@@ -97,6 +98,7 @@ public class PrestataireDAO {
                 Blob blob = resultat.getBlob(9);
                 if(blob!=null)
                      prestataire.setPhoto(new BufferedInputStream(blob.getBinaryStream()));
+                prestataire.setIdRubrique(resultat.getInt(13));
             }
             return prestataire;
         } catch (SQLException ex) {
@@ -106,7 +108,7 @@ public class PrestataireDAO {
      }
      
      public boolean ajouterPrestataire(Prestataire prest,File f){
-         String requete = "insert into prestataire (NomSociete,Login,MotDePasse,Adresse,Presentation,Tel,GSM,Fax,AdresseMail,SiteWeb,Photo) values (?,?,?,?,?,?,?,?,?,?,?)";
+         String requete = "insert into prestataire (NomSociete,Login,MotDePasse,Adresse,Presentation,Tel,GSM,Fax,AdressMail,SiteWeb,Photo,IdRubrique) values (?,?,?,?,?,?,?,?,?,?,?,?)";
           try { 
             PreparedStatement ps = MyConnection.getInstance().prepareStatement(requete);
             ps.setString(1, prest.getNomSociete());
@@ -120,7 +122,7 @@ public class PrestataireDAO {
             ps.setString(9, prest.getAdresseMail());
             ps.setString(10, prest.getSiteWeb());
               ps.setBinaryStream(11, prest.getPhoto(), (int)f.length());
-           
+           ps.setInt(12, prest.getIdRubrique());
             ps.executeUpdate();
             return true;
           }catch (SQLException ex) {
@@ -129,7 +131,7 @@ public class PrestataireDAO {
             }
      }
      public boolean modifierPrestataire(Prestataire prest){
-        String requete = "update prestataire set NomSociete=?, Login=?, MotDePasse=?, Adresse=?, Presentation=?, Tel=?, GSM=?, Fax=?, AdresseMail=?, SiteWeb=? where IdPrestataire=?";
+        String requete = "update prestataire set NomSociete=?, Login=?, MotDePasse=?, Adresse=?, Presentation=?, Tel=?, GSM=?, Fax=?, AdressMail=?, SiteWeb=?, IdRubrique=? where IdPrestataire=?";
         try {
             PreparedStatement ps = MyConnection.getInstance().prepareStatement(requete);
             ps.setString(1, prest.getNomSociete());
@@ -142,9 +144,9 @@ public class PrestataireDAO {
             ps.setInt(8, prest.getFax());
             ps.setString(9, prest.getAdresseMail());
             ps.setString(10, prest.getSiteWeb());
-             
+            ps.setInt(11, prest.getIdRubrique());
            // ps.setBlob(11, prest.getPhoto());
-            ps.setInt(11,prest.getIdPrestataire());
+            ps.setInt(12,prest.getIdPrestataire());
            
             ps.executeUpdate();
             return true;
@@ -156,7 +158,7 @@ public class PrestataireDAO {
      
      
     public boolean modifierPrestataire(Prestataire prest,File f){
-        String requete = "update prestataire set NomSociete=?, Login=?, MotDePasse=?, Adresse=?, Presentation=?, Tel=?, GSM=?, Fax=?, AdresseMail=?, SiteWeb=?, Photo=? where IdPrestataire=?";
+        String requete = "update prestataire set NomSociete=?, Login=?, MotDePasse=?, Adresse=?, Presentation=?, Tel=?, GSM=?, Fax=?, AdressMail=?, SiteWeb=?, Photo=?, IdRubrique=? where IdPrestataire=?";
         try {
             PreparedStatement ps = MyConnection.getInstance().prepareStatement(requete);
             ps.setString(1, prest.getNomSociete());
@@ -171,7 +173,8 @@ public class PrestataireDAO {
             ps.setString(10, prest.getSiteWeb());
              ps.setBinaryStream(11, prest.getPhoto(), (int)f.length());
            // ps.setBlob(11, prest.getPhoto());
-            ps.setInt(12,prest.getIdPrestataire());
+             ps.setInt(12, prest.getIdRubrique());
+            ps.setInt(13,prest.getIdPrestataire());
            
             ps.executeUpdate();
             return true;
@@ -218,6 +221,7 @@ public class PrestataireDAO {
                 prestataire.setAdresseMail(resultat.getString(2));
                 prestataire.setSiteWeb(resultat.getString(11));
                 Blob blob = resultat.getBlob(9);
+                prestataire.setIdRubrique(resultat.getInt(13));
                 if(blob!=null)
                      prestataire.setPhoto(new BufferedInputStream(blob.getBinaryStream()));
                }
@@ -247,11 +251,13 @@ public class PrestataireDAO {
                 prestataire.setFax(resultat.getInt(3));
                 prestataire.setAdresseMail(resultat.getString(2));
                 prestataire.setSiteWeb(resultat.getString(11));
+                 prestataire.setIdRubrique(resultat.getInt(13));
                 Blob blob = resultat.getBlob(9);
                 if(blob!=null)
                      prestataire.setPhoto(new BufferedInputStream(blob.getBinaryStream()));
                 
                }
+              
               return prestataire;
             } catch (SQLException ex) {
             System.out.println("erreur lors de la mise à jour "+ex.getMessage());

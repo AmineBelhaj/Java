@@ -20,13 +20,14 @@ public class Prestataire {
    private String Login;
    private String MotDePasse;
    private String Adresse;
-   String Presentation;
-   int Tel;
-   int GSM;
-   int Fax;
-   String AdresseMail;
-   String SiteWeb;
-   InputStream Photo;
+   private String Presentation;
+   private int Tel;
+   private int GSM;
+   private int Fax;
+   private String AdresseMail;
+   private String SiteWeb;
+   private InputStream Photo;
+   private int IdRubrique;
 
     public int getIdPrestataire() {
         return IdPrestataire;
@@ -76,6 +77,12 @@ public class Prestataire {
         return Photo;
     }
 
+    public int getIdRubrique() {
+        return IdRubrique;
+    }
+
+    
+    
     public void setIdPrestataire(int IdPrestataire) {
         this.IdPrestataire = IdPrestataire;
     }
@@ -120,8 +127,11 @@ public class Prestataire {
         this.SiteWeb = SiteWeb;
     }
 
+    public void setIdRubrique(int IdRubrique) {
+        this.IdRubrique = IdRubrique;
+    }
 
-    public Prestataire(int IdPrestataire, String NomSociete, String Login, String MotDePasse, String Adresse, String Presentation, int Tel, int GSM, int Fax, String AdresseMail, String SiteWeb, InputStream Photo) {
+    public Prestataire(int IdPrestataire, String NomSociete, String Login, String MotDePasse, String Adresse, String Presentation, int Tel, int GSM, int Fax, String AdresseMail, String SiteWeb, InputStream Photo, int IdRubrique) {
         this.IdPrestataire = IdPrestataire;
         this.NomSociete = NomSociete;
         this.Login = Login;
@@ -134,7 +144,11 @@ public class Prestataire {
         this.AdresseMail = AdresseMail;
         this.SiteWeb = SiteWeb;
         this.Photo = Photo;
+        this.IdRubrique = IdRubrique;
     }
+    
+
+    
 
     
     
