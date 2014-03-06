@@ -72,6 +72,31 @@ public class ClientDAO {
             return null;
         }
        }
+    
+    public Client getClientFromLogin(String login){
+        String requete = "select * from Client where Login=?";
+         String soc="";
+         Client client=new Client();
+         try {
+            PreparedStatement ps = MyConnection.getInstance().prepareStatement(requete);
+            ps.setString(1,login);
+            ResultSet resultat = ps.executeQuery();
+             while(resultat.next()){
+                 client.setIdClient(resultat.getInt(3));
+                client.setLogin(resultat.getString(4));
+                client.setMotDePasse(resultat.getString(5));
+                client.setNom(resultat.getString(6));
+                client.setPrenom(resultat.getString(8));
+                client.setNumTel(resultat.getString(7));
+                client.setAdressMail(resultat.getString(1));
+             }
+             return client;
+          
+        } catch (SQLException ex) {
+            System.out.println("erreur lors de la mise à jour "+ex.getMessage());
+            return client;
+       }
+    }
     public String getLogin(int idclient){
          String requete = "select Login from Client where Idclient=?";
          String soc="";

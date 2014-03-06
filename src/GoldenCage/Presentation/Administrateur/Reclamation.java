@@ -6,8 +6,11 @@
 
 package GoldenCage.Presentation.Administrateur;
 
+import GoldenCage.dao.ClientDAO;
 import GoldenCage.dao.SendMessage;
+import GoldenCage.entities.Client;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,7 +23,10 @@ public class Reclamation extends javax.swing.JFrame {
      */
     public Reclamation() {
         initComponents();
-       
+        jRadioAccepter.setVisible(false);
+        jRadioEnCours.setVisible(false);
+        jRadioRefuser.setVisible(false);
+        BtEnvoyer.setVisible(false);
     }
 
     /**
@@ -32,12 +38,17 @@ public class Reclamation extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         BtRetour = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
         Jsend = new javax.swing.JButton();
+        jRadioEnCours = new javax.swing.JRadioButton();
+        jRadioRefuser = new javax.swing.JRadioButton();
+        jRadioAccepter = new javax.swing.JRadioButton();
+        BtEnvoyer = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,31 +78,63 @@ public class Reclamation extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(jRadioEnCours);
+        jRadioEnCours.setText("En cours de traitement");
+
+        buttonGroup1.add(jRadioRefuser);
+        jRadioRefuser.setText("Refuser");
+
+        buttonGroup1.add(jRadioAccepter);
+        jRadioAccepter.setText("Accépté");
+
+        BtEnvoyer.setText("Envoyer");
+        BtEnvoyer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtEnvoyerActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(BtRetour)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Jsend)
-                        .addGap(155, 155, 155)
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(BtRetour)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Jsend)
+                            .addGap(155, 155, 155)
+                            .addComponent(jLabel1)
+                            .addGap(18, 18, 18)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jRadioEnCours)
+                        .addGap(94, 94, 94)
+                        .addComponent(jRadioRefuser)
+                        .addGap(99, 99, 99)
+                        .addComponent(jRadioAccepter)
+                        .addGap(101, 101, 101)
+                        .addComponent(BtEnvoyer)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioEnCours)
+                    .addComponent(jRadioRefuser)
+                    .addComponent(jRadioAccepter)
+                    .addComponent(BtEnvoyer))
+                .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtRetour)
                     .addComponent(jLabel1)
@@ -124,10 +167,53 @@ public class Reclamation extends javax.swing.JFrame {
 
     private void JsendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JsendActionPerformed
         // TODO add your handling code here:
-        SendMessage sendMessage=new SendMessage();
-        sendMessage.sendMessage("email","object","hello");
+        if(jTable1.getSelectedRow()!=-1){
+            jRadioAccepter.setVisible(true);
+            jRadioEnCours.setVisible(true);
+            jRadioRefuser.setVisible(true);
+            BtEnvoyer.setVisible(true);
+        }
+        else
+             JOptionPane.showMessageDialog(null,"Veuillez selectionner une ligne");
+        
         
     }//GEN-LAST:event_JsendActionPerformed
+
+    private void BtEnvoyerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtEnvoyerActionPerformed
+        // TODO add your handling code here:
+       
+        String email="";
+        if((jRadioAccepter.isSelected()==false)&&(jRadioEnCours.isSelected()==false)&&(jRadioRefuser.isSelected()==false)){
+            JOptionPane.showMessageDialog(null,"Veuillez selectionner un choix");
+        }
+        else 
+        {
+            if(jRadioAccepter.isSelected()){
+                email="Votre reclamation a été accépté";
+            }
+            else if(jRadioEnCours.isSelected()){
+                email="Votre reclamation est en cours de traitement";
+            }
+            else if(jRadioRefuser.isSelected()){
+                   email="Votre reclamation a été refuser";
+            }
+            String login=(String)jTable1.getValueAt(jTable1.getSelectedRow(), 0);
+            ClientDAO clientDAO=new ClientDAO();
+            Client client=new Client();
+            client=clientDAO.getClientFromLogin(login);
+            SendMessage sendMessage=new SendMessage();
+           if( sendMessage.sendMessage(client.getAdressMail(),"Hello",email)){
+               JOptionPane.showMessageDialog(null,"Votre mail a été envoyer");
+               jRadioAccepter.setVisible(false);
+               jRadioEnCours.setVisible(false);
+               jRadioRefuser.setVisible(false);
+               BtEnvoyer.setVisible(false);
+           }
+           else{
+               JOptionPane.showMessageDialog(null,"Un probléme a été rencontré");
+           }
+        }
+    }//GEN-LAST:event_BtEnvoyerActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,10 +251,15 @@ public class Reclamation extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtEnvoyer;
     private javax.swing.JButton BtRetour;
     private javax.swing.JButton Jsend;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JRadioButton jRadioAccepter;
+    private javax.swing.JRadioButton jRadioEnCours;
+    private javax.swing.JRadioButton jRadioRefuser;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
