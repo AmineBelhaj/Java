@@ -133,28 +133,20 @@ public class ClientDAO {
     }
     
     
-     public Client Rechercher (String nomClient){
-         String requete = "Select * from Client where Login='"+nomClient+"'";
+     public int Rechercher (String nomClient){
+         String requete = "Select IdClient from Client where Login='"+nomClient+"';";
+         int idClient = 0;
         try {
-            PreparedStatement ps = MyConnection.getInstance().prepareStatement(requete);
-            //ps.setString(1, nomPres);
-            // ps.executeUpdate();
-            ResultSet resultat = ps.executeQuery(requete);
-            Client cli =new Client();
-            ImageIcon icon;
+              Statement statement = MyConnection.getInstance()
+                   .createStatement();
+            ResultSet resultat = statement.executeQuery(requete);
             while(resultat.next()){
-            ps.setString(4, cli.getLogin());
-            ps.setString(5, cli.getMotDePasse());
-            ps.setString(6, cli.getNom());
-            ps.setString(8, cli.getPrenom());
-            ps.setString(7, cli.getNumTel());
-            ps.setString(1, cli.getAdressMail());
-            ps.setBoolean(2, cli.isBannir());
-            }
-            return cli;
+                idClient =resultat.getInt(1);
+             }
+          return idClient;
         } catch (SQLException ex) {
            //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
+            return idClient;
         }
      }
     

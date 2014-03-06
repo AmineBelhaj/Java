@@ -66,7 +66,8 @@ public class Client extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         panel1 = new javax.swing.JPanel();
-        PanelPrestataire = new GoldenCage.Presentation.Clientpack.ListePrestataire(cd.getLoginInput().getText());
+        acceuil1 = new pidev.Presentation.acceuil();
+        listePrestataire = new GoldenCage.Presentation.Clientpack.ListePrestataire(cd.getLoginInput().toString());
         panel2 = new javax.swing.JPanel();
         lblMariée = new javax.swing.JLabel();
         lblMarié = new javax.swing.JLabel();
@@ -124,7 +125,20 @@ public class Client extends javax.swing.JFrame {
             }
         });
         panel1.setLayout(new java.awt.CardLayout());
-        panel1.add(PanelPrestataire, "CardPrestataire");
+
+        javax.swing.GroupLayout acceuil1Layout = new javax.swing.GroupLayout(acceuil1);
+        acceuil1.setLayout(acceuil1Layout);
+        acceuil1Layout.setHorizontalGroup(
+            acceuil1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1319, Short.MAX_VALUE)
+        );
+        acceuil1Layout.setVerticalGroup(
+            acceuil1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 198, Short.MAX_VALUE)
+        );
+
+        panel1.add(acceuil1, "card2");
+        panel1.add(listePrestataire, "CardPrestataire");
 
         panel2.setBackground(new java.awt.Color(255, 0, 102));
         panel2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -718,8 +732,8 @@ public class Client extends javax.swing.JFrame {
                     .addComponent(lblGerer))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -735,8 +749,8 @@ public class Client extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 161, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 246, Short.MAX_VALUE))
         );
 
         pack();
@@ -876,8 +890,9 @@ public class Client extends javax.swing.JFrame {
         lblRobeMariée.setForeground(new Color(153, 0, 153));
         lblRobeSoirée.setForeground(Color.BLACK);
         lblCoiffure.setForeground(Color.BLACK);
-       lblHauteCouture.setForeground(Color.BLACK);
-       lblLangerie.setForeground(Color.BLACK);
+        lblHauteCouture.setForeground(Color.BLACK);
+        lblLangerie.setForeground(Color.BLACK);
+        panel2_Mariée.setVisible(true);
     }//GEN-LAST:event_lblRobeMariéeMouseClicked
 
     private void lblRobeMariéeMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRobeMariéeMouseMoved
@@ -1010,7 +1025,7 @@ public class Client extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private GoldenCage.Presentation.Clientpack.ListePrestataire PanelPrestataire;
+    private pidev.Presentation.acceuil acceuil1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblAccessoire;
@@ -1047,6 +1062,7 @@ public class Client extends javax.swing.JFrame {
     private javax.swing.JLabel lblSalleDeFête;
     private javax.swing.JLabel lblTroupeMusicale;
     private javax.swing.JLabel lblVéhicule;
+    private GoldenCage.Presentation.Clientpack.ListePrestataire listePrestataire;
     private javax.swing.JPanel panel1;
     private javax.swing.JPanel panel2;
     private javax.swing.JPanel panel2_Animation;

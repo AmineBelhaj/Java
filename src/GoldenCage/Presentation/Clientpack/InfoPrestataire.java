@@ -9,6 +9,7 @@ import GoldenCage.Presentation.Clientpack.ImageProd;
 
 import GoldenCage.dao.ClientDAO;
 import GoldenCage.dao.PrestataireDAO;
+import GoldenCage.dao.ReclamationDAO;
 import GoldenCage.entities.Client;
 import GoldenCage.entities.Prestataire;
 import GoldenCage.entities.Reclamation;
@@ -23,6 +24,7 @@ import java.util.List;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
@@ -48,10 +50,6 @@ public class InfoPrestataire extends javax.swing.JFrame {
     public JPanel getjPanel3() {
         return jPanel3;
     }
-
-   
-
-  
 
     public String getNom() {
         return nom;
@@ -364,12 +362,28 @@ public class InfoPrestataire extends javax.swing.JFrame {
 
     private void btCommenterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCommenterActionPerformed
         // TODO add your handling code here:
-        Client client = new Client();
+        Client client ;
+        PrestataireDAO p = new PrestataireDAO();
+        int idPrestataire,idClient;
+        idPrestataire = p.getIdSociét(lblNom.getText());
         ClientDAO c = new ClientDAO();
-        client = c.Rechercher(nomClient);
-        String date = new SimpleDateFormat("yyyy/MM/dd").format(Calendar.getInstance().getTime());
+        idClient = c.Rechercher(nomClient);
+        String date = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
         String time = new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime());
-        //Reclamation rec = new Reclamation(null, client.getIdClient(), 1, lblCommentaire.getText(), 25 , date, time);
+        Reclamation rec = new Reclamation();
+        ReclamationDAO r = new ReclamationDAO();
+               // client.getIdClient(), idPrestataire, lblCommentaire.getText(), 50 , date, time);
+        System.out.println(c.Rechercher(nomClient));
+        rec.setIdRec(r.GetNbReclamation());
+        rec.setIdClient(c.Rechercher(nomClient));
+        rec.setIdPrestataire(idPrestataire);
+        rec.setTextRec(lblCommentaire.getText());
+        rec.setNoteRec(50);
+        rec.setDateRec(date);
+        rec.setTimeRec(time);
+        ReclamationDAO r1 = new ReclamationDAO();
+        r1.insertReclamation(rec);
+       
     }//GEN-LAST:event_btCommenterActionPerformed
 
     private void lblRedigerCommentaireMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRedigerCommentaireMouseClicked

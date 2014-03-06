@@ -23,8 +23,7 @@ public class Reclamation {
     public Reclamation() {
     }
 
-    public Reclamation(int idRec, int idClient, int idPrestataire, String TextRec, int NoteRec, String DateRec,String TimeRec) {
-        this.idRec = idRec;
+    public Reclamation( int idClient, int idPrestataire, String TextRec, int NoteRec, String DateRec,String TimeRec) {
         this.idClient = idClient;
         this.idPrestataire = idPrestataire;
         this.TextRec = TextRec;

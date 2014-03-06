@@ -199,6 +199,23 @@ public class PrestataireDAO {
             return soc;
        }
      }
+    
+      public int getIdSociét(String nomSoc){
+         String requete = "select IdPrestataire from prestataire where NomSociete=?";
+         int idPrest = 0;
+         try {
+            PreparedStatement ps = MyConnection.getInstance().prepareStatement(requete);
+            ps.setString(1,nomSoc);
+            ResultSet resultat = ps.executeQuery();
+             while(resultat.next()){
+                 idPrest=resultat.getInt(1);
+             }
+          return idPrest;
+        } catch (SQLException ex) {
+            System.out.println("erreur lors de la mise à jour "+ex.getMessage());
+            return idPrest;
+       }
+     }
     public Prestataire AuthentificationWithLoginMDP(String login,String mdp){
         String requete = "select * from prestataire where Login=? and MotDePasse=?";
          Prestataire prestataire=new Prestataire();

@@ -35,8 +35,8 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="jPanel1" min="-2" pref="546" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="161" max="32767" attributes="0"/>
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="246" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -88,8 +88,8 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="panel2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
-                  <Component id="panel1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="panel1" min="-2" pref="198" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -108,9 +108,29 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
           <SubComponents>
-            <Component class="GoldenCage.Presentation.Clientpack.ListePrestataire" name="PanelPrestataire">
+            <Container class="pidev.Presentation.acceuil" name="acceuil1">
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+                  <CardConstraints cardName="card2"/>
+                </Constraint>
+              </Constraints>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <EmptySpace min="0" pref="1319" max="32767" attributes="0"/>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <EmptySpace min="0" pref="198" max="32767" attributes="0"/>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+            </Container>
+            <Component class="GoldenCage.Presentation.Clientpack.ListePrestataire" name="listePrestataire">
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new GoldenCage.Presentation.Clientpack.ListePrestataire(cd.getLoginInput().getText())"/>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new GoldenCage.Presentation.Clientpack.ListePrestataire(cd.getLoginInput().toString())"/>
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
@@ -242,8 +262,8 @@
                 <Property name="text" type="java.lang.String" value="Mari&#xe9;e"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblMari&#xe9;eMouseExited"/>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblMari&#xe9;eMouseClicked"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblMari&#xe9;eMouseExited"/>
                 <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="lblMari&#xe9;eMouseMoved"/>
               </Events>
             </Component>

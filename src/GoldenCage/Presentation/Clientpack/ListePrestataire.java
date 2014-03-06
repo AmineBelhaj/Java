@@ -36,10 +36,9 @@ public class ListePrestataire extends javax.swing.JPanel {
         initComponents();
     }
 
-    ListePrestataire() {
-        throw new UnsupportedOperationException("Not yet implemented");
+    public ListePrestataire() {
+       initComponents();
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -88,18 +87,7 @@ public class ListePrestataire extends javax.swing.JPanel {
              info.getLblMail().setText(prest.getAdresseMail());
              info.getLblTel().setText(prest.getTel()+"");
              //Affichage de l'image
-             InputStream is = prest.getPhoto();
-        
-        Image image;
-        if(is!=null){
-            try {
-                image = ImageIO.read(is);
-                 Image scaledImage=image.getScaledInstance(info.getjPanel3().getWidth(),info.getjPanel3().getHeight(),Image.SCALE_SMOOTH); 
-                info.getLblPhoto().setIcon(new ImageIcon(scaledImage));
-            } catch (IOException ex) {
-                Logger.getLogger(ModifierCompte.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+             info.getLblPhoto().setIcon(p.icon);
              info.setVisible(true);
              this.setVisible(false);
          }
