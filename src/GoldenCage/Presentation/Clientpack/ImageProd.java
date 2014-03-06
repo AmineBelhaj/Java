@@ -64,6 +64,7 @@ public class ImageProd extends javax.swing.JFrame {
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 204, 255));
         getContentPane().setLayout(new java.awt.GridLayout(2, 5));
 
         pack();

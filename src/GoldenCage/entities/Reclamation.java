@@ -17,18 +17,20 @@ public class Reclamation {
     private int idPrestataire;
     private String TextRec;
     private int NoteRec;
-    private Date DateRec;
+    private String DateRec;
+    private String TimeRec;
 
     public Reclamation() {
     }
 
-    public Reclamation(int idRec, int idClient, int idPrestataire, String TextRec, int NoteRec, Date DateRec) {
+    public Reclamation(int idRec, int idClient, int idPrestataire, String TextRec, int NoteRec, String DateRec,String TimeRec) {
         this.idRec = idRec;
         this.idClient = idClient;
         this.idPrestataire = idPrestataire;
         this.TextRec = TextRec;
         this.NoteRec = NoteRec;
         this.DateRec = DateRec;
+        this.TimeRec =  TimeRec;
     }
 
     public int getIdRec() {
@@ -47,11 +49,19 @@ public class Reclamation {
         return TextRec;
     }
 
+    public void setTimeRec(String TimeRec) {
+        this.TimeRec = TimeRec;
+    }
+
+    public String getTimeRec() {
+        return TimeRec;
+    }
+
     public int getNoteRec() {
         return NoteRec;
     }
 
-    public Date getDateRec() {
+    public String getDateRec() {
         return DateRec;
     }
 
@@ -75,7 +85,7 @@ public class Reclamation {
         this.NoteRec = NoteRec;
     }
 
-    public void setDateRec(Date DateRec) {
+    public void setDateRec(String DateRec) {
         this.DateRec = DateRec;
     }
     

@@ -22,10 +22,15 @@ public class ListePrestataire extends javax.swing.JPanel {
      * Creates new form ListePrestataire
      */
     AfficherPrestatairePourClient A = new AfficherPrestatairePourClient();
-    public String nomPres;
+    public String nomCli,nomPres;
     
-    public ListePrestataire() {
+    public ListePrestataire(String nom) {
+        nomCli=nom;
         initComponents();
+    }
+
+    ListePrestataire() {
+        throw new UnsupportedOperationException("Not yet implemented");
     }
 
     /**
@@ -46,7 +51,7 @@ public class ListePrestataire extends javax.swing.JPanel {
         jTable1.setFont(new java.awt.Font("Tahoma", 0, 12));
         jTable1.setModel(A);
         jTable1.setGridColor(new java.awt.Color(255, 255, 255));
-        jTable1.setSelectionBackground(new java.awt.Color(255, 204, 204));
+        jTable1.setSelectionBackground(new java.awt.Color(255, 204, 255));
         jTable1.setRowHeight(40);
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -65,7 +70,7 @@ public class ListePrestataire extends javax.swing.JPanel {
              nomPres=(String) jTable1.getValueAt(jTable1.getSelectedRow(), 0);
              PrestataireDAO p = new PrestataireDAO();
              Prestataire prest ;
-             InfoPrestataire info = new InfoPrestataire();
+             InfoPrestataire info = new InfoPrestataire(nomCli);
              prest=p.Rechercher(nomPres);
              info.setNom(prest.getNomSociete());
              info.getLblNom().setText(prest.getNomSociete());

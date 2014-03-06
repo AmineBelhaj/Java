@@ -18,6 +18,7 @@ public class Client {
     private String AdressMail;
     private boolean bannir;
     public Client() {
+        
     }
 
     public int getIdClient() {

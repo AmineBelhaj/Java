@@ -7,11 +7,14 @@ package GoldenCage.dao;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import GoldenCage.entities.Client;
+import GoldenCage.entities.Prestataire;
 import GoldenCage.util.MyConnection;
+import java.sql.Blob;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -33,8 +36,7 @@ public class ClientDAO {
                 client.setNom(resultat.getString(6));
                 client.setPrenom(resultat.getString(8));
                 client.setNumTel(resultat.getString(7));
-                client.setAdressMail(resultat.getString(1));
-                
+                client.setAdressMail(resultat.getString(1));              
             }
             return client;
         
@@ -129,6 +131,34 @@ public class ClientDAO {
             return false;
         }
     }
+    
+    
+     public Client Rechercher (String nomClient){
+         String requete = "Select * from Client where Login='"+nomClient+"'";
+        try {
+            PreparedStatement ps = MyConnection.getInstance().prepareStatement(requete);
+            //ps.setString(1, nomPres);
+            // ps.executeUpdate();
+            ResultSet resultat = ps.executeQuery(requete);
+            Client cli =new Client();
+            ImageIcon icon;
+            while(resultat.next()){
+            ps.setString(4, cli.getLogin());
+            ps.setString(5, cli.getMotDePasse());
+            ps.setString(6, cli.getNom());
+            ps.setString(8, cli.getPrenom());
+            ps.setString(7, cli.getNumTel());
+            ps.setString(1, cli.getAdressMail());
+            ps.setBoolean(2, cli.isBannir());
+            }
+            return cli;
+        } catch (SQLException ex) {
+           //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+     }
+    
+    
     public boolean ajouterClient(Client cli){
          String requete = "insert into client (Login,MotDePasse,Nom,Prenom,NumTel,AdressMail,bannir) values (?,?,?,?,?,?,?)";
           try { 

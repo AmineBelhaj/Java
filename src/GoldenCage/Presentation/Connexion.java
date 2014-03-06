@@ -17,6 +17,7 @@ import GoldenCage.entities.Admin;
 import GoldenCage.entities.Prestataire;
 import com.restfb.types.User;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -29,6 +30,10 @@ public class Connexion extends javax.swing.JFrame {
      */
     public Connexion() {
         initComponents();
+    }
+
+    public JTextField getLoginInput() {
+        return LoginInput;
     }
 
     /**
@@ -167,14 +172,15 @@ public class Connexion extends javax.swing.JFrame {
                     ClientDAO clientDAO=new ClientDAO();
                     GoldenCage.entities.Client client=new GoldenCage.entities.Client();
                     client=clientDAO.authentification(LoginInput.getText(), MDPInput.getText());
+                    System.out.println(client.getIdClient());
                     if(client.getIdClient()!=0){
-                        if(client.isBannir()){
-                             Client cl=new Client();
+                        if(!client.isBannir()){
+                             Client cl=new Client(this);
                             this.setVisible(false);
                             cl.setVisible(true);
                         }
                         else{
-                            JOptionPane.showMessageDialog(null,"Votre compte est banni");
+                            JOptionPane.showMessageDialog(null,"Votre compte"+LoginInput.getText()+" est banni");
                         }
            
                        
@@ -210,7 +216,7 @@ public class Connexion extends javax.swing.JFrame {
             client=clientDAO.AuthentificationWithFacebook(user.getEmail());
             if(client!=null){
                 if(client.isBannir()==false){
-                    Client cl=new Client();
+                    Client cl=new Client(this);
                     this.setVisible(false);
                     cl.setVisible(true);
                 }
@@ -229,7 +235,7 @@ public class Connexion extends javax.swing.JFrame {
                     client.setPrenom(user.getFirstName());
                     clientDAO.ajouterClient(client);
                     JOptionPane.showMessageDialog(null,"Votre compte a été crée");
-                    Client cl=new Client();
+                    Client cl=new Client(this);
                     this.setVisible(true);
                     cl.setVisible(true);
             }

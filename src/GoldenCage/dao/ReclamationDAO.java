@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import GoldenCage.entities.Reclamation;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -19,15 +20,18 @@ import java.util.*;
 public class ReclamationDAO {
     public void insertReclamation(Reclamation rec){
 
-        String requete = "insert into depot (IdRec,IdClient,IdPrestataire,TextRec,NoteRec,DateRec) values ("+rec.getIdRec()+","+rec.getIdClient()+","+rec.getIdPrestataire()+","+rec.getTextRec()+","+rec.getNoteRec()+","+rec.getDateRec()+");";
+        String date = new SimpleDateFormat("yyyy/MM/dd").format(Calendar.getInstance().getTime());
+        String time = new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime());
+        String requete = "insert into reclamation (DateRec, HeureRec, IdRec, NoteRec, TextRec, IdPrestataire, IdClient) values ("+date+","+time+",NULL,"+rec.getNoteRec()+","+rec.getTextRec()+","+rec.getIdPrestataire()+","+rec.getIdClient()+");";
         try {
             PreparedStatement ps = MyConnection.getInstance().prepareStatement(requete);
-            ps.setInt(1, rec.getIdRec());
-            ps.setInt(2, rec.getIdClient());
-            ps.setInt(3, rec.getIdPrestataire());
-            ps.setString(4, rec.getTextRec());
-            ps.setInt(5, rec.getNoteRec());
-           // ps.setDate(6, rec.getDateRec());
+            ps.setInt(3, rec.getIdRec());
+            ps.setInt(7, rec.getIdClient());
+            ps.setInt(6, rec.getIdPrestataire());
+            ps.setString(5, rec.getTextRec());
+            ps.setInt(4, rec.getNoteRec());
+            ps.setString(1, rec.getDateRec());
+            ps.setString(2, rec.getTimeRec());
             ps.executeUpdate();
             System.out.println("Réclamation ajoutée avec succès");
         } catch (SQLException ex) {
@@ -48,14 +52,15 @@ public class ReclamationDAO {
                    .createStatement();
             ResultSet resultat = statement.executeQuery(requete);
             while(resultat.next()){
-               
+              
                 Reclamation rec =new Reclamation();
-                rec.setIdRec(resultat.getInt(1));
-                rec.setIdClient(resultat.getInt(2));
-                rec.setIdPrestataire(resultat.getInt(3));
-                rec.setTextRec(resultat.getString(4));
-                rec.setNoteRec(resultat.getInt(5));
-                rec.setDateRec(resultat.getDate(6));
+                rec.setIdRec(resultat.getInt(3));
+                rec.setIdClient(resultat.getInt(7));
+                rec.setIdPrestataire(resultat.getInt(6));
+                rec.setTextRec(resultat.getString(5));
+                rec.setNoteRec(resultat.getInt(4));
+                rec.setDateRec(resultat.getString(1));
+                rec.setTimeRec(resultat.getString(2));
                 //findById ??????
                 listeReclamation.add(rec);
             }

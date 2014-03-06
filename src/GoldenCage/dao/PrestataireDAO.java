@@ -48,8 +48,9 @@ public class PrestataireDAO {
                 prestataire.setAdresseMail(resultat.getString(2));
                 prestataire.setSiteWeb(resultat.getString(11));
                 Blob blob = resultat.getBlob(9);
+                icon = new ImageIcon(blob.getBytes(1, (int)blob.length()));
                 if(blob!=null)
-                     prestataire.setPhoto(new BufferedInputStream(blob.getBinaryStream()));
+                     prestataire.setPhoto(icon);
                 listPrestataire.add(prestataire);
             }
             return listPrestataire;
@@ -95,8 +96,9 @@ public class PrestataireDAO {
                 prestataire.setAdresseMail(resultat.getString(2));
                 prestataire.setSiteWeb(resultat.getString(11));
                 Blob blob = resultat.getBlob(9);
+                icon = new ImageIcon(blob.getBytes(1, (int)blob.length()));
                 if(blob!=null)
-                     prestataire.setPhoto(new BufferedInputStream(blob.getBinaryStream()));
+                     prestataire.setPhoto(icon);
             }
             return prestataire;
         } catch (SQLException ex) {
@@ -119,7 +121,7 @@ public class PrestataireDAO {
             ps.setInt(8, prest.getFax());
             ps.setString(9, prest.getAdresseMail());
             ps.setString(10, prest.getSiteWeb());
-              ps.setBinaryStream(11, prest.getPhoto(), (int)f.length());
+            //ps.setBinaryStream(11, prest.getPhoto(), (int)f.length());
            
             ps.executeUpdate();
             return true;
@@ -169,7 +171,7 @@ public class PrestataireDAO {
             ps.setInt(8, prest.getFax());
             ps.setString(9, prest.getAdresseMail());
             ps.setString(10, prest.getSiteWeb());
-             ps.setBinaryStream(11, prest.getPhoto(), (int)f.length());
+            //ps.setBinaryStream(11, prest.getPhoto(), (int)f.length());
            // ps.setBlob(11, prest.getPhoto());
             ps.setInt(12,prest.getIdPrestataire());
            
@@ -218,8 +220,9 @@ public class PrestataireDAO {
                 prestataire.setAdresseMail(resultat.getString(2));
                 prestataire.setSiteWeb(resultat.getString(11));
                 Blob blob = resultat.getBlob(9);
+                icon = new ImageIcon(blob.getBytes(1, (int)blob.length()));
                 if(blob!=null)
-                     prestataire.setPhoto(new BufferedInputStream(blob.getBinaryStream()));
+                     prestataire.setPhoto(icon);
                }
               return prestataire;
             } catch (SQLException ex) {
@@ -248,10 +251,10 @@ public class PrestataireDAO {
                 prestataire.setAdresseMail(resultat.getString(2));
                 prestataire.setSiteWeb(resultat.getString(11));
                 Blob blob = resultat.getBlob(9);
+                icon = new ImageIcon(blob.getBytes(1, (int)blob.length()));
                 if(blob!=null)
-                     prestataire.setPhoto(new BufferedInputStream(blob.getBinaryStream()));
-                
-               }
+                     prestataire.setPhoto(icon);
+              }
               return prestataire;
             } catch (SQLException ex) {
             System.out.println("erreur lors de la mise à jour "+ex.getMessage());

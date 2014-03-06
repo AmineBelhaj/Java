@@ -4,10 +4,14 @@
  */
 package GoldenCage.Presentation.Clientpack;
 
+import GoldenCage.Presentation.Connexion;
 import com.lowagie.text.Font;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Toolkit;
+import java.net.ConnectException;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 /**
  *
@@ -16,13 +20,10 @@ import java.awt.Toolkit;
 public class Client extends javax.swing.JFrame {
   
     
-    /**
-     * Creates new form Client
-     */
-    public Client() {
-        
+ Connexion cd =null;
+    public Client(Connexion c) {
+        cd=c;
         initComponents();
-        this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/resources/Coeur1.png")));
         panel2_Mariée.setVisible(false);
         panel2_Marié.setVisible(false);
         panel2_Réception.setVisible(false);
@@ -30,6 +31,11 @@ public class Client extends javax.swing.JFrame {
         panel2_Gastronomie.setVisible(false);
         panel2_Photographe.setVisible(false);
         panel2_Lune.setVisible(false);
+        lblBienvenue.setText("Bienvenue "+c.getLoginInput().getText());
+    }
+
+    private Client() {
+        throw new UnsupportedOperationException("Not yet implemented");
     }
    
      public void GoListeProduit(){
@@ -58,8 +64,9 @@ public class Client extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         panel1 = new javax.swing.JPanel();
-        PanelPrestataire = new GoldenCage.Presentation.Clientpack.ListePrestataire();
+        PanelPrestataire = new GoldenCage.Presentation.Clientpack.ListePrestataire(cd.getLoginInput().getText());
         panel2 = new javax.swing.JPanel();
         lblMariée = new javax.swing.JLabel();
         lblMarié = new javax.swing.JLabel();
@@ -100,8 +107,15 @@ public class Client extends javax.swing.JFrame {
         lblAgence = new javax.swing.JLabel();
         panel2_Photographe = new javax.swing.JPanel();
         lblPhotogr = new javax.swing.JLabel();
+        lblBienvenue = new javax.swing.JLabel();
+        lblDeconnexion = new javax.swing.JLabel();
+        lblGerer = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 102), 2));
 
         panel1.setBackground(new java.awt.Color(255, 255, 255));
         panel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -110,8 +124,6 @@ public class Client extends javax.swing.JFrame {
             }
         });
         panel1.setLayout(new java.awt.CardLayout());
-
-        PanelPrestataire.setBackground(new java.awt.Color(255, 255, 255));
         panel1.add(PanelPrestataire, "CardPrestataire");
 
         panel2.setBackground(new java.awt.Color(255, 0, 102));
@@ -124,11 +136,11 @@ public class Client extends javax.swing.JFrame {
         lblMariée.setFont(new java.awt.Font("Monotype Corsiva", 1, 26)); // NOI18N
         lblMariée.setText("Mariée");
         lblMariée.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblMariéeMouseClicked(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblMariéeMouseExited(evt);
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMariéeMouseClicked(evt);
             }
         });
         lblMariée.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -140,11 +152,11 @@ public class Client extends javax.swing.JFrame {
         lblMarié.setFont(new java.awt.Font("Monotype Corsiva", 1, 26)); // NOI18N
         lblMarié.setText("Marié");
         lblMarié.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblMariéMouseClicked(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblMariéMouseExited(evt);
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMariéMouseClicked(evt);
             }
         });
         lblMarié.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -594,20 +606,20 @@ public class Client extends javax.swing.JFrame {
                 .addComponent(lblPhotographe)
                 .addGap(31, 31, 31)
                 .addComponent(lblLune)
-                .addContainerGap(436, Short.MAX_VALUE))
-            .addComponent(panel2_Photographe, javax.swing.GroupLayout.DEFAULT_SIZE, 1298, Short.MAX_VALUE)
+                .addContainerGap())
+            .addComponent(panel2_Photographe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(panel2_Marié, javax.swing.GroupLayout.DEFAULT_SIZE, 1298, Short.MAX_VALUE))
+                .addComponent(panel2_Marié, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(panel2_Réception, javax.swing.GroupLayout.DEFAULT_SIZE, 1298, Short.MAX_VALUE))
+                .addComponent(panel2_Réception, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(panel2_Gastronomie, javax.swing.GroupLayout.DEFAULT_SIZE, 1298, Short.MAX_VALUE))
+                .addComponent(panel2_Gastronomie, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(panel2_Animation, javax.swing.GroupLayout.DEFAULT_SIZE, 1298, Short.MAX_VALUE))
+                .addComponent(panel2_Animation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(panel2_Lune, javax.swing.GroupLayout.DEFAULT_SIZE, 1298, Short.MAX_VALUE))
+                .addComponent(panel2_Lune, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(panel2_Mariée, javax.swing.GroupLayout.DEFAULT_SIZE, 1298, Short.MAX_VALUE))
+                .addComponent(panel2_Mariée, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panel2Layout.setVerticalGroup(
             panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -622,7 +634,7 @@ public class Client extends javax.swing.JFrame {
                     .addComponent(lblPhotographe)
                     .addComponent(lblLune))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(panel2_Photographe, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panel2_Photographe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel2Layout.createSequentialGroup()
@@ -656,24 +668,75 @@ public class Client extends javax.swing.JFrame {
                     .addContainerGap()))
         );
 
+        lblBienvenue.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
+        lblBienvenue.setText("Bienvenue ");
+
+        lblDeconnexion.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
+        lblDeconnexion.setText("Déconnexion");
+        lblDeconnexion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblDeconnexionMouseExited(evt);
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblDeconnexionMouseClicked(evt);
+            }
+        });
+        lblDeconnexion.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                lblDeconnexionMouseMoved(evt);
+            }
+        });
+
+        lblGerer.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
+        lblGerer.setText("Gérer Compte");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(panel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1319, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(lblBienvenue, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblDeconnexion, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(92, 92, 92)
+                .addComponent(lblGerer, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(84, 84, 84))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(9, 9, 9)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblBienvenue)
+                    .addComponent(lblDeconnexion)
+                    .addComponent(lblGerer))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panel2, javax.swing.GroupLayout.DEFAULT_SIZE, 1298, Short.MAX_VALUE)
-                    .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addComponent(panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 161, Short.MAX_VALUE))
         );
 
         pack();
@@ -893,6 +956,24 @@ public class Client extends javax.swing.JFrame {
         panel2_Lune.setVisible(false);*/
     }//GEN-LAST:event_panel1MouseMoved
 
+    private void lblDeconnexionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDeconnexionMouseClicked
+        // TODO add your handling code here:
+        this.setVisible(false);
+        Connexion c = new Connexion();
+        c.setVisible(true);
+    }//GEN-LAST:event_lblDeconnexionMouseClicked
+
+    private void lblDeconnexionMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDeconnexionMouseMoved
+        // TODO add your handling code here:
+        lblDeconnexion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblDeconnexion.setForeground(new Color(153, 0, 153));
+    }//GEN-LAST:event_lblDeconnexionMouseMoved
+
+    private void lblDeconnexionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDeconnexionMouseExited
+        // TODO add your handling code here:
+        lblDeconnexion.setForeground(Color.BLACK);
+    }//GEN-LAST:event_lblDeconnexionMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -931,20 +1012,24 @@ public class Client extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private GoldenCage.Presentation.Clientpack.ListePrestataire PanelPrestataire;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblAccessoire;
     private javax.swing.JLabel lblAgence;
     private javax.swing.JLabel lblAnimation;
     private javax.swing.JLabel lblBeauté;
+    private javax.swing.JLabel lblBienvenue;
     private javax.swing.JLabel lblChanteurs;
     private javax.swing.JLabel lblCoiffure;
     private javax.swing.JLabel lblCortègeEnfants;
     private javax.swing.JLabel lblCostume;
     private javax.swing.JLabel lblDJ;
+    private javax.swing.JLabel lblDeconnexion;
     private javax.swing.JLabel lblDenseuse;
     private javax.swing.JLabel lblDragéesChocolats;
     private javax.swing.JLabel lblDécorateur;
     private javax.swing.JLabel lblFleuriste;
     private javax.swing.JLabel lblGastronomie;
+    private javax.swing.JLabel lblGerer;
     private javax.swing.JLabel lblHadhra;
     private javax.swing.JLabel lblHauteCouture;
     private javax.swing.JLabel lblJus;
