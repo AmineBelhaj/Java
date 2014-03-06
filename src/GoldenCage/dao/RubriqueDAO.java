@@ -61,4 +61,23 @@ public class RubriqueDAO {
             return 0;
             }
     }
+    
+    public String getNomFromId(int id){
+        String Nom="";
+        String requete = "select NomRubrique from rubrique where IdRubrique='"+id+"'";
+         try {
+             Statement statement = MyConnection.getInstance()
+                   .createStatement();
+             ResultSet resultat = statement.executeQuery(requete);
+            while(resultat.next()){
+                Nom=resultat.getString(1);
+            }
+            return Nom;
+        }
+         catch (SQLException ex) {
+           //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("erreur lors du chargement des prestataires "+ex.getMessage());
+            return Nom;
+            }
+    }
 }

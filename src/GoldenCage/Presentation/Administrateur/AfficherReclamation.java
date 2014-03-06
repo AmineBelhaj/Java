@@ -29,7 +29,7 @@ public class AfficherReclamation extends AbstractTableModel{
         ReclamationDAO reclamationDAO=new ReclamationDAO();
         reclamations=reclamationDAO.DisplayAllReclamations();
         if(critere.equals("Date"))
-            Collections.sort(reclamations,new CritereDate());
+           Collections.sort(reclamations,new CritereDate());
         if(critere.equals("Prestataire"))
             Collections.sort(reclamations,new CriterePrestataire());
         if(critere.equals("Client"))

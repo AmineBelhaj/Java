@@ -126,6 +126,7 @@ public class Reclamation extends javax.swing.JFrame {
         // TODO add your handling code here:
         SendMessage sendMessage=new SendMessage();
         sendMessage.sendMessage("email","object","hello");
+        
     }//GEN-LAST:event_JsendActionPerformed
 
     /**

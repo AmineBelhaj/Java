@@ -7,7 +7,9 @@
 package GoldenCage.Presentation.Administrateur;
 
 import GoldenCage.dao.PrestataireDAO;
+import GoldenCage.dao.RubriqueDAO;
 import GoldenCage.entities.Prestataire;
+import GoldenCage.entities.Rubrique;
 import javax.swing.table.AbstractTableModel;
 import java.util.List;
 /**
@@ -17,7 +19,7 @@ import java.util.List;
 public class AfficherPrestataire extends AbstractTableModel{
 
      List<Prestataire>prestataires;
-     String [] columnTab={"NomSociete","Login","MotDePasse","Adresse","Presentation","Tel","GSM","Fax","AdresseMail","SiteWeb"};
+     String [] columnTab={"NomSociete","Login","MotDePasse","Adresse","Presentation","Tel","GSM","Fax","AdresseMail","SiteWeb","Rubrique"};
    
      public AfficherPrestataire(){
          PrestataireDAO prestataireDAO=new PrestataireDAO();
@@ -38,6 +40,8 @@ public class AfficherPrestataire extends AbstractTableModel{
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
+         RubriqueDAO rubriqueDAO=new RubriqueDAO();
+         
         switch (columnIndex){
             
             case 0 :return prestataires.get(rowIndex).getNomSociete();
@@ -50,7 +54,7 @@ public class AfficherPrestataire extends AbstractTableModel{
             case 7 :return prestataires.get(rowIndex).getFax();
             case 8 :return prestataires.get(rowIndex).getAdresseMail();
             case 9 :return prestataires.get(rowIndex).getSiteWeb();
-            
+            case 10:return prestataires.get(rowIndex).getIdRubrique();
             default:return null;
         }
     }
