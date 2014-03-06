@@ -6,6 +6,9 @@
 
 package GoldenCage.Presentation.Administrateur;
 
+import GoldenCage.dao.SendMessage;
+import java.awt.Color;
+
 /**
  *
  * @author minoo
@@ -17,6 +20,7 @@ public class Reclamation extends javax.swing.JFrame {
      */
     public Reclamation() {
         initComponents();
+       
     }
 
     /**
@@ -33,6 +37,7 @@ public class Reclamation extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
+        Jsend = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,6 +60,13 @@ public class Reclamation extends javax.swing.JFrame {
             }
         });
 
+        Jsend.setText("Envoyer Mail");
+        Jsend.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JsendActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -64,6 +76,8 @@ public class Reclamation extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(BtRetour)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Jsend)
+                        .addGap(155, 155, 155)
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -81,7 +95,8 @@ public class Reclamation extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtRetour)
                     .addComponent(jLabel1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Jsend)))
         );
 
         pack();
@@ -106,6 +121,12 @@ public class Reclamation extends javax.swing.JFrame {
             jTable1.setModel(new AfficherReclamation("Client"));
         }
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void JsendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JsendActionPerformed
+        // TODO add your handling code here:
+        SendMessage sendMessage=new SendMessage();
+        sendMessage.sendMessage("email","object","hello");
+    }//GEN-LAST:event_JsendActionPerformed
 
     /**
      * @param args the command line arguments
@@ -144,6 +165,7 @@ public class Reclamation extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtRetour;
+    private javax.swing.JButton Jsend;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;

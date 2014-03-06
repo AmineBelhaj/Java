@@ -9,6 +9,10 @@ package GoldenCage.Presentation.Administrateur;
 import GoldenCage.dao.PrestataireDAO;
 import GoldenCage.entities.Prestataire;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
@@ -254,82 +258,84 @@ public class AjouterCompte extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_BtChargerImageActionPerformed
-
+    private int verifierInt(String obj){
+        if(obj.length()==8){
+            try{
+                int monentier = Integer.parseInt(obj);
+                return monentier;
+            }catch(NumberFormatException nfe){
+                return -1;
+            }
+        }
+        else{
+            return -1;
+        }  
+    }
+    
+    private FileInputStream verifierphoto(){
+         File file = new File(path);
+        try {
+            FileInputStream stream = new FileInputStream(file);
+            return stream;
+        } catch (FileNotFoundException ex) {
+            return null;
+        }
+    }
     private void BtConfirmerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtConfirmerActionPerformed
         //Control de saisie
         String masque = "^[a-zA-Z]+[a-zA-Z0-9\\._-]*[a-zA-Z0-9]@[a-zA-Z]+"
                         + "[a-zA-Z0-9\\._-]*[a-zA-Z0-9]+\\.[a-zA-Z]{2,4}$";
         Pattern pattern = Pattern.compile(masque);
         Matcher controler = pattern.matcher(lbladrmail.getText());
-        if(lblLogin.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Login obligatoire");
+        PrestataireDAO prestataireDAO=new PrestataireDAO();
+        if(prestataireDAO.VerifierBD("Login",lblLogin.getText())){
+            JOptionPane.showMessageDialog(null,"Login incorrect ou déja utilisé");
         }
-        else if(lblMdp.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Mot de passe obligatoire");
+        else if((lblMdp.getText().equals(""))||(lblMdp.getText().length()<6)){
+            JOptionPane.showMessageDialog(null,"Mot de passe contenant au moin six caractére");
         }
-        else if(lblNomSoc.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Nom de société obligatoire");
+        else if(prestataireDAO.VerifierBD("NomSociete",lblNomSoc.getText())){
+            JOptionPane.showMessageDialog(null,"Nom de société incorrect ou déja utilisé");
         }
         else if(!controler.matches()){
+            if(prestataireDAO.VerifierBD("AdresseMail", lbladrmail.getText()))
             JOptionPane.showMessageDialog(null,"Adresse mail obligatoire");
         }
         else if (lbladr.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Adresse obligatoire");
+           JOptionPane.showMessageDialog(null,"Adresse obligatoire");
         }
         else{
             prestataire=new Prestataire();
-            prestataire.setPhoto(path);
+            if(verifierphoto()!=null)
+                prestataire.setPhoto(verifierphoto());
             prestataire.setLogin(lblLogin.getText());
             prestataire.setMotDePasse(lblMdp.getText());
             prestataire.setNomSociete(lblNomSoc.getText());
             prestataire.setAdresse(lbladr.getText());
             prestataire.setAdresseMail(lbladrmail.getText());
-            int monentier;
-            if(!lblfax.getText().equals("")){
-             try {
-                monentier = Integer.parseInt(lblfax.getText());
-                 prestataire.setFax(monentier);
-             } catch (NumberFormatException nfe) {
-                  JOptionPane.showMessageDialog(null,"Fax incorecte");
-                 //fax
-              }
-            }
-             if(!lblgsm.getText().equals("")){
-                  try{
-                    monentier=Integer.parseInt(lblgsm.getText());
-                    prestataire.setGSM(monentier);
-                    prestataire.setPresentation(lblpresent.getText());
-                     }
-                   catch(NumberFormatException nfe){
-                      JOptionPane.showMessageDialog(null,"GSM incorecte");
-                         //gsm incorecte
-                   }
-                 }
-               if(!lbltel.getText().equals("")){
-                      try{
-                           monentier=Integer.parseInt(lbltel.getText());
-                                  prestataire.setTel(monentier);
-                                  prestataire.setSiteWeb(lblweb.getText());
-                                  PrestataireDAO prestatairedao=new PrestataireDAO();
-                                  if(prestatairedao.ajouterPrestataire(prestataire)){
-                                        JOptionPane.showMessageDialog(null,"Le compte a été ajouter avec succés");
-                                        this.setVisible(false);
-                                        GererCompte gc=new GererCompte();
-                                        gc.setVisible(true);
-                       }
-                                  else{
-                                    JOptionPane.showMessageDialog(null,"Probléme d'ajout");
-                                   }
-                             }
-                             catch(NumberFormatException nfe){
-                                 JOptionPane.showMessageDialog(null,"Numero de tel incorecte");
-                                 //tel incorrecte
-                             }
-                         }
-                    
-                 
-              
             
+            if(verifierInt(lblfax.getText())!=-1)
+                prestataire.setFax(verifierInt(lblfax.getText()));
+            else{
+                         
+            }
+            if(verifierInt(lblgsm.getText())!=-1)
+                prestataire.setGSM(verifierInt(lblgsm.getText()));
+            prestataire.setPresentation(lblpresent.getText());
+            if(verifierInt(lbltel.getText())!=-1)
+                prestataire.setTel(verifierInt(lbltel.getText()));       
+             prestataire.setSiteWeb(lblweb.getText());
+             PrestataireDAO prestatairedao=new PrestataireDAO();
+             File file = new File(path);
+                if(prestatairedao.ajouterPrestataire(prestataire,file)){
+                     JOptionPane.showMessageDialog(null,"Le compte a été ajouter avec succés");
+                     this.setVisible(false);
+                        GererCompte gc=new GererCompte();
+                         gc.setVisible(true);    
+                }
+                else
+                    JOptionPane.showMessageDialog(null,"Probléme d'ajout");
+                                   
         }
         
     }//GEN-LAST:event_BtConfirmerActionPerformed
