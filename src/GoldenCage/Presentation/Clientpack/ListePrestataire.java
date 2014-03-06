@@ -8,11 +8,18 @@ import GoldenCage.dao.PrestataireDAO;
 import GoldenCage.entities.Prestataire;
 import GoldenCage.util.MyConnection;
 import java.awt.Color;
+import java.awt.Image;
 import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 /**
  *
  * @author lenovo_B
@@ -81,7 +88,18 @@ public class ListePrestataire extends javax.swing.JPanel {
              info.getLblMail().setText(prest.getAdresseMail());
              info.getLblTel().setText(prest.getTel()+"");
              //Affichage de l'image
-             info.getLblPhoto().setIcon(p.icon);
+             InputStream is = prest.getPhoto();
+        
+        Image image;
+        if(is!=null){
+            try {
+                image = ImageIO.read(is);
+                 Image scaledImage=image.getScaledInstance(info.getjPanel3().getWidth(),info.getjPanel3().getHeight(),Image.SCALE_SMOOTH); 
+                info.getLblPhoto().setIcon(new ImageIcon(scaledImage));
+            } catch (IOException ex) {
+                Logger.getLogger(ModifierCompte.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
              info.setVisible(true);
              this.setVisible(false);
          }
