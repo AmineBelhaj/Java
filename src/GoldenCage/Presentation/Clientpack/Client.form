@@ -130,7 +130,7 @@
             </Container>
             <Component class="GoldenCage.Presentation.Clientpack.ListePrestataire" name="listePrestataire">
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new GoldenCage.Presentation.Clientpack.ListePrestataire(cd.getLoginInput().toString())"/>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new GoldenCage.Presentation.Clientpack.ListePrestataire(cd.getLoginInput().getText())"/>
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">

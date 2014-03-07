@@ -134,7 +134,7 @@ public class ClientDAO {
     
     
      public int Rechercher (String nomClient){
-         String requete = "Select IdClient from Client where Login='"+nomClient+"';";
+         String requete = "Select IdClient from Client where Login='"+nomClient.toString()+"';";
          int idClient = 0;
         try {
               Statement statement = MyConnection.getInstance()

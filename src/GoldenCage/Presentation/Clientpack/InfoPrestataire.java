@@ -42,7 +42,10 @@ public class InfoPrestataire extends javax.swing.JFrame {
     JLabel lbl[][] = new JLabel[5][5];
 
     String nom;
+    int note = 0;
     String nomClient;
+    int idClient =0 ;
+    
     InfoPrestataire() {
         throw new UnsupportedOperationException("Not yet implemented");
     }
@@ -60,10 +63,10 @@ public class InfoPrestataire extends javax.swing.JFrame {
     }
     public InfoPrestataire(String nomCli) {
         nomClient=nomCli;
-        System.out.println("yess !!!!!!"+nomCli+"");   
+        System.out.println(nomClient);
         initComponents();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        jPanel2.setVisible(false);
+        //jPanel2.setVisible(false);
     }
     
 
@@ -109,6 +112,7 @@ public class InfoPrestataire extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel4 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         lblNom = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -127,14 +131,19 @@ public class InfoPrestataire extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         lblCommentaire = new javax.swing.JTextArea();
         btCommenter = new javax.swing.JButton();
+        vote1 = new javax.swing.JLabel();
+        vote2 = new javax.swing.JLabel();
+        vote4 = new javax.swing.JLabel();
+        vote3 = new javax.swing.JLabel();
         lblRedigerCommentaire = new javax.swing.JLabel();
         lblConsulterProduit = new javax.swing.JLabel();
-        lblAttribuerNote = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         lblPhoto = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 153, 153));
+
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 204, 255));
 
@@ -157,7 +166,6 @@ public class InfoPrestataire extends javax.swing.JFrame {
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
         lblDescription.setEditable(false);
-        lblDescription.setBackground(new java.awt.Color(255, 204, 204));
         lblDescription.setColumns(20);
         lblDescription.setRows(5);
         lblDescription.setMaximumSize(new java.awt.Dimension(60, 20));
@@ -177,6 +185,34 @@ public class InfoPrestataire extends javax.swing.JFrame {
             }
         });
 
+        vote1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/vote_Jaune1.png"))); // NOI18N
+        vote1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                vote1MouseClicked(evt);
+            }
+        });
+
+        vote2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/vote_Jaune1.png"))); // NOI18N
+        vote2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                vote2MouseClicked(evt);
+            }
+        });
+
+        vote4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/vote_Jaune1.png"))); // NOI18N
+        vote4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                vote4MouseClicked(evt);
+            }
+        });
+
+        vote3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/vote_Jaune1.png"))); // NOI18N
+        vote3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                vote3MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -185,8 +221,16 @@ public class InfoPrestataire extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 806, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(vote1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(vote2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(vote3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(vote4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 636, Short.MAX_VALUE)
                         .addComponent(btCommenter, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -196,7 +240,12 @@ public class InfoPrestataire extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-                .addComponent(btCommenter)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btCommenter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(vote1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(vote2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(vote4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(vote3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -229,19 +278,6 @@ public class InfoPrestataire extends javax.swing.JFrame {
         lblConsulterProduit.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 lblConsulterProduitMouseMoved(evt);
-            }
-        });
-
-        lblAttribuerNote.setFont(new java.awt.Font("Monotype Corsiva", 0, 18)); // NOI18N
-        lblAttribuerNote.setText("Attribuer une note");
-        lblAttribuerNote.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblAttribuerNoteMouseExited(evt);
-            }
-        });
-        lblAttribuerNote.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                lblAttribuerNoteMouseMoved(evt);
             }
         });
 
@@ -280,9 +316,7 @@ public class InfoPrestataire extends javax.swing.JFrame {
                         .addGap(32, 32, 32)
                         .addComponent(lblRedigerCommentaire)
                         .addGap(34, 34, 34)
-                        .addComponent(lblConsulterProduit)
-                        .addGap(34, 34, 34)
-                        .addComponent(lblAttribuerNote))
+                        .addComponent(lblConsulterProduit))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -294,13 +328,14 @@ public class InfoPrestataire extends javax.swing.JFrame {
                             .addComponent(jLabel5)
                             .addComponent(jLabel6))
                         .addGap(50, 50, 50)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblTel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblFax, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblMail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1)
-                            .addComponent(lblAdresse, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(lblTel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblFax, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblMail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblAdresse, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -334,27 +369,29 @@ public class InfoPrestataire extends javax.swing.JFrame {
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblRedigerCommentaire, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblConsulterProduit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblAttribuerNote, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblConsulterProduit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40))
         );
+
+        jPanel4.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 5, Short.MAX_VALUE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 5, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 86, Short.MAX_VALUE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -364,7 +401,7 @@ public class InfoPrestataire extends javax.swing.JFrame {
         // TODO add your handling code here:
         Client client ;
         PrestataireDAO p = new PrestataireDAO();
-        int idPrestataire,idClient;
+        int idPrestataire;
         idPrestataire = p.getIdSociét(lblNom.getText());
         ClientDAO c = new ClientDAO();
         idClient = c.Rechercher(nomClient);
@@ -372,13 +409,11 @@ public class InfoPrestataire extends javax.swing.JFrame {
         String time = new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime());
         Reclamation rec = new Reclamation();
         ReclamationDAO r = new ReclamationDAO();
-               // client.getIdClient(), idPrestataire, lblCommentaire.getText(), 50 , date, time);
-        System.out.println(c.Rechercher(nomClient));
         rec.setIdRec(r.GetNbReclamation());
         rec.setIdClient(c.Rechercher(nomClient));
         rec.setIdPrestataire(idPrestataire);
         rec.setTextRec(lblCommentaire.getText());
-        rec.setNoteRec(50);
+        rec.setNoteRec(note);
         rec.setDateRec(date);
         rec.setTimeRec(time);
         ReclamationDAO r1 = new ReclamationDAO();
@@ -416,23 +451,51 @@ public class InfoPrestataire extends javax.swing.JFrame {
         lblConsulterProduit.setForeground(Color.BLACK);
     }//GEN-LAST:event_lblConsulterProduitMouseExited
 
-    private void lblAttribuerNoteMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAttribuerNoteMouseMoved
-        // TODO add your handling code here:
-	lblAttribuerNote.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lblAttribuerNote.setForeground(new Color(153, 0, 153));
-    }//GEN-LAST:event_lblAttribuerNoteMouseMoved
-
-    private void lblAttribuerNoteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAttribuerNoteMouseExited
-        // TODO add your handling code here:
-        lblAttribuerNote.setText("Attribuer une note");
-        lblAttribuerNote.setForeground(Color.BLACK);
-    }//GEN-LAST:event_lblAttribuerNoteMouseExited
-
     private void lblConsulterProduitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblConsulterProduitMouseClicked
         // TODO add your handling code here:
         ImageProd listeProduit = new ImageProd(lblNom.getText());
         listeProduit.setVisible(true);
     }//GEN-LAST:event_lblConsulterProduitMouseClicked
+
+    private void vote1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vote1MouseClicked
+
+        // TODO add your handling code here:
+
+        vote1.setIcon(new ImageIcon(getClass().getResource("/resources/vote_Rouge1.png")));
+        note = 25;
+        vote2.setIcon(new ImageIcon(getClass().getResource("/resources/vote_Jaune1.png")));
+        vote3.setIcon(new ImageIcon(getClass().getResource("/resources/vote_Jaune1.png")));
+        vote4.setIcon(new ImageIcon(getClass().getResource("/resources/vote_Jaune1.png")));
+       
+    }//GEN-LAST:event_vote1MouseClicked
+
+    private void vote2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vote2MouseClicked
+        // TODO add your handling code here:
+        vote1.setIcon(new ImageIcon(getClass().getResource("/resources/vote_Rouge1.png")));
+        vote2.setIcon(new ImageIcon(getClass().getResource("/resources/vote_Rouge1.png")));
+        vote3.setIcon(new ImageIcon(getClass().getResource("/resources/vote_Jaune1.png")));
+        vote4.setIcon(new ImageIcon(getClass().getResource("/resources/vote_Jaune1.png")));
+        note=50;
+    }//GEN-LAST:event_vote2MouseClicked
+
+    private void vote3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vote3MouseClicked
+        // TODO add your handling code here:
+        vote1.setIcon(new ImageIcon(getClass().getResource("/resources/vote_Rouge1.png")));
+        vote2.setIcon(new ImageIcon(getClass().getResource("/resources/vote_Rouge1.png")));
+        vote3.setIcon(new ImageIcon(getClass().getResource("/resources/vote_Rouge1.png")));
+        vote4.setIcon(new ImageIcon(getClass().getResource("/resources/vote_Jaune1.png")));
+        note=75;
+    }//GEN-LAST:event_vote3MouseClicked
+
+    private void vote4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vote4MouseClicked
+        // TODO add your handling code here:
+
+        vote1.setIcon(new ImageIcon(getClass().getResource("/resources/vote_Rouge1.png")));
+        vote2.setIcon(new ImageIcon(getClass().getResource("/resources/vote_Rouge1.png")));
+        vote3.setIcon(new ImageIcon(getClass().getResource("/resources/vote_Rouge1.png")));
+        vote4.setIcon(new ImageIcon(getClass().getResource("/resources/vote_Rouge1.png")));
+        note=100;
+    }//GEN-LAST:event_vote4MouseClicked
 
     /**
      * @param args the command line arguments
@@ -479,10 +542,10 @@ public class InfoPrestataire extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblAdresse;
-    private javax.swing.JLabel lblAttribuerNote;
     private javax.swing.JTextArea lblCommentaire;
     private javax.swing.JLabel lblConsulterProduit;
     private javax.swing.JTextArea lblDescription;
@@ -492,6 +555,10 @@ public class InfoPrestataire extends javax.swing.JFrame {
     private javax.swing.JLabel lblPhoto;
     private javax.swing.JLabel lblRedigerCommentaire;
     private javax.swing.JLabel lblTel;
+    private javax.swing.JLabel vote1;
+    private javax.swing.JLabel vote2;
+    private javax.swing.JLabel vote3;
+    private javax.swing.JLabel vote4;
     // End of variables declaration//GEN-END:variables
 
 }

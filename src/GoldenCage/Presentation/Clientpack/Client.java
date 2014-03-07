@@ -67,7 +67,7 @@ public class Client extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         panel1 = new javax.swing.JPanel();
         acceuil1 = new pidev.Presentation.acceuil();
-        listePrestataire = new GoldenCage.Presentation.Clientpack.ListePrestataire(cd.getLoginInput().toString());
+        listePrestataire = new GoldenCage.Presentation.Clientpack.ListePrestataire(cd.getLoginInput().getText());
         panel2 = new javax.swing.JPanel();
         lblMariée = new javax.swing.JLabel();
         lblMarié = new javax.swing.JLabel();
@@ -150,11 +150,11 @@ public class Client extends javax.swing.JFrame {
         lblMariée.setFont(new java.awt.Font("Monotype Corsiva", 1, 26)); // NOI18N
         lblMariée.setText("Mariée");
         lblMariée.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblMariéeMouseExited(evt);
-            }
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblMariéeMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblMariéeMouseExited(evt);
             }
         });
         lblMariée.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
