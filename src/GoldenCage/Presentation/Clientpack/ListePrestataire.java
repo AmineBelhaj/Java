@@ -20,6 +20,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import sun.net.www.content.image.jpeg;
 /**
  *
  * @author lenovo_B
@@ -86,8 +87,17 @@ public class ListePrestataire extends javax.swing.JPanel {
              info.getLblFax().setText(prest.getFax()+"");
              info.getLblMail().setText(prest.getAdresseMail());
              info.getLblTel().setText(prest.getTel()+"");
-             //Affichage de l'image
-             info.getLblPhoto().setIcon(p.icon);
+               InputStream is = prest.getPhoto();
+                Image image;
+                if(is!=null){
+                    try {
+                        image = ImageIO.read(is);
+                         //Image scaledImage=image.getScaledInstance(info.getjPanel3().getWidth(),info.getjPanel3().getHeight(),Image.SCALE_SMOOTH); 
+                         info.getLblPhoto().setIcon(new ImageIcon(image));
+                    } catch (IOException ex) {
+                        Logger.getLogger(ModifierCompte.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
              info.setVisible(true);
              this.setVisible(false);
          }
