@@ -66,7 +66,6 @@ public class Client extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         panel1 = new javax.swing.JPanel();
-        acceuil1 = new pidev.Presentation.acceuil();
         listePrestataire = new GoldenCage.Presentation.Clientpack.ListePrestataire(cd.getLoginInput().getText());
         panel2 = new javax.swing.JPanel();
         lblMariée = new javax.swing.JLabel();
@@ -125,19 +124,6 @@ public class Client extends javax.swing.JFrame {
             }
         });
         panel1.setLayout(new java.awt.CardLayout());
-
-        javax.swing.GroupLayout acceuil1Layout = new javax.swing.GroupLayout(acceuil1);
-        acceuil1.setLayout(acceuil1Layout);
-        acceuil1Layout.setHorizontalGroup(
-            acceuil1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1319, Short.MAX_VALUE)
-        );
-        acceuil1Layout.setVerticalGroup(
-            acceuil1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 198, Short.MAX_VALUE)
-        );
-
-        panel1.add(acceuil1, "card2");
         panel1.add(listePrestataire, "CardPrestataire");
 
         panel2.setBackground(new java.awt.Color(255, 0, 102));
@@ -1025,7 +1011,6 @@ public class Client extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private pidev.Presentation.acceuil acceuil1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblAccessoire;
