@@ -93,20 +93,26 @@ public class Connexion extends javax.swing.JFrame {
             }
         });
 
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel1MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -114,6 +120,12 @@ public class Connexion extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jButton2)
+                .addGap(180, 180, 180)
+                .addComponent(Jconnect)
+                .addContainerGap(374, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -124,36 +136,33 @@ public class Connexion extends javax.swing.JFrame {
                         .addGap(41, 41, 41)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(LoginInput, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
-                            .addComponent(MDPInput))
-                        .addGap(157, 157, 157)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(MDPInput)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(92, 92, 92)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jButton2)
-                        .addGap(180, 180, 180)
-                        .addComponent(Jconnect)))
-                .addContainerGap(81, Short.MAX_VALUE))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1)
+                        .addGap(42, 42, 42)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(LoginInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(33, 33, 33)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(MDPInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                            .addComponent(LoginInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(MDPInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(Jconnect))
@@ -226,48 +235,44 @@ public class Connexion extends javax.swing.JFrame {
 
     private void JconnectFacebookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JconnectFacebookActionPerformed
         // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_JconnectFacebookActionPerformed
+
+    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+        // TODO add your handling code here:
         GraphReaderExample gre=new GraphReaderExample("CAAE9RWLux8IBADraHN4Uate1lrjbZC9WoQZAwbtOOZBwGL6J55G9cJCvIccVMEeF6iRO9bxjzk41MlIU0rd0Li8DbW56vblhnhskeAoIEi8NrQSqv6ial2qj7cF3uIRZCSdJCraHe37ZBewYJnxXWY6NCMVRgDc1Qw7P6v4z23TYxNJXqZCMCq");
         User user= gre.fetchObject();
         user.getEmail();
-        PrestataireDAO prestataireDAO=new PrestataireDAO();
-        Prestataire prestataire=new Prestataire();
-        prestataire=prestataireDAO.AuthentificationWithMail(user.getEmail());
-        if(prestataire!=null){
-            Acceuil acceuil=new Acceuil();
-            this.setVisible(false);
-            acceuil.setVisible(true);
-        }
-        else{
-            ClientDAO clientDAO=new ClientDAO();
-            GoldenCage.entities.Client client;
-            client=clientDAO.AuthentificationWithFacebook(user.getEmail());
-            if(client!=null){
-                if(client.isBannir()==false){
-                    Client cl=new Client(this);
-                    this.setVisible(false);
-                    cl.setVisible(true);
-                }
-                else{
-                     JOptionPane.showMessageDialog(null,"Votre compte est banni");
-                }
+        ClientDAO clientDAO=new ClientDAO();
+        GoldenCage.entities.Client client;
+        client=clientDAO.AuthentificationWithFacebook(user.getEmail());
+        if(client!=null){
+            if(client.isBannir()==false){
+                Client cl=new Client(this);
+                this.setVisible(false);
+                cl.setVisible(true);
             }
             else{
-             
-              client=new GoldenCage.entities.Client();
-                    client.setAdressMail(user.getEmail());
-                    client.setBannir(false);
-                    client.setLogin(user.getUsername());
-                    client.setMotDePasse(user.getEmail());
-                    client.setNom(user.getName());
-                    client.setPrenom(user.getFirstName());
-                    clientDAO.ajouterClient(client);
-                    JOptionPane.showMessageDialog(null,"Votre compte a été crée");
-                    Client cl=new Client(this);
-                    this.setVisible(true);
-                    cl.setVisible(true);
+                 JOptionPane.showMessageDialog(null,"Votre compte est banni");
             }
         }
-    }//GEN-LAST:event_JconnectFacebookActionPerformed
+        else{
+
+          client=new GoldenCage.entities.Client();
+                client.setAdressMail(user.getEmail());
+                client.setBannir(false);
+                client.setLogin(user.getUsername());
+                client.setMotDePasse(user.getEmail());
+                client.setNom(user.getName());
+                client.setPrenom(user.getFirstName());
+                clientDAO.ajouterClient(client);
+                JOptionPane.showMessageDialog(null,"Votre compte a été crée");
+                Client cl=new Client(this);
+                this.setVisible(true);
+                cl.setVisible(true);
+        }
+    }//GEN-LAST:event_jPanel1MouseClicked
 
     /**
      * @param args the command line arguments

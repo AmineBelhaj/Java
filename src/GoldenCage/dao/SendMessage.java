@@ -18,7 +18,7 @@ import javax.activation.*;
 
 public class SendMessage {
     
-    public void sendMessage(String to,String object,String contenu) { 
+    public boolean sendMessage(String to,String object,String contenu) { 
      final String username = "esprit3A14.GoldenCagea@gmail.com";
 		final String password = "aminesindakhaled";
  
@@ -47,10 +47,10 @@ public class SendMessage {
                    
 			Transport.send(message);
  
-			System.out.println("Done");
+			return true;
  
 		} catch (MessagingException e) {
-			throw new RuntimeException(e);
+			return false;
 		}
     }
 }
