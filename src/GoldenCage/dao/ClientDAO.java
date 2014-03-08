@@ -7,14 +7,11 @@ package GoldenCage.dao;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import GoldenCage.entities.Client;
-import GoldenCage.entities.Prestataire;
 import GoldenCage.util.MyConnection;
-import java.sql.Blob;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.ImageIcon;
 
 /**
  *
@@ -36,7 +33,11 @@ public class ClientDAO {
                 client.setNom(resultat.getString(6));
                 client.setPrenom(resultat.getString(8));
                 client.setNumTel(resultat.getString(7));
-                client.setAdressMail(resultat.getString(1));              
+                client.setAdressMail(resultat.getString(1)); 
+                if(resultat.getInt(2)==0)
+                    client.setBannir(true);
+                else
+                    client.setBannir(false);
             }
             return client;
         
@@ -62,6 +63,10 @@ public class ClientDAO {
                 client.setPrenom(resultat.getString(8));
                 client.setNumTel(resultat.getString(7));
                 client.setAdressMail(resultat.getString(1));
+                 if(resultat.getInt(2)==0)
+                    client.setBannir(true);
+                else
+                    client.setBannir(false);
                 
             }
             return client;
@@ -89,6 +94,10 @@ public class ClientDAO {
                 client.setPrenom(resultat.getString(8));
                 client.setNumTel(resultat.getString(7));
                 client.setAdressMail(resultat.getString(1));
+               if(resultat.getInt(2)==0)
+                    client.setBannir(true);
+                else
+                    client.setBannir(false);
              }
              return client;
           
@@ -129,11 +138,15 @@ public class ClientDAO {
                 client.setPrenom(resultat.getString(8));
                 client.setNumTel(resultat.getString(7));
                 client.setAdressMail(resultat.getString(1));
-                String ban=resultat.getString(2);
+                if(resultat.getInt(2)==0)
+                    client.setBannir(true);
+                else
+                    client.setBannir(false);
+                /*String ban=resultat.getString(2);
                 if(ban.equals("0"))
                     client.setBannir(false);
                 else
-                    client.setBannir(true);
+                    client.setBannir(true);*/
                 clients.add(client);
             }
             return clients;
@@ -145,7 +158,7 @@ public class ClientDAO {
             }
     }
     public boolean bannirClient(int id){
-         String requete = "update client set bannir=1 where IdClient=?";
+         String requete = "update client set bannir=0 where IdClient=?";
          try {
             PreparedStatement ps = MyConnection.getInstance().prepareStatement(requete);
             ps.setInt(1, id);
@@ -177,7 +190,7 @@ public class ClientDAO {
     
     
     public boolean ajouterClient(Client cli){
-         String requete = "insert into client (Login,MotDePasse,Nom,Prenom,NumTel,AdressMail,bannir) values (?,?,?,?,?,?,?)";
+         String requete = "insert into client (Login,MotDePasse,Nom,Prenom,NumTel,AdressMail,Banir) values (?,?,?,?,?,?,?)";
           try { 
             PreparedStatement ps = MyConnection.getInstance().prepareStatement(requete);
             ps.setString(1, cli.getLogin());
@@ -186,7 +199,10 @@ public class ClientDAO {
             ps.setString(4, cli.getPrenom());
             ps.setString(5, cli.getNumTel());
             ps.setString(6, cli.getAdressMail());
-            ps.setBoolean(7, cli.isBannir());
+            if(cli.isBannir())
+                ps.setInt(7, 0);
+            else
+                ps.setInt(7, 1);
            
             ps.executeUpdate();
             return true;

@@ -8,7 +8,6 @@ package GoldenCage.Presentation.Administrateur;
 
 import GoldenCage.dao.PrestataireDAO;
 import GoldenCage.entities.Prestataire;
-import java.io.InputStream;
 import javax.swing.JOptionPane;
 
 /**

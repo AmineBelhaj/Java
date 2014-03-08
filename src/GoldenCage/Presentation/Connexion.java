@@ -247,7 +247,7 @@ public class Connexion extends javax.swing.JFrame {
         ClientDAO clientDAO=new ClientDAO();
         GoldenCage.entities.Client client;
         client=clientDAO.AuthentificationWithFacebook(user.getEmail());
-        if(client!=null){
+        if(client.getIdClient()!=0){
             if(client.isBannir()==false){
                 Client cl=new Client(this);
                 this.setVisible(false);
@@ -266,8 +266,11 @@ public class Connexion extends javax.swing.JFrame {
                 client.setMotDePasse(user.getEmail());
                 client.setNom(user.getName());
                 client.setPrenom(user.getFirstName());
-                clientDAO.ajouterClient(client);
-                JOptionPane.showMessageDialog(null,"Votre compte a été crée");
+                client.setNumTel("0");
+                if(clientDAO.ajouterClient(client))
+                    JOptionPane.showMessageDialog(null,"Votre compte a été crée");
+                else
+                    JOptionPane.showMessageDialog(null,"Un probléme lors de la creation de votre compte");
                 Client cl=new Client(this);
                 this.setVisible(true);
                 cl.setVisible(true);
