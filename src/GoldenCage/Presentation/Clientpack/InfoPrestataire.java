@@ -45,7 +45,8 @@ public class InfoPrestataire extends javax.swing.JFrame {
     int note = 0;
     String nomClient;
     int idClient =0 ;
-    
+    ClientDAO c = new ClientDAO();
+        
     InfoPrestataire() {
         throw new UnsupportedOperationException("Not yet implemented");
     }
@@ -134,6 +135,7 @@ public class InfoPrestataire extends javax.swing.JFrame {
         lblRedigerCommentaire = new javax.swing.JLabel();
         lblConsulterProduit = new javax.swing.JLabel();
         lblPhoto = new javax.swing.JLabel();
+        lblConsulterProduit1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 153, 153));
@@ -276,6 +278,22 @@ public class InfoPrestataire extends javax.swing.JFrame {
             }
         });
 
+        lblConsulterProduit1.setFont(new java.awt.Font("Monotype Corsiva", 0, 18)); // NOI18N
+        lblConsulterProduit1.setText("Effectuer Achat");
+        lblConsulterProduit1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblConsulterProduit1MouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblConsulterProduit1MouseExited(evt);
+            }
+        });
+        lblConsulterProduit1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                lblConsulterProduit1MouseMoved(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -300,21 +318,26 @@ public class InfoPrestataire extends javax.swing.JFrame {
                                 .addComponent(lblRedigerCommentaire)
                                 .addGap(34, 34, 34)
                                 .addComponent(lblConsulterProduit)))
-                        .addGap(134, 134, 134)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addGap(50, 50, 50)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(lblTel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblFax, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblMail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblAdresse, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(134, 134, 134)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6))
+                                .addGap(50, 50, 50)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(lblTel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lblFax, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lblMail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lblAdresse, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(34, 34, 34)
+                                .addComponent(lblConsulterProduit1)))))
                 .addContainerGap(80, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -349,7 +372,8 @@ public class InfoPrestataire extends javax.swing.JFrame {
                     .addComponent(lblPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblRedigerCommentaire, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblConsulterProduit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblConsulterProduit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblConsulterProduit1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40))
@@ -383,7 +407,6 @@ public class InfoPrestataire extends javax.swing.JFrame {
         PrestataireDAO p = new PrestataireDAO();
         int idPrestataire;
         idPrestataire = p.getIdSociét(lblNom.getText());
-        ClientDAO c = new ClientDAO();
         idClient = c.Rechercher(nomClient);
         String date = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
         String time = new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime());
@@ -477,6 +500,23 @@ public class InfoPrestataire extends javax.swing.JFrame {
         note=100;
     }//GEN-LAST:event_vote4MouseClicked
 
+    private void lblConsulterProduit1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblConsulterProduit1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblConsulterProduit1MouseExited
+
+    private void lblConsulterProduit1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblConsulterProduit1MouseClicked
+        // TODO add your handling code here:
+        idClient = c.Rechercher(nomClient); 
+        EffectuerAchat achat = new EffectuerAchat(idClient);
+        achat.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_lblConsulterProduit1MouseClicked
+
+    private void lblConsulterProduit1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblConsulterProduit1MouseMoved
+        // TODO add your handling code here:
+        lblConsulterProduit1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_lblConsulterProduit1MouseMoved
+
     /**
      * @param args the command line arguments
      */
@@ -527,6 +567,7 @@ public class InfoPrestataire extends javax.swing.JFrame {
     private javax.swing.JLabel lblAdresse;
     private javax.swing.JTextArea lblCommentaire;
     private javax.swing.JLabel lblConsulterProduit;
+    private javax.swing.JLabel lblConsulterProduit1;
     private javax.swing.JTextArea lblDescription;
     private javax.swing.JLabel lblFax;
     private javax.swing.JLabel lblMail;

@@ -66,13 +66,13 @@ public class ProduitDAO {
             while(resultat.next()){
                 Produit produit=new Produit();
              
-                produit.setNomProduit(resultat.getString(1));
+                produit.setNomProduit(resultat.getString(2));
                 Blob blob = resultat.getBlob(3);
                 icon = new ImageIcon(blob.getBytes(1, (int)blob.length()));
                 produit.setPhotoProduit(icon);
-                produit.setDescriptionProduit(resultat.getString(3));
+                produit.setDescriptionProduit(resultat.getString(6));
                 produit.setCoutProduit(resultat.getFloat(4));
-                //produit.setCoutsolde(resultat.getFloat(6));
+                produit.setCoutSolde(resultat.getFloat(5));
                 
                 listProduit.add(produit);
             }
@@ -133,4 +133,86 @@ public class ProduitDAO {
         }
     }
     
+   public List<Produit> DisplayProduitSoldé(){
+        List<Produit>listProduit=new ArrayList<>();
+        String requete = "select * from produit where CoutSolde!='null'";
+        ImageIcon icon;
+        try {
+           Statement statement = MyConnection.getInstance()
+                   .createStatement();
+            ResultSet resultat = statement.executeQuery(requete);
+            ProduitDAO ProduitDAO=new ProduitDAO();
+            while(resultat.next()){
+                Produit produit=new Produit();
+             
+                produit.setNomProduit(resultat.getString(2));
+                Blob blob = resultat.getBlob(3);
+                icon = new ImageIcon(blob.getBytes(1, (int)blob.length()));
+                produit.setPhotoProduit(icon);
+                produit.setDescriptionProduit(resultat.getString(6));
+                produit.setCoutProduit(resultat.getFloat(4));
+                produit.setCoutSolde(resultat.getFloat(5));
+                listProduit.add(produit);
+            }
+            return listProduit;
+            } catch (SQLException ex) {
+           //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("erreur lors du chargement des services "+ex.getMessage());
+            return null;
+            }
+        }
+   
+   public ImageIcon RechercherProduit(String nom){
+       String requete = "Select Photo from produit where NomProduit = '"+nom+"';";
+        try {
+            Statement statement = MyConnection.getInstance()
+                   .createStatement();
+            ResultSet resultat = statement.executeQuery(requete);
+//            
+            ImageIcon icon = null;
+            while(resultat.next()){
+                Produit produit=new Produit();
+                Blob blob = resultat.getBlob(1);
+                icon = new ImageIcon(blob.getBytes(1, (int)blob.length()));
+            }
+            return icon;
+        } catch (SQLException ex) {
+           //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+   }
+    
+    public int RechercherIDProduit(String nom){
+       String requete = "Select IdProduit from produit where NomProduit = '"+nom+"';";
+        try {
+            Statement statement = MyConnection.getInstance()
+                   .createStatement();
+            ResultSet resultat = statement.executeQuery(requete);
+//            
+            int id = 0;
+            while(resultat.next()){
+                id = resultat.getInt(1);
+            }
+            return id;
+        } catch (SQLException ex) {
+           //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
+            return 0;
+        }
+   }
+    
+    
+    public boolean Soldé(String nom){
+       String requete = "Select * from produit where CoutSolde != 'Null' and NomProduit='"+nom+"';";
+        try {
+            PreparedStatement ps = MyConnection.getInstance().prepareStatement(requete);
+            ResultSet resultat = ps.executeQuery(requete);
+            if(resultat.next()){
+                return true;
+            }
+        } catch (SQLException ex) {
+           //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+        return false;
+   }
 }
