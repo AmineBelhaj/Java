@@ -31,6 +31,7 @@ public class AjouterCompte extends javax.swing.JFrame {
 
     String path;
     Prestataire prestataire;
+    boolean ChargerImage;
     /**
      * Creates new form AjouterCompte
      */
@@ -42,6 +43,7 @@ public class AjouterCompte extends javax.swing.JFrame {
         for(int i=0;i<rubriques.size();i++){
             jComboBox1.addItem(rubriques.get(i).getNomRubrique());
         }
+        ChargerImage=false;
        
     }
     
@@ -274,6 +276,7 @@ public class AjouterCompte extends javax.swing.JFrame {
             path=file.getPath();
             JLabel lab = new JLabel(new ImageIcon(path));
             PanelImage.add(lab);
+            ChargerImage=true;
             pack();
         }
 
@@ -350,6 +353,7 @@ public class AjouterCompte extends javax.swing.JFrame {
              prestataire.setIdRubrique(id);
              PrestataireDAO prestatairedao=new PrestataireDAO();
              File file = new File(path);
+             if((ChargerImage)&&(verifierphoto()!=null)){
                 if(prestatairedao.ajouterPrestataire(prestataire,file)){
                      JOptionPane.showMessageDialog(null,"Le compte a été ajouter avec succés");
                      this.setVisible(false);
@@ -358,6 +362,17 @@ public class AjouterCompte extends javax.swing.JFrame {
                 }
                 else
                     JOptionPane.showMessageDialog(null,"Probléme d'ajout");
+             }
+             else{
+                 if(prestatairedao.ajouterPrestataire(prestataire)){
+                     JOptionPane.showMessageDialog(null,"Le compte a été ajouter avec succés");
+                     this.setVisible(false);
+                        GererCompte gc=new GererCompte();
+                         gc.setVisible(true);    
+                }
+                else
+                    JOptionPane.showMessageDialog(null,"Probléme d'ajout");
+             }
                                    
         }
         

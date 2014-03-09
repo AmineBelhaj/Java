@@ -259,21 +259,21 @@ public class Connexion extends javax.swing.JFrame {
         }
         else{
 
-          client=new GoldenCage.entities.Client();
-                client.setAdressMail(user.getEmail());
-                client.setBannir(false);
-                client.setLogin(user.getUsername());
-                client.setMotDePasse(user.getEmail());
-                client.setNom(user.getName());
-                client.setPrenom(user.getFirstName());
-                client.setNumTel("0");
-                if(clientDAO.ajouterClient(client))
-                    JOptionPane.showMessageDialog(null,"Votre compte a été crée");
-                else
-                    JOptionPane.showMessageDialog(null,"Un probléme lors de la creation de votre compte");
-                Client cl=new Client(this);
-                this.setVisible(true);
-                cl.setVisible(true);
+            client=new GoldenCage.entities.Client();
+            client.setAdressMail(user.getEmail());
+            client.setBannir(false);
+            client.setLogin(user.getUsername());
+            client.setMotDePasse(user.getEmail());
+            client.setNom(user.getName());
+            client.setPrenom(user.getFirstName());
+            client.setNumTel("0");
+            if(clientDAO.ajouterClient(client))
+                JOptionPane.showMessageDialog(null,"Votre compte a été crée");
+            else
+                JOptionPane.showMessageDialog(null,"Un probléme lors de la creation de votre compte");
+            Client cl=new Client(this);
+            this.setVisible(true);
+            cl.setVisible(true);
         }
     }//GEN-LAST:event_jPanel1MouseClicked
 

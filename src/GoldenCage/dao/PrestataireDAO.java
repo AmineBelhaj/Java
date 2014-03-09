@@ -130,6 +130,29 @@ public class PrestataireDAO {
             return false;
             }
      }
+     public boolean ajouterPrestataire(Prestataire prest){
+         String requete = "insert into prestataire (NomSociete,Login,MotDePasse,Adresse,Presentation,Tel,GSM,Fax,AdressMail,SiteWeb,IdRubrique) values (?,?,?,?,?,?,?,?,?,?,?)";
+          try { 
+            PreparedStatement ps = MyConnection.getInstance().prepareStatement(requete);
+            ps.setString(1, prest.getNomSociete());
+            ps.setString(2, prest.getLogin());
+            ps.setString(3, prest.getMotDePasse());
+            ps.setString(4, prest.getAdresse());
+            ps.setString(5, prest.getPresentation());
+            ps.setInt(6, prest.getTel());
+            ps.setInt(7, prest.getGSM());
+            ps.setInt(8, prest.getFax());
+            ps.setString(9, prest.getAdresseMail());
+            ps.setString(10, prest.getSiteWeb());
+                
+            ps.setInt(11, prest.getIdRubrique());
+            ps.executeUpdate();
+            return true;
+          }catch (SQLException ex) {
+            System.out.println("erreur lors de l'insertion "+ex.getMessage());
+            return false;
+            }
+     }
      public boolean modifierPrestataire(Prestataire prest){
         String requete = "update prestataire set NomSociete=?, Login=?, MotDePasse=?, Adresse=?, Presentation=?, Tel=?, GSM=?, Fax=?, AdressMail=?, SiteWeb=?, IdRubrique=? where IdPrestataire=?";
         try {
@@ -270,10 +293,11 @@ public class PrestataireDAO {
                 prestataire.setSiteWeb(resultat.getString(11));
                 prestataire.setIdRubrique(resultat.getInt(13));
                 Blob blob = resultat.getBlob(9);
-                icon = new ImageIcon(blob.getBytes(1, (int)blob.length()));
-                if(blob!=null)
-                     prestataire.setPhoto(new BufferedInputStream(blob.getBinaryStream()));
                 
+                if(blob!=null){
+                    icon = new ImageIcon(blob.getBytes(1, (int)blob.length()));
+                     prestataire.setPhoto(new BufferedInputStream(blob.getBinaryStream()));
+                }
                }
               return prestataire;
             } catch (SQLException ex) {
